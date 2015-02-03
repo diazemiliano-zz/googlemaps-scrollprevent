@@ -1,9 +1,9 @@
 /*!
  * mapScrollOff (jQuery Google Maps Scroll Off Plugin)
  * Version 0.1.x
- * URL: https://github.com/diazemiliano/mapScrollOff
+ * URL: https://github.com/diazemiliano
  * Description: mapScrollOff is a easy solution to the problem of page scrolling with Google Maps.
- * Author: Emiliano Díaz https://github.com/diazemiliano
+ * Author: Emiliano Díaz
  * Copyright: The MIT License (MIT) Copyright (c) 2015 Emiliano Díaz.
  */
 
@@ -13,14 +13,28 @@
           // All Google Map's iframe's
           iframeSelector:"iframe[src*=\"google.com/maps\"]",
           // Custom class for map wrap
-          wrapClass:"map-container",
+          wrapClass:"x-map-inner",
           // Custom tag for wrapping
           wrapTag:"div",
           // Custom class for hover div
           hoverSelector:"map-enable",
           // Hover Message
-          hoverMessage:"<p>Do <b>Clic</b> to Navigate the Map.</p>"
+          hoverMessage:"<p>Has <b>Clic</b> para Navegar el Mapa.</p>",
+          // Present on touchscreen devices
+          inTouch:false,
+          // Break Point in Medium devices
+          desktopBreak:992
         }, options),
+        // Check touchscreen
+        isTouch =
+        function() {
+          if (("ontouchstart" in window) ||
+          (navigator.MaxTouchPoints > 0) ||
+          (navigator.msMaxTouchPoints > 0))
+          {
+            return true;
+          }
+        },
         // Hover div object
         hoverHtml =
         $("<div class=\"" + opts.hoverSelector + "\">" + opts.hoverMessage + "</div>")
@@ -47,12 +61,13 @@
                 $(opts.iframeSelector).css({ "pointer-events":"none" });
               });
           };
-    // Call function
-    mapWrap();
+    // Present always in no-touch devices
+    if (!isTouch()) {
+      mapWrap();
+    } else
+    // Present in touch devices if needed
+    if (isTouch() && opts.inTouch) {
+      mapWrap();
+    }
   };
 }(jQuery));
-
-// Call function on load with defaults
-$(function() {
-  $.mapScrollOff();
-});

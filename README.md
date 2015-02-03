@@ -54,7 +54,9 @@ var options = {
       // Custom class for hover div
       hoverSelector:"map-enable",
       // Hover Message
-      hoverMessage:"<p>Do <b>Clic</b> to Navigate the Map.</p>"
+      hoverMessage:"<p>Do <b>Clic</b> to Navigate the Map.</p>",
+      // Present on touchscreen devices
+      inTouch:false
     };
 ```
 ## License

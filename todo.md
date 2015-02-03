@@ -1,2 +1,2 @@
-# todo
-- [ ] Deactivate on mobile devices using breakpoints.
+# To Do's
+- [x] ~~Deactivate on touchscreen devices.~~
