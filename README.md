@@ -1,6 +1,5 @@
 # mapScrollOff
 mapScrollOff is a easy solution to the problem of page scrolling with Maps. Requires [jQuery](jquery.com).
-
 ## Usage
 1. Include jQuery in your html.
 ``` html
@@ -36,7 +35,6 @@ $(function() {
 });
 </script>
 ```
-
 ## Defaults
 ```javascript
 var options = {
