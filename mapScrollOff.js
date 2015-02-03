@@ -21,9 +21,7 @@
           // Hover Message
           hoverMessage:"<p>Has <b>Clic</b> para Navegar el Mapa.</p>",
           // Present on touchscreen devices
-          inTouch:false,
-          // Break Point in Medium devices
-          desktopBreak:992
+          inTouch:false
         }, options),
         // Check touchscreen
         isTouch =
