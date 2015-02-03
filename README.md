@@ -8,7 +8,14 @@ mapScrollOff is a easy solution to the problem of page scrolling with Maps. Requ
 <script type="text/javascript" src="https://ajax.googleapis.com/ajax/libs/jquery/2.1.3/jquery.min.js?ver=2.1.3"></script>
 </head>
 ```
-2. Call mapScrollOff including the following code.
+2. Include mapScrollOff Libs.
+``` html
+<head>
+<link rel="stylesheet" type="text/css" media="all" href="https://raw.githubusercontent.com/diazemiliano/mapScrollOff/master/style.css">
+<script type="text/javascript" src="https://raw.githubusercontent.com/diazemiliano/mapScrollOff/master/mapScrollOff.js"></script>
+</head>
+```
+3. Call mapScrollOff including the following code.
 ``` javascript
 <script type="text/javascript">
 $(function() {
@@ -16,7 +23,7 @@ $(function() {
 });
 </script>
 ```
-3. Edit defaults.
+4. Edit defaults.
 ``` javascript
 <script type="text/javascript">
 $(function() {
@@ -45,3 +52,5 @@ var options = {
       hoverMessage:"<p>Do <b>Clic</b> to Navigate the Map.</p>"
     };
 ```
+## License
+The MIT License (MIT) Copyright (c) 2015 Emiliano Díaz.

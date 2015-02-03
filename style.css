@@ -1,0 +1,36 @@
+/*!
+ * mapScrollOff (jQuery Google Maps Scroll Off Plugin)
+ * Version 0.1.x
+ * URL: https://github.com/diazemiliano
+ * Description: mapScrollOff is a easy solution to the problem of page scrolling with Google Maps.
+ * Author: Emiliano Díaz
+ * Copyright: The MIT License (MIT) Copyright (c) 2015 Emiliano Díaz.
+ */
+
+.map-enable {
+  cursor: pointer;
+  position: absolute;
+  text-align: center;
+  height: 100%;
+  width: 100%;
+  -moz-transition: background-color 0.3s ease-in-out;
+  -o-transition: background-color 0.3s ease-in-out;
+  -webkit-transition: background-color 0.3s ease-in-out;
+  transition: background-color 0.3s ease-in-out
+}
+.map-enable:hover {
+  background-color: rgba(255, 255, 255, 0.8)
+}
+.map-enable:hover p {
+  color: #000
+}
+.map-enable p {
+  -moz-transition: color 0.3s ease-in-out;
+  -o-transition: color 0.3s ease-in-out;
+  -webkit-transition: color 0.3s ease-in-out;
+  transition: color 0.3s ease-in-out;
+  color: transparent;
+  position: relative;
+  top: 50%;
+  transform: translateY(-50%)
+}

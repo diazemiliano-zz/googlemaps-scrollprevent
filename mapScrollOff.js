@@ -1,9 +1,9 @@
 /*!
  * mapScrollOff (jQuery Google Maps Scroll Off Plugin)
  * Version 0.1.x
- * URL: https://github.com/diazemiliano
+ * URL: https://github.com/diazemiliano/mapScrollOff
  * Description: mapScrollOff is a easy solution to the problem of page scrolling with Google Maps.
- * Author: Emiliano Díaz
+ * Author: Emiliano Díaz https://github.com/diazemiliano
  * Copyright: The MIT License (MIT) Copyright (c) 2015 Emiliano Díaz.
  */
 
