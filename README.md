@@ -1,5 +1,5 @@
 # mapScrollOff
-mapScrollOff is a easy solution to the problem of page scrolling with Maps. Requires [jQuery](jquery.com).
+mapScrollOff is a easy solution to the problem of page scrolling with Maps. Requires [jQuery](jquery.com).You can [download](https://github.com/diazemiliano/mapScrollOff/releases) a Pre-Release version.
 ## Usage
 1. Include jQuery in your html.
 ``` html
