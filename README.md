@@ -1,2 +1,47 @@
 # mapScrollOff
-mapScrollOff is a easy solution to the problem of page scrolling with Maps
+mapScrollOff is a easy solution to the problem of page scrolling with Maps. Requires [jQuery](jquery.com).
+
+## Usage
+1. Include jQuery in your html.
+``` html
+<head>
+<script type="text/javascript" src="https://ajax.googleapis.com/ajax/libs/jquery/2.1.3/jquery.min.js?ver=2.1.3"></script>
+</head>
+```
+2. Call the mapScrollOff
+``` html
+<script type="text/javascript">
+$(function() {
+  $.mapScrollOff();
+});
+</script>
+```
+3. Edit defaults
+``` javascript
+<script type="text/javascript">
+$(function() {
+  var options =
+    {
+      // Only Google Maps
+      iframeSelector:"iframe[src*=\"google.com/maps\"]"
+    };
+  $.mapScrollOff(options);
+});
+</script>
+```
+
+## Defaults
+```javascript
+var options = {
+      // All Google Map's iframe's
+      iframeSelector:"iframe[src*=\"google.com/maps\"]",
+      // Custom class for map wrap
+      wrapClass:"map-container",
+      // Custom tag for wrapping
+      wrapTag:"div",
+      // Custom class for hover div
+      hoverSelector:"map-enable",
+      // Hover Message
+      hoverMessage:"<p>Do <b>Clic</b> to Navigate the Map.</p>"
+    };
+```
