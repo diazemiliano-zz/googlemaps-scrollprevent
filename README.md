@@ -3,12 +3,14 @@ mapScrollOff is a easy solution to the problem of page scrolling with Maps. Requ
 ## Usage
 1. Include jQuery in your html.
 ``` html
+// html
 <head>
 <script type="text/javascript" src="https://ajax.googleapis.com/ajax/libs/jquery/2.1.3/jquery.min.js?ver=2.1.3"></script>
 </head>
 ```
 2. Include mapScrollOff Libs.
 ``` html
+// html
 <head>
 <link rel="stylesheet" type="text/css" media="all" href="https://raw.githubusercontent.com/diazemiliano/mapScrollOff/master/style.css">
 <script type="text/javascript" src="https://raw.githubusercontent.com/diazemiliano/mapScrollOff/master/mapScrollOff.js"></script>
@@ -16,6 +18,7 @@ mapScrollOff is a easy solution to the problem of page scrolling with Maps. Requ
 ```
 3. Call mapScrollOff including the following code.
 ``` javascript
+// html
 <script type="text/javascript">
 $(function() {
   $.mapScrollOff();
@@ -24,6 +27,7 @@ $(function() {
 ```
 4. Edit defaults.
 ``` javascript
+// html
 <script type="text/javascript">
 $(function() {
   var options =
@@ -36,7 +40,8 @@ $(function() {
 </script>
 ```
 ## Defaults
-```javascript
+``` javascript
+// JavaScript
 var options = {
       // All Google Map's iframe's
       iframeSelector:"iframe[src*=\"google.com/maps\"]",
