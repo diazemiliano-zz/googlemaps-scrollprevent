@@ -47,12 +47,12 @@ You can [Download](https://github.com/diazemiliano/mapScrollOff/releases) a **Pr
       ``` html
       <script type="text/javascript">
       $(function() {
-        var options =
-          {
-            // Only Google Maps
-            hoverMessage:"<p>My custom message.</p>"
-          };
-        $.mapScrollOff(options);
+        var googleMapSelector = "iframe[src*=\"google.com/maps\"]";
+        var options = {
+                    // Only Google Maps
+                    hoverMessage:"<p>My custom message.</p>"
+                  };
+        $(googleMapSelector).mapScroll(options);
       });
       </script>
       ```
