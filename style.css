@@ -6,28 +6,4 @@
  * Author: Emiliano Díaz https://github.com/diazemiliano/
  * Copyright: The MIT License (MIT) Copyright (c) 2015 Emiliano Díaz.
  */
-
-.map-overlay {
-  cursor: pointer;
-  text-align: center;
-  -moz-transition: background-color 0.3s ease-in-out;
-  -o-transition: background-color 0.3s ease-in-out;
-  -webkit-transition: background-color 0.3s ease-in-out;
-  transition: background-color 0.3s ease-in-out
-}
-.map-overlay:hover {
-  background-color: rgba(255, 255, 255, 0.8)
-}
-.map-overlay:hover p {
-  color: #000
-}
-.map-overlay p {
-  -moz-transition: color 0.3s ease-in-out;
-  -o-transition: color 0.3s ease-in-out;
-  -webkit-transition: color 0.3s ease-in-out;
-  transition: color 0.3s ease-in-out;
-  color: transparent;
-  position: relative;
-  top: 50%;
-  transform: translateY(-50%)
-}
+ .map-overlay{cursor:pointer;text-align:center;background-color:rgba(255,255,255,0);-moz-transition:background-color 0.3s ease-in-out;-o-transition:background-color 0.3s ease-in-out;-webkit-transition:background-color 0.3s ease-in-out;transition:background-color 0.3s ease-in-out}.map-overlay:hover{background-color:rgba(255,255,255,0.8)}.map-overlay:hover p{color:#000}.map-overlay p{-moz-transition:color 0.3s ease-in-out;-o-transition:color 0.3s ease-in-out;-webkit-transition:color 0.3s ease-in-out;transition:color 0.3s ease-in-out;color:transparent;position:relative;top:50%;transform:translateY(-50%);}

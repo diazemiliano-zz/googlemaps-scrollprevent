@@ -32,18 +32,19 @@ jQuery.fn.extend({
                           "</div>"),
         wrapObject = $("<div class=\"" + opts.wrapClass + "\">" + "</div>");
     // Overlay functions
-    hideOverlay = function(event)
+    hideOverlay = function()
     {
       iframeObject.css({ "pointer-events":"initial" });
       $(this).fadeOut();
+      console.log("hideOverlay");
     };
-    showOverlay = function(event)
+    showOverlay = function()
     {
       iframeObject.css({ "pointer-events":"none" });
       $(this)
         .children("." + opts.overlayClass)
         .fadeIn();
-      console.log("overlay");
+      console.log("showOverlay");
     };
 
     // Check touchscreen support
@@ -74,9 +75,10 @@ jQuery.fn.extend({
         .children("." + opts.overlayClass)
         .height(iframeObject.height())
         .width(iframeObject.width())
-        .offset({
-          top:iframeObject.position().top,
-          left:iframeObject.position().left
+        .css({
+          "position":"relative",
+          "top":iframeObject.position().top,
+          "left":iframeObject.position().left
         });
     };
 
@@ -84,10 +86,15 @@ jQuery.fn.extend({
     start = function()
     {
       wrapIframe();
-      overlayObject.bind("click", hideOverlay);
+
       iframeObject
         .closest("." + opts.wrapClass)
-        .bind("mouseover", showOverlay);
+        .children("." + opts.overlayClass)
+        .bind("click", hideOverlay);
+
+      iframeObject
+        .closest("." + opts.wrapClass)
+        .bind("mouseenter", showOverlay);
     };
 
     stop = function()
