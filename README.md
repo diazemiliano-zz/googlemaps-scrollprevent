@@ -13,40 +13,47 @@ You can [Download](https://github.com/diazemiliano/mapScrollOff/releases) a **Pr
 
 ## Usage
 1. Include jQuery in your html.
-   ``` html
-<head>
-<script type="text/javascript" src="https://ajax.googleapis.com/ajax/libs/jquery/2.1.3/jquery.min.js?ver=2.1.3"></script>
-</head>
-   ```
+       
+      ``` html
+      <head>
+      <script type="text/javascript" src="https://ajax.googleapis.com/ajax/libs/jquery/2.1.3/jquery.min.js?ver=2.1.3"></script>
+      </head>
+      ```
+      
 2. Include mapScrollOff Libs.
-``` html
-<head>
-<link rel="stylesheet" type="text/css" media="all" href="https://raw.githubusercontent.com/diazemiliano/mapScrollOff/master/style.css">
-<script type="text/javascript" src="https://raw.githubusercontent.com/diazemiliano/mapScrollOff/master/mapScrollOff.js"></script>
-</head>
-```
+      
+      ``` html
+      <head>
+      <link rel="stylesheet" type="text/css" media="all" href="https://raw.githubusercontent.com/diazemiliano/mapScrollOff/master/style.css">
+      <script type="text/javascript" src="https://raw.githubusercontent.com/diazemiliano/mapScrollOff/master/mapScrollOff.js"></script>
+      </head>
+      ```
+      
 3. Call mapScrollOff including the following code.
-``` html
-<script type="text/javascript">
-$(function() {
-  $.mapScrollOff();
-});
-</script>
-```
+      
+      ``` html
+      <script type="text/javascript">
+      $(function() {
+        $.mapScrollOff();
+      });
+      </script>
+      ```
+      
 4. Edit defaults.
-``` html
-<script type="text/javascript">
-$(function() {
-  var options =
-    {
-      // Only Google Maps
-      iframeSelector:"iframe[src*=\"google.com/maps\"]"
-    };
-  $.mapScrollOff(options);
-});
-</script>
-```
-
+      
+      ``` html
+      <script type="text/javascript">
+      $(function() {
+        var options =
+          {
+            // Only Google Maps
+            iframeSelector:"iframe[src*=\"google.com/maps\"]"
+          };
+        $.mapScrollOff(options);
+      });
+      </script>
+      ```
+      
 ## Default Options
 ``` javascript
 // JavaScript
