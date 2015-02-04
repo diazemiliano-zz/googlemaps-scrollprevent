@@ -3,7 +3,9 @@
 [![Version  0.2.x](https://img.shields.io/badge/version-0.2.x-orange.svg)](https://github.com/diazemiliano/mapScrollOff/releases)
 
 mapScrollOff is a easy solution to the problem of page scrolling with Maps.
+
 Requires [jQuery](http://www.jquery.com).
+
 You can [Download](https://github.com/diazemiliano/mapScrollOff/releases) a **Pre-Release** version.
 
 ## Table of contents
