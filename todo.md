@@ -1,4 +1,4 @@
 # To Do's
 - [x] ~~Deactivate on touchscreen devices.~~
-- [ ] Check simmilar aproach in http://jsfiddle.net/0u6v4jnp/
-- [ ] Convert to a jQuery Function
+- [x] Check simmilar aproach in http://jsfiddle.net/0u6v4jnp/
+- [x] Convert to a jQuery Function
