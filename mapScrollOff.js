@@ -1,6 +1,6 @@
 /*!
  * mapScrollOff (jQuery Google Maps Scroll Off Plugin)
- * Version 0.x.x
+ * Version 0.3.x
  * URL: https://github.com/diazemiliano/mapScrollOff
  * Description: mapScrollOff is a easy solution to the problem of page scrolling with Google Maps.
  * Author: Emiliano Díaz https://github.com/diazemiliano/
@@ -12,11 +12,11 @@ jQuery.fn.extend({
     var opts = $.extend(true,
         {
           // Custom class for map wrap
-          wrapClass:"x-map-inner",
+          wrapClass:"map-wrap",
           // Custom class for hover div
-          hoverSelector:"map-enable",
+          overlayClass:"map-overlay",
           // Hover Message
-          hoverMessage:"<p>Has <b>Clic</b> para Navegar el Mapa.</p>",
+          overlayMessage:"<p>Has <b>Clic</b> para Navegar el Mapa.</p>",
           // Present on touchscreen devices
           inTouch:false,
           // Removes mapScroll
@@ -27,22 +27,23 @@ jQuery.fn.extend({
         iframeObject = $(this),
 
         // Creates overlay object
-        overlayObject = $(
-                          "<div class=\"" + opts.hoverSelector + "\">" +
-                          opts.hoverMessage +
-                          "</div>"
-                        ),
-        wrapObject = "<div class=\"" + opts.wrapClass + "\">" + "</div>";
+        overlayObject = $("<div class=\"" + opts.overlayClass + "\">" +
+                          opts.overlayMessage +
+                          "</div>"),
+        wrapObject = $("<div class=\"" + opts.wrapClass + "\">" + "</div>");
     // Overlay functions
-    hideOverlay = function()
+    hideOverlay = function(event)
     {
-      $(iframeObject).css({ "pointer-events":"initial" });
+      iframeObject.css({ "pointer-events":"initial" });
       $(this).fadeOut();
     };
-    showOverlay = function()
+    showOverlay = function(event)
     {
-      $(iframeObject).css({ "pointer-events":"none" });
-      $(this).fadeIn();
+      iframeObject.css({ "pointer-events":"none" });
+      $(this)
+        .children("." + opts.overlayClass)
+        .fadeIn();
+      console.log("overlay");
     };
 
     // Check touchscreen support
@@ -63,15 +64,30 @@ jQuery.fn.extend({
       if (!iframeObject.closest("." + opts.wrapClass).is("div")) {
         iframeObject.wrap(wrapObject);
       }
-      iframeObject.append(hoverHtml);
+
+      iframeObject
+        .closest("." + opts.wrapClass)
+        .append(overlayObject);
+
+      iframeObject
+        .closest("." + opts.wrapClass)
+        .children("." + opts.overlayClass)
+        .height(iframeObject.height())
+        .width(iframeObject.width())
+        .offset({
+          top:iframeObject.position().top,
+          left:iframeObject.position().left
+        });
     };
 
     // Init wrap and bind events
     start = function()
     {
       wrapIframe();
-      overlayObject.on("click", hideOverlay);
-      wrapObject.on("mouseenter", showOverlay);
+      overlayObject.bind("click", hideOverlay);
+      iframeObject
+        .closest("." + opts.wrapClass)
+        .bind("mouseover", showOverlay);
     };
 
     stop = function()
@@ -81,7 +97,7 @@ jQuery.fn.extend({
     };
 
     // Present always in no-touch devices
-    if (!stop) {
+    if (!opts.stop) {
       if (!isTouchScreen()) {
         start();
       } else if (isTouchScreen() && opts.inTouch) {

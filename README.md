@@ -62,13 +62,15 @@ You can [Download](https://github.com/diazemiliano/mapScrollOff/releases) a **Pr
 // JavaScript
 var options = {
       // Custom class for map wrap
-      wrapClass:"map-container",
+      wrapClass:"map-wrap",
       // Custom class for hover div
-      hoverSelector:"map-enable",
+      overlayClass:"map-overlay",
       // Hover Message
-      hoverMessage:"<p>Do <b>Clic</b> to Navigate the Map.</p>",
+      overlayMessage:"<p>Has <b>Clic</b> para Navegar el Mapa.</p>",
       // Present on touchscreen devices
-      inTouch:false
+      inTouch:false,
+      // Removes mapScroll
+      stop:false
     };
 ```
 
