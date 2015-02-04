@@ -12,11 +12,12 @@ You can [Download](https://github.com/diazemiliano/mapScrollOff/releases) a **Pr
 - [License](#license)
 
 ## Usage
-1. Include jQuery in your html.``` html
+1. Include jQuery in your html.
+   ``` html
 <head>
 <script type="text/javascript" src="https://ajax.googleapis.com/ajax/libs/jquery/2.1.3/jquery.min.js?ver=2.1.3"></script>
 </head>
-```
+   ```
 2. Include mapScrollOff Libs.
 ``` html
 <head>
