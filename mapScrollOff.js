@@ -80,10 +80,27 @@ jQuery.fn.extend({
         });
     };
 
+    coverObject = function()
+    {
+      console.log("covering");
+      iframeObject
+        .closest("." + opts.wrapClass)
+        .children("." + opts.overlayClass)
+        .height(iframeObject.height())
+        .width(iframeObject.width())
+        .css({
+          "position":"relative",
+          "top":iframeObject.position().top,
+          "left":iframeObject.position().left
+        });
+    };
     // Init wrap and bind events
     start = function()
     {
       wrapIframe();
+
+      $(window)
+        .on("resize", coverObject);
 
       iframeObject
         .closest("." + opts.wrapClass)
@@ -92,7 +109,8 @@ jQuery.fn.extend({
 
       iframeObject
         .closest("." + opts.wrapClass)
-        .bind("mouseenter", showOverlay);
+        .bind("mouseenter", showOverlay)
+        .bind("mouseenter", coverObject);
     };
 
     stop = function()
