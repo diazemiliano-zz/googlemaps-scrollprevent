@@ -31,6 +31,37 @@ jQuery.fn.extend({
                           opts.overlayMessage +
                           "</div>"),
         wrapObject = $("<div class=\"" + opts.wrapClass + "\">" + "</div>");
+
+    // Wraps the iframe
+    wrapIframe = function()
+    {
+      // Check first if the iframe is already wraped
+      if (!iframeObject.closest("." + opts.wrapClass).is("div")) {
+        iframeObject.wrap(wrapObject);
+      }
+
+      // Update variable objects with DOM objects
+      wrapObject = iframeObject
+                      .closest("." + opts.wrapClass)
+                      .append(overlayObject);
+      overlayObject = wrapObject
+                        .children("." + opts.overlayClass);
+
+      coverObject();
+    };
+
+    coverObject = function()
+    {
+      overlayObject
+        .height(iframeObject.height())
+        .width(iframeObject.width())
+        .css({
+          "position":"relative",
+          "top":iframeObject.position().top,
+          "left":iframeObject.position().left
+        });
+    };
+
     // Overlay functions
     hideOverlay = function()
     {
@@ -40,9 +71,7 @@ jQuery.fn.extend({
     showOverlay = function()
     {
       iframeObject.css({ "pointer-events":"none" });
-      $(this)
-        .children("." + opts.overlayClass)
-        .show();
+      overlayObject.show();
     };
 
     // Check touchscreen support
@@ -56,44 +85,6 @@ jQuery.fn.extend({
       }
     };
 
-    // Wraps the iframe
-    wrapIframe = function()
-    {
-      // Check first if the iframe is already wraped
-      if (!iframeObject.closest("." + opts.wrapClass).is("div")) {
-        iframeObject.wrap(wrapObject);
-      }
-
-      iframeObject
-        .closest("." + opts.wrapClass)
-        .append(overlayObject);
-
-      iframeObject
-        .closest("." + opts.wrapClass)
-        .children("." + opts.overlayClass)
-        .height(iframeObject.height())
-        .width(iframeObject.width())
-        .css({
-          "position":"relative",
-          "top":iframeObject.position().top,
-          "left":iframeObject.position().left
-        });
-    };
-
-    coverObject = function()
-    {
-      console.log("covering");
-      iframeObject
-        .closest("." + opts.wrapClass)
-        .children("." + opts.overlayClass)
-        .height(iframeObject.height())
-        .width(iframeObject.width())
-        .css({
-          "position":"relative",
-          "top":iframeObject.position().top,
-          "left":iframeObject.position().left
-        });
-    };
     // Init wrap and bind events
     start = function()
     {
@@ -102,13 +93,10 @@ jQuery.fn.extend({
       $(window)
         .on("resize", coverObject);
 
-      iframeObject
-        .closest("." + opts.wrapClass)
-        .children("." + opts.overlayClass)
+      overlayObject
         .bind("click", hideOverlay);
 
-      iframeObject
-        .closest("." + opts.wrapClass)
+      wrapObject
         .bind("mouseenter", showOverlay)
         .bind("mouseenter", coverObject);
     };
