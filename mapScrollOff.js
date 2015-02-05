@@ -36,15 +36,13 @@ jQuery.fn.extend({
     {
       iframeObject.css({ "pointer-events":"initial" });
       $(this).fadeOut();
-      console.log("hideOverlay");
     };
     showOverlay = function()
     {
       iframeObject.css({ "pointer-events":"none" });
       $(this)
         .children("." + opts.overlayClass)
-        .fadeIn();
-      console.log("showOverlay");
+        .show();
     };
 
     // Check touchscreen support
