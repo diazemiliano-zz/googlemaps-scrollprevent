@@ -30,8 +30,8 @@ For usage examples check this [Link](https://jsfiddle.net/iridis/j0k5hj25/)
 
       ``` html
       <head>
-      <link rel="stylesheet" type="text/css" media="all" href="https://raw.githubusercontent.com/diazemiliano/mapScrollOff/master/style.css">
-      <script type="text/javascript" src="https://raw.githubusercontent.com/diazemiliano/mapScrollOff/master/mapScrollOff.js"></script>
+      <link rel="stylesheet" type="text/css" media="all" href="https://rawgit.com/diazemiliano/mapScrollOff/master/style.css">
+      <script type="text/javascript" src="https://rawgit.com/diazemiliano/mapScrollOff/master/mapScrollOff.js"></script>
       </head>
       ```
 
@@ -40,6 +40,7 @@ For usage examples check this [Link](https://jsfiddle.net/iridis/j0k5hj25/)
       ``` html
       <script type="text/javascript">
       $(function() {
+        // Only Google Maps Selector
         var googleMapSelector = "iframe[src*=\"google.com/maps\"]";
         $(googleMapSelector).mapScroll();
       });
@@ -51,9 +52,9 @@ For usage examples check this [Link](https://jsfiddle.net/iridis/j0k5hj25/)
       ``` html
       <script type="text/javascript">
       $(function() {
+        // Only Google Maps Selector
         var googleMapSelector = "iframe[src*=\"google.com/maps\"]";
         var options = {
-                    // Only Google Maps
                     hoverMessage:"<p>My custom message.</p>"
                   };
         $(googleMapSelector).mapScroll(options);
