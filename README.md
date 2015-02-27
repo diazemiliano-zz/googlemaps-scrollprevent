@@ -9,9 +9,13 @@ Requires [jQuery](http://www.jquery.com).
 You can [Download](https://github.com/diazemiliano/mapScrollOff/releases) a **Pre-Release** version.
 
 ## Table of contents
+- [Examples](#examples)
 - [Usage](#usage)
 - [Default Options](#default-options)
 - [License](#license)
+
+## Examples
+For usage examples check this [Link](https://jsfiddle.net/iridis/j0k5hj25/)
 
 ## Usage
 1. Include jQuery in your html.
