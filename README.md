@@ -25,8 +25,8 @@ For usage examples check this [Link](https://jsfiddle.net/iridis/j0k5hj25/)
       <head>
       // jQuery Google CDN
       <script type="text/javascript" src="https://ajax.googleapis.com/ajax/libs/jquery/2.1.3/jquery.min.js?ver=2.1.3"></script>
-      // mapScrollPrevent rawgit CND
-      <script type="text/javascript" src="https://rawgit.com/diazemiliano/mapScrollPrevent/master/mapScrollPrevent.js"></script>
+      // mapScrollPrevent rawgit CDN
+      <script type="text/javascript" src="https://cdn.rawgit.com/diazemiliano/mapScrollPrevent/master/mapScrollPrevent.js"></script>
       </head>
       ```
 
