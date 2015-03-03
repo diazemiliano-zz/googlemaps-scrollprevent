@@ -19,18 +19,13 @@ You can [Download](https://github.com/diazemiliano/mapScrollPrevent/releases) a 
 For usage examples check this [Link](https://jsfiddle.net/iridis/j0k5hj25/)
 
 ## Usage
-1. Include jQuery in your html.
+1. Include jQuery and mapScrollPrevent Libs in your html.
 
       ``` html
       <head>
+      // jQuery Google CDN
       <script type="text/javascript" src="https://ajax.googleapis.com/ajax/libs/jquery/2.1.3/jquery.min.js?ver=2.1.3"></script>
-      </head>
-      ```
-
-2. Include mapScrollPrevent Lib.
-
-      ``` html
-      <head>
+      // mapScrollPrevent rawgit CND
       <script type="text/javascript" src="https://rawgit.com/diazemiliano/mapScrollPrevent/master/mapScrollPrevent.js"></script>
       </head>
       ```
