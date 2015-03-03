@@ -1,6 +1,6 @@
 # mapScrollOff
 [![License MIT](https://img.shields.io/badge/license-MIT-blue.svg)](https://github.com/diazemiliano/mapScrollOff/blob/master/LICENSE)
-[![Version  0.3.x](https://img.shields.io/badge/version-0.3.x-orange.svg)](https://github.com/diazemiliano/mapScrollOff/releases)
+[![Version  0.3.x](https://img.shields.io/badge/version-0.4.x-orange.svg)](https://github.com/diazemiliano/mapScrollOff/releases)
 
 mapScrollOff is a easy solution to the problem of page scrolling with Maps.
 
