@@ -26,11 +26,10 @@ For usage examples check this [Link](https://jsfiddle.net/iridis/j0k5hj25/)
       </head>
       ```
 
-2. Include mapScrollOff Libs.
+2. Include mapScrollOff Lib.
 
       ``` html
       <head>
-      <link rel="stylesheet" type="text/css" media="all" href="https://rawgit.com/diazemiliano/mapScrollOff/master/style.css">
       <script type="text/javascript" src="https://rawgit.com/diazemiliano/mapScrollOff/master/mapScrollOff.js"></script>
       </head>
       ```
