@@ -3,6 +3,6 @@
 - [x] ~~Check simmilar aproach in http://jsfiddle.net/0u6v4jnp/~~
 - [x] ~~Convert to a jQuery Function~~
 - [x] ~~Check position on browser resize~~
-- [x] All CSS to jQuery
-- [x] Add Eric Meyer's Reset CSS v2.0
-- [ ] Optimize to 0.4.x
+- [x] ~~All CSS to jQuery~~
+- [x] ~~Add Eric Meyer's Reset CSS v2.0~~
+- [x] ~~Optimize to 0.4.x~~
