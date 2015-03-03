@@ -1,13 +1,13 @@
-# mapScrollOff
-[![License MIT](https://img.shields.io/badge/license-MIT-blue.svg)](https://github.com/diazemiliano/mapScrollOff/blob/master/LICENSE)
-[![Version  0.3.x](https://img.shields.io/badge/version-0.4.x-orange.svg)](https://github.com/diazemiliano/mapScrollOff/releases)
+# mapScrollPrevent
+[![License MIT](https://img.shields.io/badge/license-MIT-blue.svg)](https://github.com/diazemiliano/mapScrollPrevent/blob/master/LICENSE)
+[![Version  0.4.x](https://img.shields.io/badge/version-0.4.x-orange.svg)](https://github.com/diazemiliano/mapScrollPrevent/releases)
 
-mapScrollOff is a easy solution to the problem of page scrolling with Maps.
+mapScrollPrevent is a easy solution to the problem of page scrolling with Maps.
 This plugin prevents a Google Maps iframe from capturing the mouse's scrolling wheel behavior.
 
 Requires [jQuery](http://www.jquery.com).
 
-You can [Download](https://github.com/diazemiliano/mapScrollOff/releases) a **Pre-Release** version.
+You can [Download](https://github.com/diazemiliano/mapScrollPrevent/releases) a **Pre-Release** version.
 
 ## Table of contents
 - [Examples](#examples)
@@ -27,11 +27,11 @@ For usage examples check this [Link](https://jsfiddle.net/iridis/j0k5hj25/)
       </head>
       ```
 
-2. Include mapScrollOff Lib.
+2. Include mapScrollPrevent Lib.
 
       ``` html
       <head>
-      <script type="text/javascript" src="https://rawgit.com/diazemiliano/mapScrollOff/master/mapScrollOff.js"></script>
+      <script type="text/javascript" src="https://rawgit.com/diazemiliano/mapScrollPrevent/master/mapScrollPrevent.js"></script>
       </head>
       ```
 
@@ -42,7 +42,7 @@ For usage examples check this [Link](https://jsfiddle.net/iridis/j0k5hj25/)
       $(function() {
         // Only Google Maps Selector
         var googleMapSelector = "iframe[src*=\"google.com/maps\"]";
-        $(googleMapSelector).mapScroll();
+        $(googleMapSelector).mapScrollPrevent();
       });
       </script>
       ```
@@ -57,7 +57,7 @@ For usage examples check this [Link](https://jsfiddle.net/iridis/j0k5hj25/)
         var options = {
                     hoverMessage:"<p>My custom message.</p>"
                   };
-        $(googleMapSelector).mapScroll(options);
+        $(googleMapSelector).mapScrollPrevent(options);
       });
       </script>
       ```
