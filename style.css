@@ -6,4 +6,36 @@
  * Author: Emiliano Díaz https://github.com/diazemiliano/
  * Copyright: The MIT License (MIT) Copyright (c) 2015 Emiliano Díaz.
  */
- .map-wrap iframe{position:absolute;top:0;left:0;width:100%;height:100%}.map-overlay{cursor:pointer;text-align:center;background-color:rgba(255,255,255,0);-moz-transition:background-color .3s ease-in-out;-o-transition:background-color .3s ease-in-out;-webkit-transition:background-color .3s ease-in-out;transition:background-color .3s ease-in-out}.map-overlay:hover{background-color:rgba(255,255,255,0.8)}.map-overlay:hover p{color:#000}.map-overlay p{-moz-transition:color .3s ease-in-out;-o-transition:color .3s ease-in-out;-webkit-transition:color .3s ease-in-out;transition:color .3s ease-in-out;color:transparent;position:relative;top:50%;transform:translateY(-50%)}
+
+.map-wrap iframe {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%
+}
+.map-overlay {
+  cursor: pointer;
+  text-align: center;
+  background-color: rgba(255, 255, 255, 0);
+  -moz-transition: background-color .3s ease-in-out;
+  -o-transition: background-color .3s ease-in-out;
+  -webkit-transition: background-color .3s ease-in-out;
+  transition: background-color .3s ease-in-out
+}
+.map-overlay:hover {
+  background-color: rgba(255, 255, 255, 0.8)
+}
+.map-overlay:hover p {
+  color: #000
+}
+.map-overlay p {
+  -moz-transition: color .3s ease-in-out;
+  -o-transition: color .3s ease-in-out;
+  -webkit-transition: color .3s ease-in-out;
+  transition: color .3s ease-in-out;
+  color: transparent;
+  position: relative;
+  top: 50%;
+  transform: translateY(-50%)
+}
