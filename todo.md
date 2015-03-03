@@ -6,3 +6,4 @@
 - [x] ~~All CSS to jQuery~~
 - [x] ~~Add Eric Meyer's Reset CSS v2.0~~
 - [x] ~~Optimize to 0.4.x~~
+- [x] ~~Change to more appropiate name~~
