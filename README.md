@@ -3,6 +3,7 @@
 [![Version  0.3.x](https://img.shields.io/badge/version-0.4.x-orange.svg)](https://github.com/diazemiliano/mapScrollOff/releases)
 
 mapScrollOff is a easy solution to the problem of page scrolling with Maps.
+This plugin prevents a Google Maps iframe from capturing the mouse's scrolling wheel behavior.
 
 Requires [jQuery](http://www.jquery.com).
 
