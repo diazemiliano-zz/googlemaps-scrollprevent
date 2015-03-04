@@ -1,6 +1,6 @@
 # mapScrollPrevent
 [![License MIT](https://img.shields.io/badge/license-MIT-blue.svg)](https://github.com/diazemiliano/mapScrollPrevent/blob/master/LICENSE)
-[![Version  0.6.x](https://img.shields.io/badge/version-0.6.x-orange.svg)](https://github.com/diazemiliano/mapScrollPrevent/releases)
+[![Version  0.5.1](https://img.shields.io/badge/version-0.5.1-orange.svg)](https://github.com/diazemiliano/mapScrollPrevent/releases)
 [![Website Link](https://img.shields.io/badge/website-http%3A%2F%2Fdiazemiliano.github.io%2FmapScrollPrevent%2F-lightgrey.svg)](http://diazemiliano.github.io/mapScrollPrevent/)
 
 mapScrollPrevent is an easy solution to the problem of page scrolling with new "[Google Maps Iframe Embed](https://developers.google.com/maps/documentation/embed/guide)".
