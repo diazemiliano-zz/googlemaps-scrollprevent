@@ -23,7 +23,8 @@ jQuery.fn.extend({
           stop:false,
         }, options),
 
-        mapCSS = '.'+opts.overlayClass+'{cursor: pointer;text-align: center;background-color: rgba(255, 255, 255, 0);-moz-transition: background-color .3s ease-in-out;-o-transition: background-color .3s ease-in-out;-webkit-transition: background-color .3s ease-in-out;transition: background-color .3s ease-in-out;}'+
+        mapCSS = "/* mapScrollPrevent.js CSS Classes */" +
+                 '.'+opts.overlayClass+'{cursor: pointer;text-align: center;background-color: rgba(255, 255, 255, 0);-moz-transition: background-color .3s ease-in-out;-o-transition: background-color .3s ease-in-out;-webkit-transition: background-color .3s ease-in-out;transition: background-color .3s ease-in-out;}'+
                  '.'+opts.overlayClass+':hover{background-color : rgba(255, 255, 255, 0.8);}'+
                  '.'+opts.overlayClass+' p{-moz-transition: color .3s ease-in-out;-o-transition:  color .3s ease-in-out;-webkit-transition:  color .3s ease-in-out;transition:  color .3s ease-in-out;color:  transparent;position:  relative;top:  50%;transform:  translateY(-50%);}'+
                  '.'+opts.overlayClass+':hover p{color:  #000;}'+
