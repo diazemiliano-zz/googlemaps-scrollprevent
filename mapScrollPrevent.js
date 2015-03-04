@@ -2,7 +2,7 @@
  * mapScrollPrevent (jQuery Google Maps Scroll Prevent Plugin)
  * Version 0.4.x
  * URL: https://github.com/diazemiliano/mapScrollPrevent
- * Description: mapScrollPrevent is a easy solution to the problem of page scrolling with Google Maps.
+ * Description: mapScrollPrevent is an easy solution to the problem of page scrolling with Google Maps.
  * Author: Emiliano Díaz https://github.com/diazemiliano/
  * Copyright: The MIT License (MIT) Copyright (c) 2015 Emiliano Díaz.
  */
@@ -24,11 +24,11 @@ jQuery.fn.extend({
         }, options),
 
         mapCSS = "/* mapScrollPrevent.js CSS Classes */" +
-                 '.'+opts.overlayClass+'{cursor: pointer;text-align: center;background-color: rgba(255, 255, 255, 0);-moz-transition: background-color .3s ease-in-out;-o-transition: background-color .3s ease-in-out;-webkit-transition: background-color .3s ease-in-out;transition: background-color .3s ease-in-out;}'+
+                 '.'+opts.overlayClass+'{position: relative; overflow:hidden; cursor: pointer;text-align: center;background-color: rgba(255, 255, 255, 0);-moz-transition: background-color .3s ease-in-out;-o-transition: background-color .3s ease-in-out;-webkit-transition: background-color .3s ease-in-out;transition: background-color .3s ease-in-out;}'+
                  '.'+opts.overlayClass+':hover{background-color : rgba(255, 255, 255, 0.8);}'+
                  '.'+opts.overlayClass+' p{-moz-transition: color .3s ease-in-out;-o-transition:  color .3s ease-in-out;-webkit-transition:  color .3s ease-in-out;transition:  color .3s ease-in-out;color:  transparent;position:  relative;top:  50%;transform:  translateY(-50%);}'+
                  '.'+opts.overlayClass+':hover p{color:  #000;}'+
-                 '.'+opts.wrapClass+' iframe{position:  absolute;top:  0;left:  0;width:  100%;height:  100%;}',
+                 '.'+opts.wrapClass+' iframe{position:  absolute;top:  0;left:  0;}',
         resetCSS = "/* Eric Meyer's Reset CSS v2.0 - http://cssreset.com */" +
                    "html,body,div,span,applet,object,iframe,h1,h2,h3,h4,h5,h6,p,blockquote,pre,a,abbr,acronym,address,big,cite,code,del,dfn,em,img,ins,kbd,q,s,samp,small,strike,strong,sub,sup,tt,var,b,u,i,center,dl,dt,dd,ol,ul,li,fieldset,form,label,legend,table,caption,tbody,tfoot,thead,tr,th,td,article,aside,canvas,details,embed,figure,figcaption,footer,header,hgroup,menu,nav,output,ruby,section,summary,time,mark,audio,video{border:0;font-size:100%;font:inherit;vertical-align:baseline;margin:0;padding:0}article,aside,details,figcaption,figure,footer,header,hgroup,menu,nav,section{display:block}body{line-height:1}ol,ul{list-style:none}blockquote,q{quotes:none}blockquote:before,blockquote:after,q:before,q:after{content:none}table{border-collapse:collapse;border-spacing:0}",
 
