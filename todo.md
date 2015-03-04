@@ -7,3 +7,5 @@
 - [x] ~~Add Eric Meyer's Reset CSS v2.0~~
 - [x] ~~Optimize to 0.4.x~~
 - [x] ~~Change to more appropiate name~~
+- [ ] Fix JSFiddle Website Example
+- [ ] Add iframe for example.html in Website
