@@ -1,4 +1,5 @@
 # To Do's
+## And Roadmap
 - **v0.1.x**
 - [x] ~~Deactivate on touchscreen devices.~~
 - [x] ~~Check simmilar aproach in http://jsfiddle.net/0u6v4jnp/~~
