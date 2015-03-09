@@ -15,4 +15,4 @@
 - [x] ~~Fix JSFiddle Website Example~~
 - [x] ~~Add iframe for example.html in Website~~
 - **v0.5.x**
-- [ ] ~~Check touch devices behavior~~
+- [ ] Check touch devices behavior
