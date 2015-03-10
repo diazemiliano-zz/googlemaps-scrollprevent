@@ -70,8 +70,6 @@ var options = {
       overlayClass:"map-overlay",
       // Hover Message
       overlayMessage:"<p>Has <b>Clic</b> para Navegar el Mapa.</p>",
-      // Present on touchscreen devices
-      inTouch:false,
       // Removes mapScroll
       stop:false
     };
