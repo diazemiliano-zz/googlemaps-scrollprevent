@@ -18,11 +18,9 @@ jQuery.fn.extend({
           // Hover Message
           overlayMessage:"<p>Clic para Navegar.</p>",
           // Present on touchscreen devices
-          inTouch:false,
+          inTouch:true,
           // Removes mapScroll
           stop:false,
-          // Apply Eric Reset
-          resetCSS:false
         }, options),
 
         mapCSS = "/* mapScrollPrevent.js CSS Classes */" +
@@ -31,9 +29,7 @@ jQuery.fn.extend({
                  '.'+opts.overlayClass+' p{font-family: Lato, "Helvetica Neue", Helvetica, Arial, sans-serif;font-size: 13px;padding-top: 2.5%;padding-bottom: 2.5%;margin-right: auto;margin-left: auto;width: 70%;position: relative;top: 50%;transform: translateY(-50%);border-color: rgba(0, 0, 0, 0.3);color: rgba(58, 132, 223, 0);background-color: rgba(0, 0, 0, 0);-moz-transition: color 0.3s ease-in-out;-o-transition: color 0.3s ease-in-out;-webkit-transition: color 0.3s ease-in-out;transition: color 0.3s ease-in-out;-moz-border-radius-topleft: 2px;-webkit-border-top-left-radius: 2px;border-top-left-radius: 2px;-moz-border-radius-topright: 2px;-webkit-border-top-right-radius: 2px;border-top-right-radius: 2px;}'+
                  '.'+opts.overlayClass+':hover p{background-color: rgb(255, 255, 255); color: rgb(58, 132, 223); -moz-box-shadow: rgba(0,0,0,0.3) 0px 1px 4px -1px; -webkit-box-shadow: rgba(0, 0, 0, 0.3) 0px 1px 4px -1px; box-shadow: rgba(0, 0, 0, 0.3) 0px 1px 4px -1px;}'+
                  '.'+opts.wrapClass+'{display: inline-block;}'+
-                 '.'+opts.wrapClass+' iframe{position:  relative;top:  0;left:  0;}',
-        resetCSS = "/* Eric Meyer's Reset CSS v2.0 - http://cssreset.com */" +
-                   "html,body,div,span,applet,object,iframe,h1,h2,h3,h4,h5,h6,p,blockquote,pre,a,abbr,acronym,address,big,cite,code,del,dfn,em,img,ins,kbd,q,s,samp,small,strike,strong,sub,sup,tt,var,b,u,i,center,dl,dt,dd,ol,ul,li,fieldset,form,label,legend,table,caption,tbody,tfoot,thead,tr,th,td,article,aside,canvas,details,embed,figure,figcaption,footer,header,hgroup,menu,nav,output,ruby,section,summary,time,mark,audio,video{border:0;font-size:100%;font:inherit;vertical-align:baseline;margin:0;padding:0}article,aside,details,figcaption,figure,footer,header,hgroup,menu,nav,section{display:block}body{line-height:1}ol,ul{list-style:none}blockquote,q{quotes:none}blockquote:before,blockquote:after,q:before,q:after{content:none}table{border-collapse:collapse;border-spacing:0}",
+                 '.'+opts.wrapClass+' iframe{position:  relative;top:  0;left:  0;}';
 
         // iframe Map Object
         iframeObject = $(this),
@@ -68,10 +64,6 @@ jQuery.fn.extend({
     applyCss = function(){
       $("head")
         .append("<style rel=\"stylesheet\" type=\"text/css\">"+mapCSS+"</style>");
-        if(opts.resetCSS){
-          $("head")
-            .append("<style rel=\"stylesheet\" type=\"text/css\">"+resetCSS+"</style>");
-        }
     };
 
     coverObject = function()
@@ -136,11 +128,7 @@ jQuery.fn.extend({
 
     // Present always in no-touch devices
     if (!opts.stop) {
-      if (!isTouchScreen()) {
-        start();
-      } else if (isTouchScreen() && opts.inTouch) {
-        start();
-      }
+      start();
     } else {
       stop();
     }
