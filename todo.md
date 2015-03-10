@@ -16,3 +16,4 @@
 - [x] ~~Add iframe for example.html in Website~~
 - **v0.5.x**
 - [ ] Check touch devices behavior
+- [ ] Use gulp tasks
