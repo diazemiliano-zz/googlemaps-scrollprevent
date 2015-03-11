@@ -109,6 +109,10 @@ jQuery.fn.extend({
       $(window)
         .on("resize", coverObject);
 
+      $(document)
+        .on('touchstart', showOverlay)
+        .on('touchend', hideOverlay);
+
       overlayObject
         .bind("click", hideOverlay);
 
@@ -116,7 +120,7 @@ jQuery.fn.extend({
         .bind("mouseenter", showOverlay)
         .bind("mouseenter", coverObject);
     };
-
+    // Removes everithin
     stop = function()
     {
       iframeObject.removeAttr("style");

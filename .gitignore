@@ -1,0 +1,10 @@
+# Windows
+.DS_Store
+Thumbs.db
+
+# Custom Directories
+node_modules/*
+
+# scss Cache
+.sass-cache
+*.scssc
