@@ -29,7 +29,7 @@ For usage examples check the [live demo](http://diazemiliano.github.io/mapScroll
       // jQuery Google CDN
       <script type="text/javascript" src="https://ajax.googleapis.com/ajax/libs/jquery/2.1.3/jquery.min.js?ver=2.1.3"></script>
       // mapScrollPrevent rawgit CDN
-      <script type="text/javascript" src="https://cdn.rawgit.com/diazemiliano/mapScrollPrevent/master/mapScrollPrevent.js"></script>
+      <script type="text/javascript" src="https://cdn.rawgit.com/diazemiliano/mapScrollPrevent/master/dist/mapScrollPrevent.js"></script>
       </head>
       ```
 
