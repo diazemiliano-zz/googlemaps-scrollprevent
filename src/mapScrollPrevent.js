@@ -44,6 +44,12 @@ jQuery.fn.extend({
     if (!iframeObject.length) {
       return;
     }
+
+    // Enable AJAX cache as default
+    $.ajaxSetup({
+      cache: true
+    });
+
     // Wraps the iframe
     wrapIframe = function()
     {
@@ -85,6 +91,7 @@ jQuery.fn.extend({
     };
     showOverlay = function()
     {
+      coverObject();
       iframeObject.css({ "pointer-events":"none" });
       overlayObject.show();
     };
@@ -109,16 +116,28 @@ jQuery.fn.extend({
       $(window)
         .on("resize", coverObject);
 
-      $(document)
-        .on('touchstart', showOverlay)
-        .on('touchend', hideOverlay);
+        if (isTouchScreen()){
+          // $.getScript("http://code.jquery.com/mobile/1.4.5/jquery.mobile-1.4.5.min.js")
+          //   .done(function(script, textStatus) {
+          //   })
+          //   .fail(function(jqxhr, settings, exception) {
+          // });
 
-      overlayObject
-        .bind("click", hideOverlay);
+          $(window)
+            .on("touchstart", showOverlay)
+            .on("touchend click", hideOverlay);
 
-      wrapObject
-        .bind("mouseenter", showOverlay)
-        .bind("mouseenter", coverObject);
+          overlayObject
+            .bind("click", hideOverlay);
+
+        } else {
+          overlayObject
+            .bind("click", hideOverlay);
+
+          wrapObject
+            .bind("mouseenter", showOverlay);
+        }
+
     };
     // Removes everithin
     stop = function()
