@@ -4,7 +4,7 @@
 [![Website Link](https://img.shields.io/badge/website-http%3A%2F%2Fdiazemiliano.github.io%2FmapScrollPrevent%2F-lightgrey.svg)](http://diazemiliano.github.io/mapScrollPrevent/)
 
 mapScrollPrevent is an easy solution to the problem of page scrolling with new "[Google Maps Iframe Embed](https://developers.google.com/maps/documentation/embed/guide)".
-This [jQuery](http://www.jquery.com) plugin prevents Google Maps iframe from capturing the mouse's scrolling wheel / touch scrolling behavior wrapping the ``` <iframe>  ``` with a transparent ``` <div> ``` on mouse/touch hover, so you must click/tap them to activate the normal navigation.
+This [jQuery](http://www.jquery.com) plugin prevents Google Maps iframe from capturing the mouse's scrolling **wheel / touch** scrolling behavior wrapping the ``` <iframe>  ``` with a transparent ``` <div> ``` on **mouse / touch hover**, so you must **click / tap** them to activate the normal navigation.
 
 [![mapScrollPrevent](https://cdn.rawgit.com/diazemiliano/mapScrollPrevent/master/mapScrollPrevent.png)](http://diazemiliano.github.io/mapScrollPrevent)
 
