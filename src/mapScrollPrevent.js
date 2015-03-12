@@ -123,9 +123,9 @@ jQuery.fn.extend({
           //   .fail(function(jqxhr, settings, exception) {
           // });
 
-          $(window)
+          $(window, document)
             .on("touchstart", showOverlay)
-            .on("touchend click", hideOverlay);
+            .on("touchend", hideOverlay);
 
           overlayObject
             .bind("click", hideOverlay);
@@ -135,7 +135,8 @@ jQuery.fn.extend({
             .bind("click", hideOverlay);
 
           wrapObject
-            .bind("mouseenter", showOverlay);
+            .bind("mouseenter", showOverlay)
+            .bind("mouseleave", hideOverlay);
         }
 
     };
