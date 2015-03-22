@@ -17,3 +17,4 @@
 - **v0.5.x**
 - [ ] Check touch devices behavior
 - [x] ~~Use gulp tasks~~
+- [] ~~Fork as wordpress plugin~~
