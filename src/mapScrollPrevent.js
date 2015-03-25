@@ -16,7 +16,7 @@ jQuery.fn.extend({
           // Custom class for hover div
           overlayClass:"map-overlay",
           // Hover Message
-          overlayMessage:"<p>Clic para Navegar.</p>",
+          overlayMessage:"Clic para Navegar.",
           // Present on touchscreen devices
           inTouch:true,
           // Removes mapScroll
@@ -36,7 +36,7 @@ jQuery.fn.extend({
 
         // Creates overlay object
         overlayObject = $("<div class=\"" + opts.overlayClass + "\">" +
-                          opts.overlayMessage +
+                          "<p>" + opts.overlayMessage + "</p>" +
                           "</div>"),
         wrapObject = $("<div class=\"" + opts.wrapClass + "\">" + "</div>");
 
