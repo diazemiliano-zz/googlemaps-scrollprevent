@@ -86,7 +86,7 @@ jQuery.fn.extend({
     // Overlay functions
     hideOverlay = function()
     {
-      iframeObject.css({ "pointer-events":"initial" });
+      iframeObject.css({ "pointer-events":"auto" });
       $(this).fadeOut();
     };
     showOverlay = function()
