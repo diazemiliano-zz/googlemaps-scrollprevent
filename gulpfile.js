@@ -6,27 +6,33 @@ var
   uglify = require("gulp-uglify"),
   concat = require("gulp-concat"),
   changed = require("gulp-changed"),
+  sourcemaps = require("gulp-sourcemaps"),
+  coffee = require("gulp-coffee");
+
   // Custom paths
   myPaths = {
-    js:{
+    coffee:{
       name:"mapScrollPrevent",
-      src:"./src/**/*.js",
+      src:"./src/**/*.coffee",
       dest:"./dist/"
     }
   }
 ;
 
-// Compress JavaScript
+// Compile and Compress CoffeeScript
 gulp.task("compress", function() {
-  gulp.src(myPaths.js.src)
+  gulp.src(myPaths.coffee.src)
+  .pipe(sourcemaps.init())
+  .pipe(coffee())
   .pipe(uglify({ preserveComments:"some" }))
-  .pipe(concat(myPaths.js.name+".min.js"))
-  .pipe(gulp.dest(myPaths.js.dest));
+  .pipe(concat(myPaths.coffee.name+".min.js"))
+  .pipe(sourcemaps.write("./"))
+  .pipe(gulp.dest(myPaths.coffee.dest));
 });
 
 // Watch for Changes
 gulp.task("watch", function() {
-  gulp.watch([myPaths.js.src], ["compress"]);
+  gulp.watch([myPaths.coffee.src], ["compress"]);
 });
 
 // Do Tasks as Default
