@@ -1,3 +1,5 @@
+# OUTDATED README.MD
+Rewriting the readme.
 # mapScrollPrevent
 [![License MIT](https://img.shields.io/badge/license-MIT-blue.svg)](https://github.com/diazemiliano/mapScrollPrevent/blob/master/LICENSE)
 [![jQuery v0.5.3](https://img.shields.io/badge/jQuery-0.5.3-brightgreen.svg)](https://github.com/diazemiliano/mapScrollPrevent/releases)
