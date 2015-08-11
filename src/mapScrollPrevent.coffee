@@ -1,4 +1,4 @@
-###!
+###
 # mapScrollPrevent (jQuery Google Maps Scroll Prevent Plugin)
 # Version 0.5.4
 # URL: https://github.com/diazemiliano/mapScrollPrevent
@@ -100,9 +100,8 @@ jQuery.fn.extend
 
     # Wraps the iframe
     wrapIframe = ->
-      
       # Check first if the iframe is already wraped
-      if !iframeObject.closest ".#{ opts.wrapClass }" .is "div"
+      if !iframeObject.closest(".#{ opts.wrapClass }").is "div"
         iframeObject.wrap wrapObject
 
       # Update variable objects with DOM objects

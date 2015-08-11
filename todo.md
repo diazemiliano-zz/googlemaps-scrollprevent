@@ -20,3 +20,4 @@
 - [ ] Check Wordpress Plugin
 - [ ] Check touch devices behavior
 - [ ] Polish Coffee
+- [ ] Add more maps examples
