@@ -86,11 +86,12 @@ var options = {
 ## Build From Source
 To build from source you can use the ```packaje.json``` file to install all "dev dependencies". We use [Gulp](gulpjs.com/) and some ```node-modules```.
 
-1. Download or Clone this repo with a ```git``` client.2. Install ```node.js``` and ```npm```.
-3. Do a ```npm install``` command in your terminal.
+1. Download or Clone this repo with a ```git``` client.
+2. Install ```node.js```.
+3. Do a ```npm install``` in your terminal.
 4. Edit your ```mapScrollPrevent.coffee``` soruce file.
-5. Do a ````gulp compress```` in your terminal.
-6. Use your new compiled ```mapScrollPrevent.min.js``` in the ```./dist/``` folder.
+5. Do a ````gulp compress```` task in your terminal.
+6. Use the newly compiled ```mapScrollPrevent.min.js``` file in the ```./dist/``` folder.
 7. If you make *cool* improvements please contribute.
 
 ## License
