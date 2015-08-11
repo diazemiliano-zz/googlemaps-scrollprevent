@@ -1,8 +1,8 @@
 {
   "name": "mapScrollPrevent",
-  "version": "0.5.0",
+  "version": "0.5.4",
   "description": "mapScrollPrevent is an easy solution to the problem of page scrolling with Google Maps.",
-  "main": "./src/mapScrollPrevent.js",
+  "main": "./src/mapScrollPrevent.coffee",
   "dependencies": {
     "gulp": "^3.8.11",
     "gulp-rename": "^1.2.0",

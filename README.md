@@ -1,11 +1,13 @@
-# mapScrollPrevent
-Details:
+# mapScrollPrevent.js
+#### Details
 * [![License MIT](https://img.shields.io/badge/license-MIT-blue.svg)](https://github.com/diazemiliano/mapScrollPrevent/blob/master/LICENSE)
 * [![Website Link](https://img.shields.io/badge/website-http%3A%2F%2Fdiazemiliano.github.io%2FmapScrollPrevent%2F-lightgrey.svg)](http://diazemiliano.github.io/mapScrollPrevent/)
 
-Available For
+#### Available For
 * [![jQuery v0.5.4](https://img.shields.io/badge/jQuery-0.5.4-brightgreen.svg)](https://github.com/diazemiliano/mapScrollPrevent/releases)
 * [![Wordpress v0.1.0](https://img.shields.io/badge/Wordpress-0.1.0-brightgreen.svg)](https://github.com/diazemiliano/mapScrollPrevent/tree/wordpress) **Sorry Currently Outdated!**
+
+## Resume
 
 mapScrollPrevent is an easy solution to the problem of page scrolling with new "[Google Maps Iframe Embed](https://developers.google.com/maps/documentation/embed/guide)".
 This [jQuery](http://www.jquery.com) and **Wordpress** plugin prevents Google Maps iframe from capturing the mouse's scrolling **wheel / touch** scrolling behavior wrapping the ``` <iframe>  ``` with a transparent ``` <div> ``` on **mouse / touch hover**, so you must **click / tap** them to activate the normal navigation.
@@ -14,7 +16,7 @@ This jQuery plugin is written with [CoffeeScript](http://coffeescript.org/) that
 Check the [Live Demo!](http://diazemiliano.github.io/mapScrollPrevent). Use it, enjoy it and please [contribute](https://github.com/diazemiliano/mapScrollPrevent/issues?q=is%3Aopen+is%3Aissue) to make it better.
 
 You can [Download](https://github.com/diazemiliano/mapScrollPrevent/releases) a **Pre-Release** version.
-If you are finding the wordpress version check the [Wordpress Branch](https://github.com/diazemiliano/mapScrollPrevent/tree/wordpress)
+If you are finding the wordpress version check the ~~[Wordpress Branch](https://github.com/diazemiliano/mapScrollPrevent/tree/wordpress)~~ (**Sorry Currently Outdated!**)
 
 [![mapScrollPrevent](https://cdn.rawgit.com/diazemiliano/mapScrollPrevent/master/mapScrollPrevent.png)](http://diazemiliano.github.io/mapScrollPrevent)
 
@@ -22,6 +24,7 @@ If you are finding the wordpress version check the [Wordpress Branch](https://gi
 - [Examples](#examples)
 - [Usage](#usage)
 - [Default Options](#default-options)
+- [Build From Source](#build-from-source)
 - [License](#license)
 
 ## Examples
@@ -80,6 +83,15 @@ var options = {
       stop:false
     };
 ```
+## Build From Source
+To build from source you can use the ```packaje.json``` file to install all "dev dependencies". We use [Gulp](gulpjs.com/) and some ```node-modules```.
+1. Download or Clone this repo with a ```git``` client.
+1. Install ```node.js``` and ```npm```.
+1. Do a ```npm install``` command in your terminal.
+1. Edit your ```mapScrollPrevent.coffee``` soruce file.
+1. Do a ````gulp compress```` in your terminal.
+1. Use your new compiled ```mapScrollPrevent.min.js``` in the ```./dist/``` folder.
+1. If you make *cool* improvements please contribute.
 
 ## License
 **The MIT License (MIT)**
