@@ -22,7 +22,7 @@ If you are finding the wordpress version check the ~~[Wordpress Branch](https://
 
 ## Table of contents
 - [Examples](#examples)
-- [Usage](#usage)
+- [Usage](#usage-as-jQuery-plugin)
 - [Default Options](#default-options)
 - [Build From Source](#build-from-source)
 - [License](#license)
@@ -30,7 +30,7 @@ If you are finding the wordpress version check the ~~[Wordpress Branch](https://
 ## Examples
 For usage examples check the [live demo](http://diazemiliano.github.io/mapScrollPrevent).
 
-## Usage
+## Usage as jQuery plugin
 1. Include jQuery and mapScrollPrevent Libs in your html.
 
       ``` html
