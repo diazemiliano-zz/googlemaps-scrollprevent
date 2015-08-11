@@ -23,7 +23,7 @@ var
 gulp.task("compress", function() {
   gulp.src(myPaths.coffee.src)
   .pipe(sourcemaps.init())
-  .pipe(coffee())
+  .pipe(coffee({bare:true}))
   .pipe(gulp.dest(myPaths.coffee.dest))
   .pipe(uglify({ preserveComments:"some" }))
   .pipe(concat(myPaths.coffee.name+".min.js"))

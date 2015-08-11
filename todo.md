@@ -16,8 +16,9 @@
 - [x] ~~Add iframe for example.html in Website~~
 - **v0.5.x**
 - [x] ~~Use gulp tasks~~
+- [x] ~~Polish Coffee~~
 - [ ] ~~Fork as wordpress plugin~~
 - [ ] Check Wordpress Plugin
 - [ ] Check touch devices behavior
-- [ ] Polish Coffee
 - [ ] Add more maps examples
+- [ ] Gif demo.

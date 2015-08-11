@@ -8,20 +8,24 @@
 # Copyright: The MIT License (MIT) Copyright (c) 2015 Emiliano Díaz.
 ###
 
-jQuery.fn.extend
+# Reference jQuery
+$ = jQuery
+
+$.fn.extend
   mapScrollPrevent : (options) ->
-    opts = $.extend true , {
+    defaults =
       # Custom class for map wrap
-      wrapClass:"map-wrap",
+      wrapClass:"map-wrap"
       # Custom class for hover div
-      overlayClass:"map-overlay",
+      overlayClass:"map-overlay"
       # Hover Message
-      overlayMessage:"Clic para Navegar.",
+      overlayMessage:"Clic para Navegar."
       # Present on touchscreen devices
-      inTouch:true,
+      inTouch:true
       # Removes mapScroll
-      stop:false,
-    }, options
+      stop:false
+
+    opts = $.extend true, defaults, options
 
     mapCSS = "
       /* --- mapScrollPrevent.js CSS Classes --- */
