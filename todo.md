@@ -17,7 +17,7 @@
 - **v0.5.x**
 - [x] ~~Use gulp tasks~~
 - [x] ~~Polish Coffee~~
-- [ ] ~~Fork as wordpress plugin~~
+- [x] ~~Fork as wordpress plugin~~
 - [ ] Check Wordpress Plugin
 - [ ] Check touch devices behavior
 - [ ] Add more maps examples

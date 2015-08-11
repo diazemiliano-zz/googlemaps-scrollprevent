@@ -1,4 +1,4 @@
-###
+###!
 # mapScrollPrevent (jQuery Google Maps Scroll Prevent Plugin)
 # Version 0.5.4
 # URL: https://github.com/diazemiliano/mapScrollPrevent
@@ -14,15 +14,15 @@ $ = jQuery
 $.fn.extend
   mapScrollPrevent : (options) ->
     defaults =
-      # Custom class for map wrap
+      ### Custom class for map wrap ###
       wrapClass:"map-wrap"
-      # Custom class for hover div
+      ### Custom class for hover div###
       overlayClass:"map-overlay"
-      # Hover Message
+      ### Hover Message ###
       overlayMessage:"Clic para Navegar."
-      # Present on touchscreen devices
+      ### Present on touchscreen devices ###
       inTouch:true
-      # Removes mapScroll
+      ### Removes mapScroll ###
       stop:false
 
     opts = $.extend true, defaults, options
@@ -84,10 +84,10 @@ $.fn.extend
         left: 0;
       }"
 
-    # iframe Map Object
+    ### iframe Map Object ###
     iframeObject = $(this)
 
-    # Creates overlay object
+    ### Creates overlay object ###
     overlayObject =
       $("<div class=\"#{ opts.overlayClass }\">
       <p>#{ opts.overlayMessage }</p></div>")
@@ -95,20 +95,20 @@ $.fn.extend
     wrapObject =
       $("<div class=\"#{ opts.wrapClass }\"></div>")
 
-    # Early exit
+    ### Early exit ###
     if !iframeObject.length
       return
 
-    # Enable AJAX cache as default
+    ### Enable AJAX cache as default ###
     $.ajaxSetup { cache: true }
 
-    # Wraps the iframe
+    ### Wraps the iframe ###
     wrapIframe = ->
-      # Check first if the iframe is already wraped
+      ### Check first if the iframe is already wraped ###
       if !iframeObject.closest(".#{ opts.wrapClass }").is "div"
         iframeObject.wrap wrapObject
 
-      # Update variable objects with DOM objects
+      ### Update variable objects with DOM objects ###
       wrapObject =
         iframeObject
           .closest ".#{ opts.wrapClass }"
@@ -120,7 +120,7 @@ $.fn.extend
 
       coverObject()
 
-    # Apply all the css
+    ### Apply all the css ###
     applyCss = ->
       $("head").append "<style rel=\"stylesheet\" type=\"text/css\">
       #{ mapCSS }</style>"
@@ -133,7 +133,7 @@ $.fn.extend
           "top": iframeObject.position().top
           "left": iframeObject.position().left
 
-    # Overlay functions
+    ### Overlay functions ###
     hideOverlay = ->
       iframeObject.css "pointer-events":"auto"
       $(this).fadeOut()
@@ -143,14 +143,14 @@ $.fn.extend
       iframeObject.css "pointer-events":"none"
       overlayObject.show()
 
-    # Check touchscreen support
+    ### Check touchscreen support ###
     isTouchScreen = ->
       if "ontouchstart" in window or
       navigator.MaxTouchPoints > 0 or
       navigator.msMaxTouchPoints > 0
         return true
 
-    # Init wrap and bind events
+    ### Init wrap and bind events ###
     start = ->
       applyCss()
       wrapIframe()
@@ -171,7 +171,7 @@ $.fn.extend
         wrapObject
           .bind "mouseenter", showOverlay
 
-    # Removes everithing
+    ### Removes everithing ###
     stop = ->
       iframeObject.removeAttr "style"
       if iframeObject.parent().is ".#{ opts.wrapClass }"
@@ -179,7 +179,7 @@ $.fn.extend
 
       $(".#{ opts.overlayClass }").remove()
 
-    # Present always in no-touch devices
+    ### Present always in no-touch devices ###
     if !opts.stop
       start()
     else
