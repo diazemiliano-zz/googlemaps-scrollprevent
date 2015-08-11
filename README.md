@@ -22,7 +22,7 @@ If you are finding the wordpress version check the ~~[Wordpress Branch](https://
 
 ## Table of contents
 - [Examples](#examples)
-- [Usage](#usage-as-jQuery-plugin)
+- [Usage](#usage-as-jquery-plugin)
 - [Default Options](#default-options)
 - [Build From Source](#build-from-source)
 - [License](#license)
