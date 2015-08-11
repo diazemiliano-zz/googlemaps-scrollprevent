@@ -37,7 +37,7 @@ jQuery.fn.extend
         transition: background-color .3s ease-in-out;
       }
       .#{ opts.overlayClass }:hover {
-        background-color : rgba(255, 255, 255, 0.8);
+        background-color: rgba(255, 255, 255, 0.8);
       }
       .#{ opts.overlayClass } p {
         font-family: Lato, 'Helvetica Neue', Helvetica, Arial, sans-serif;
@@ -75,9 +75,9 @@ jQuery.fn.extend
         display: inline-block;
       }
       .#{ opts.wrapClass } iframe {
-        position:  relative;
-        top:  0;
-        left:  0;
+        position: relative;
+        top: 0;
+        left: 0;
       }"
 
     # iframe Map Object
@@ -85,15 +85,11 @@ jQuery.fn.extend
 
     # Creates overlay object
     overlayObject =
-      $("<div class=\"" +
-      opts.overlayClass + "\"><p>" +
-      opts.overlayMessage +
-      "</p></div>")
+      $("<div class=\"#{ opts.overlayClass }\">
+      <p>#{ opts.overlayMessage }</p></div>")
 
     wrapObject =
-      $("<div class=\"" +
-      opts.wrapClass +
-      "\"></div>")
+      $("<div class=\"#{ opts.wrapClass }\"></div>")
 
     # Early exit
     if !iframeObject.length
@@ -104,44 +100,46 @@ jQuery.fn.extend
 
     # Wraps the iframe
     wrapIframe = ->
+      
       # Check first if the iframe is already wraped
-      if !iframeObject.closest("." + opts.wrapClass).is("div")
-        iframeObject.wrap(wrapObject)
+      if !iframeObject.closest ".#{ opts.wrapClass }" .is "div"
+        iframeObject.wrap wrapObject
 
       # Update variable objects with DOM objects
-      wrapObject = iframeObject
-                      .closest("." + opts.wrapClass)
-                      .append(overlayObject)
-      overlayObject = wrapObject
-                        .children("." + opts.overlayClass)
+      wrapObject =
+        iframeObject
+          .closest ".#{ opts.wrapClass }"
+          .append overlayObject
+
+      overlayObject =
+        wrapObject
+          .children ".#{ opts.overlayClass }"
 
       coverObject()
 
     # Apply all the css
     applyCss = ->
-      $("head")
-        .append("
-          <style rel=\"stylesheet\" type=\"text/css\">"+mapCSS+"</style>
-        ")
+      $("head").append "<style rel=\"stylesheet\" type=\"text/css\">
+      #{ mapCSS }</style>"
 
     coverObject = ->
       overlayObject
-        .height(iframeObject.height())
-        .width(iframeObject.width())
-        .css({
-          "top":iframeObject.position().top,
-          "left":iframeObject.position().left
-        })
+        .height iframeObject.height()
+        .width iframeObject.width()
+        .css
+          "top": iframeObject.position().top
+          "left": iframeObject.position().left
 
     # Overlay functions
     hideOverlay = ->
-      iframeObject.css({ "pointer-events":"auto" })
+      iframeObject.css "pointer-events":"auto"
       $(this).fadeOut()
 
     showOverlay = ->
       coverObject()
-      iframeObject.css({ "pointer-events":"none" })
+      iframeObject.css "pointer-events":"none"
       overlayObject.show()
+
     # Check touchscreen support
     isTouchScreen = ->
       if "ontouchstart" in window or
@@ -155,28 +153,28 @@ jQuery.fn.extend
       wrapIframe()
 
       $(window)
-        .on("resize", coverObject)
+        .on "resize", coverObject
 
       if isTouchScreen()
         $(window)
-          .on("touchstart", showOverlay)
-          .on("touchend click", hideOverlay)
+          .on "touchstart", showOverlay
+          .on "touchend click", hideOverlay
 
         overlayObject
-          .bind("click", hideOverlay)
+          .bind "click", hideOverlay
       else
         overlayObject
-          .bind("click", hideOverlay)
+          .bind "click", hideOverlay
         wrapObject
-          .bind("mouseenter", showOverlay)
+          .bind "mouseenter", showOverlay
 
     # Removes everithing
     stop = ->
-      iframeObject.removeAttr("style")
-      if iframeObject.parent().is("." + opts.wrapClass)
+      iframeObject.removeAttr "style"
+      if iframeObject.parent().is ".#{ opts.wrapClass }"
         iframeObject.unwrap()
 
-      $("." + opts.overlayClass).remove()
+      $(".#{ opts.overlayClass }").remove()
 
     # Present always in no-touch devices
     if !opts.stop

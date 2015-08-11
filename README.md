@@ -1,20 +1,22 @@
-# OUTDATED README.MD
-Rewriting the readme.
 # mapScrollPrevent
-[![License MIT](https://img.shields.io/badge/license-MIT-blue.svg)](https://github.com/diazemiliano/mapScrollPrevent/blob/master/LICENSE)
-[![jQuery v0.5.4](https://img.shields.io/badge/jQuery-0.5.4-brightgreen.svg)](https://github.com/diazemiliano/mapScrollPrevent/releases)
-[![Wordpress v0.1.0](https://img.shields.io/badge/Wordpress-0.1.0-brightgreen.svg)](https://github.com/diazemiliano/mapScrollPrevent/tree/wordpress)
-[![Website Link](https://img.shields.io/badge/website-http%3A%2F%2Fdiazemiliano.github.io%2FmapScrollPrevent%2F-lightgrey.svg)](http://diazemiliano.github.io/mapScrollPrevent/)
+Details:
+* [![License MIT](https://img.shields.io/badge/license-MIT-blue.svg)](https://github.com/diazemiliano/mapScrollPrevent/blob/master/LICENSE)
+* [![Website Link](https://img.shields.io/badge/website-http%3A%2F%2Fdiazemiliano.github.io%2FmapScrollPrevent%2F-lightgrey.svg)](http://diazemiliano.github.io/mapScrollPrevent/)
+
+Available For
+* [![jQuery v0.5.4](https://img.shields.io/badge/jQuery-0.5.4-brightgreen.svg)](https://github.com/diazemiliano/mapScrollPrevent/releases)
+* [![Wordpress v0.1.0](https://img.shields.io/badge/Wordpress-0.1.0-brightgreen.svg)](https://github.com/diazemiliano/mapScrollPrevent/tree/wordpress) **Sorry Currently Outdated!**
 
 mapScrollPrevent is an easy solution to the problem of page scrolling with new "[Google Maps Iframe Embed](https://developers.google.com/maps/documentation/embed/guide)".
 This [jQuery](http://www.jquery.com) and **Wordpress** plugin prevents Google Maps iframe from capturing the mouse's scrolling **wheel / touch** scrolling behavior wrapping the ``` <iframe>  ``` with a transparent ``` <div> ``` on **mouse / touch hover**, so you must **click / tap** them to activate the normal navigation.
-
-[![mapScrollPrevent](https://cdn.rawgit.com/diazemiliano/mapScrollPrevent/master/mapScrollPrevent.png)](http://diazemiliano.github.io/mapScrollPrevent)
+This jQuery plugin is written with [CoffeeScript](http://coffeescript.org/) that compiles in JavaScript, so the source files are a little different from standard JavaScript.
 
 Check the [Live Demo!](http://diazemiliano.github.io/mapScrollPrevent). Use it, enjoy it and please [contribute](https://github.com/diazemiliano/mapScrollPrevent/issues?q=is%3Aopen+is%3Aissue) to make it better.
 
 You can [Download](https://github.com/diazemiliano/mapScrollPrevent/releases) a **Pre-Release** version.
 If you are finding the wordpress version check the [Wordpress Branch](https://github.com/diazemiliano/mapScrollPrevent/tree/wordpress)
+
+[![mapScrollPrevent](https://cdn.rawgit.com/diazemiliano/mapScrollPrevent/master/mapScrollPrevent.png)](http://diazemiliano.github.io/mapScrollPrevent)
 
 ## Table of contents
 - [Examples](#examples)
@@ -31,7 +33,7 @@ For usage examples check the [live demo](http://diazemiliano.github.io/mapScroll
       ``` html
       <head>
       // jQuery Google CDN
-      <script type="text/javascript" src="https://ajax.googleapis.com/ajax/libs/jquery/2.1.4/jquery.min.js?ver=2.1.3"></script>
+      <script type="text/javascript" src="https://ajax.googleapis.com/ajax/libs/jquery/2.1.4/jquery.min.js?ver=2.1.4"></script>
       // mapScrollPrevent rawgit CDN
       <script type="text/javascript" src="https://cdn.rawgit.com/diazemiliano/mapScrollPrevent/master/dist/mapScrollPrevent.js"></script>
       </head>
