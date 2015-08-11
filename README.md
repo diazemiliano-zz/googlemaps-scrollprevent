@@ -2,7 +2,7 @@
 Rewriting the readme.
 # mapScrollPrevent
 [![License MIT](https://img.shields.io/badge/license-MIT-blue.svg)](https://github.com/diazemiliano/mapScrollPrevent/blob/master/LICENSE)
-[![jQuery v0.5.3](https://img.shields.io/badge/jQuery-0.5.3-brightgreen.svg)](https://github.com/diazemiliano/mapScrollPrevent/releases)
+[![jQuery v0.5.4](https://img.shields.io/badge/jQuery-0.5.4-brightgreen.svg)](https://github.com/diazemiliano/mapScrollPrevent/releases)
 [![Wordpress v0.1.0](https://img.shields.io/badge/Wordpress-0.1.0-brightgreen.svg)](https://github.com/diazemiliano/mapScrollPrevent/tree/wordpress)
 [![Website Link](https://img.shields.io/badge/website-http%3A%2F%2Fdiazemiliano.github.io%2FmapScrollPrevent%2F-lightgrey.svg)](http://diazemiliano.github.io/mapScrollPrevent/)
 
@@ -31,7 +31,7 @@ For usage examples check the [live demo](http://diazemiliano.github.io/mapScroll
       ``` html
       <head>
       // jQuery Google CDN
-      <script type="text/javascript" src="https://ajax.googleapis.com/ajax/libs/jquery/2.1.3/jquery.min.js?ver=2.1.3"></script>
+      <script type="text/javascript" src="https://ajax.googleapis.com/ajax/libs/jquery/2.1.4/jquery.min.js?ver=2.1.3"></script>
       // mapScrollPrevent rawgit CDN
       <script type="text/javascript" src="https://cdn.rawgit.com/diazemiliano/mapScrollPrevent/master/dist/mapScrollPrevent.js"></script>
       </head>
@@ -73,7 +73,7 @@ var options = {
       // Custom class for hover div
       overlayClass:"map-overlay",
       // Hover Message
-      overlayMessage:"<p>Has <b>Clic</b> para Navegar el Mapa.</p>",
+      overlayMessage:"Has <b>Clic</b> para Navegar el Mapa",
       // Removes mapScroll
       stop:false
     };
