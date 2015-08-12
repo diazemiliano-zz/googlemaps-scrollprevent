@@ -18,7 +18,7 @@
 - [x] ~~Use gulp tasks~~
 - [x] ~~Polish Coffee~~
 - [x] ~~Fork as wordpress plugin~~
+- [x] ~~Check touch devices behavior~~ Impossible to do that.
 - [ ] Check Wordpress Plugin
-- [ ] Check touch devices behavior
 - [ ] Add more maps examples
 - [ ] Gif demo.
