@@ -88,7 +88,10 @@
             start = function() {
                 applyCss();
                 wrapIframe();
+
+                /* Dynamic Adjust */
                 $(window).on("resize", coverObject);
+                iframeObject.on("resize", coverObject);
 
                 /* Mouse Events */
                 overlayObject.bind("click", hideOverlay);

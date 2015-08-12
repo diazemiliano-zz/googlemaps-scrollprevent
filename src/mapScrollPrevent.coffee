@@ -145,7 +145,11 @@ do ($ = jQuery) ->
         applyCss()
         wrapIframe()
 
+        ### Dynamic Adjust ###
         $(window)
+          .on "resize", coverObject
+
+        iframeObject
           .on "resize", coverObject
 
         ### Mouse Events ###
