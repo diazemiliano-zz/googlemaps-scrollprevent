@@ -35,10 +35,13 @@ do ($ = jQuery) ->
           cursor: pointer;
           text-align: center;
           background-color: rgba(255, 255, 255, 0);
-          -moz-transition: background-color .3s ease-in-out;
-          -o-transition: background-color .3s ease-in-out;
-          -webkit-transition: background-color .3s ease-in-out;
-          transition: background-color .3s ease-in-out;
+        }
+        .#{ opts.overlayClass },
+        .#{ opts.overlayClass } p {
+          -moz-transition: all .3s ease-in-out;
+          -o-transition: all .3s ease-in-out;
+          -webkit-transition: all .3s ease-in-out;
+          transition: all .3s ease-in-out;
         }
         .#{ opts.overlayClass }:hover {
           background-color: rgba(255, 255, 255, 0.8);
@@ -57,10 +60,6 @@ do ($ = jQuery) ->
           border-color: rgba(0, 0, 0, 0.3);
           color: rgba(58, 132, 223, 0);
           background-color: rgba(0, 0, 0, 0);
-          -moz-transition: color 0.3s ease-in-out;
-          -o-transition: color 0.3s ease-in-out;
-          -webkit-transition: color 0.3s ease-in-out;
-          transition: color 0.3s ease-in-out;
           -moz-border-radius-topleft: 2px;
           -webkit-border-top-left-radius: 2px;
           border-top-left-radius: 2px;
@@ -132,20 +131,14 @@ do ($ = jQuery) ->
 
       ### Overlay functions ###
       hideOverlay = ->
+        coverObject()
         iframeObject.css "pointer-events":"auto"
-        $(@).fadeOut()
+        overlayObject.hide()
 
       showOverlay = ->
         coverObject()
         iframeObject.css "pointer-events":"none"
         overlayObject.show()
-
-      ### Check touchscreen support ###
-      isTouchScreen = ->
-        if "ontouchstart" in window or
-        navigator.MaxTouchPoints > 0 or
-        navigator.msMaxTouchPoints > 0
-          true
 
       ### Init wrap and bind events ###
       start = ->
@@ -155,21 +148,14 @@ do ($ = jQuery) ->
         $(window)
           .on "resize", coverObject
 
-        if isTouchScreen()
-          ### Touchscreen Events ###
-          $(window)
-            .on "touchstart", showOverlay
-            .on "touchend click", hideOverlay
+        ### Mouse Events ###
+        overlayObject
+          .bind "click", hideOverlay
 
-          overlayObject
-            .bind "click", hideOverlay
+        wrapObject
+          .bind "mouseleave", hideOverlay
+          .bind "mouseenter", showOverlay
 
-        else
-          ### Mouse Events ###
-          overlayObject
-            .bind "click", hideOverlay
-          wrapObject
-            .bind "mouseenter", showOverlay
 
       ### Removes everithing ###
       stop = ->
