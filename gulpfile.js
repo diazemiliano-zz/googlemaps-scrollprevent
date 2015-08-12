@@ -24,7 +24,7 @@ var
 gulp.task("compress", function() {
   gulp.src(myPaths.coffee.src)
   .pipe(sourcemaps.init())
-  .pipe(coffee())
+  .pipe(coffee({bare:true}))
   .pipe(prettify({mode: 'VERIFY_AND_WRITE'}))
   .pipe(gulp.dest(myPaths.coffee.dest))
   .pipe(uglify({ preserveComments:"some" }))

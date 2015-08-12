@@ -7,19 +7,15 @@
  * Author: Emiliano Díaz https://github.com/diazemiliano/
  * Copyright: The MIT License (MIT) Copyright (c) 2015 Emiliano Díaz.
  */
+var indexOf = [].indexOf || function(item) {
+    for (var i = 0, l = this.length; i < l; i++) {
+        if (i in this && this[i] === item) return i;
+    }
+    return -1;
+};
 
-(function() {
-    var $,
-        indexOf = [].indexOf || function(item) {
-            for (var i = 0, l = this.length; i < l; i++) {
-                if (i in this && this[i] === item) return i;
-            }
-            return -1;
-        };
-
-    $ = jQuery;
-
-    $.fn.extend({
+(function($) {
+    return $.fn.extend({
         mapScrollPrevent: function(options) {
             var applyCss, coverObject, defaults, hideOverlay, iframeObject, isTouchScreen, mapCSS, opts, overlayObject, showOverlay, start, stop, wrapIframe, wrapObject;
             defaults = {
@@ -53,11 +49,6 @@
             if (!iframeObject.length) {
                 return;
             }
-
-            /* Enable AJAX cache as default */
-            $.ajaxSetup({
-                cache: true
-            });
 
             /* Wraps the iframe */
             wrapIframe = function() {
@@ -112,9 +103,13 @@
                 wrapIframe();
                 $(window).on("resize", coverObject);
                 if (isTouchScreen()) {
+
+                    /* Touchscreen Events */
                     $(window).on("touchstart", showOverlay).on("touchend click", hideOverlay);
                     return overlayObject.bind("click", hideOverlay);
                 } else {
+
+                    /* Mouse Events */
                     overlayObject.bind("click", hideOverlay);
                     return wrapObject.bind("mouseenter", showOverlay);
                 }
@@ -128,8 +123,6 @@
                 }
                 return $("." + opts.overlayClass).remove();
             };
-
-            /* Present always in no-touch devices */
             if (!opts.stop) {
                 return start();
             } else {
@@ -137,5 +130,4 @@
             }
         }
     });
-
-}).call(this);
+})(jQuery);

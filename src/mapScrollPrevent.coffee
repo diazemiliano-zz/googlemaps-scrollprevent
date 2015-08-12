@@ -9,178 +9,177 @@
 ###
 
 # Reference jQuery
-$ = jQuery
+do ($ = jQuery) ->
 
-$.fn.extend
-  mapScrollPrevent : (options) ->
-    defaults =
-      ### Custom class for map wrap ###
-      wrapClass:"map-wrap"
-      ### Custom class for hover div###
-      overlayClass:"map-overlay"
-      ### Hover Message ###
-      overlayMessage:"Clic para Navegar."
-      ### Present on touchscreen devices ###
-      inTouch:true
-      ### Removes mapScroll ###
-      stop:false
+  $.fn.extend
+    mapScrollPrevent : (options) ->
+      defaults =
+        ### Custom class for map wrap ###
+        wrapClass:"map-wrap"
+        ### Custom class for hover div###
+        overlayClass:"map-overlay"
+        ### Hover Message ###
+        overlayMessage:"Clic para Navegar."
+        ### Present on touchscreen devices ###
+        inTouch:true
+        ### Removes mapScroll ###
+        stop:false
 
-    opts = $.extend true, defaults, options
+      opts = $.extend true, defaults, options
 
-    mapCSS = "
-      /* --- mapScrollPrevent.js CSS Classes --- */
-      .#{ opts.overlayClass } {
-        position: absolute;
-        overflow:hidden;
-        cursor: pointer;
-        text-align: center;
-        background-color: rgba(255, 255, 255, 0);
-        -moz-transition: background-color .3s ease-in-out;
-        -o-transition: background-color .3s ease-in-out;
-        -webkit-transition: background-color .3s ease-in-out;
-        transition: background-color .3s ease-in-out;
-      }
-      .#{ opts.overlayClass }:hover {
-        background-color: rgba(255, 255, 255, 0.8);
-      }
-      .#{ opts.overlayClass } p {
-        font-family: Lato, 'Helvetica Neue', Helvetica, Arial, sans-serif;
-        font-size: 13px;
-        padding-top: 2.5%;
-        padding-bottom: 2.5%;
-        margin-right: auto;
-        margin-left: auto;
-        width: 70%;
-        position: relative;
-        top: 50%;
-        transform: translateY(-50%);
-        border-color: rgba(0, 0, 0, 0.3);
-        color: rgba(58, 132, 223, 0);
-        background-color: rgba(0, 0, 0, 0);
-        -moz-transition: color 0.3s ease-in-out;
-        -o-transition: color 0.3s ease-in-out;
-        -webkit-transition: color 0.3s ease-in-out;
-        transition: color 0.3s ease-in-out;
-        -moz-border-radius-topleft: 2px;
-        -webkit-border-top-left-radius: 2px;
-        border-top-left-radius: 2px;
-        -moz-border-radius-topright: 2px;
-        -webkit-border-top-right-radius: 2px;
-        border-top-right-radius: 2px;
-      }
-      .#{ opts.overlayClass }:hover p {
-        background-color: rgb(255, 255, 255);
-        color: rgb(58, 132, 223);
-        -moz-box-shadow: rgba(0,0,0,0.3) 0px 1px 4px -1px;
-        -webkit-box-shadow: rgba(0, 0, 0, 0.3) 0px 1px 4px -1px;
-        box-shadow: rgba(0, 0, 0, 0.3) 0px 1px 4px -1px;
-      }
-      .#{ opts.wrapClass } {
-        display: inline-block;
-      }
-      .#{ opts.wrapClass } iframe {
-        position: relative;
-        top: 0;
-        left: 0;
-      }"
+      mapCSS = "
+        /* --- mapScrollPrevent.js CSS Classes --- */
+        .#{ opts.overlayClass } {
+          position: absolute;
+          overflow:hidden;
+          cursor: pointer;
+          text-align: center;
+          background-color: rgba(255, 255, 255, 0);
+          -moz-transition: background-color .3s ease-in-out;
+          -o-transition: background-color .3s ease-in-out;
+          -webkit-transition: background-color .3s ease-in-out;
+          transition: background-color .3s ease-in-out;
+        }
+        .#{ opts.overlayClass }:hover {
+          background-color: rgba(255, 255, 255, 0.8);
+        }
+        .#{ opts.overlayClass } p {
+          font-family: Lato, 'Helvetica Neue', Helvetica, Arial, sans-serif;
+          font-size: 13px;
+          padding-top: 2.5%;
+          padding-bottom: 2.5%;
+          margin-right: auto;
+          margin-left: auto;
+          width: 70%;
+          position: relative;
+          top: 50%;
+          transform: translateY(-50%);
+          border-color: rgba(0, 0, 0, 0.3);
+          color: rgba(58, 132, 223, 0);
+          background-color: rgba(0, 0, 0, 0);
+          -moz-transition: color 0.3s ease-in-out;
+          -o-transition: color 0.3s ease-in-out;
+          -webkit-transition: color 0.3s ease-in-out;
+          transition: color 0.3s ease-in-out;
+          -moz-border-radius-topleft: 2px;
+          -webkit-border-top-left-radius: 2px;
+          border-top-left-radius: 2px;
+          -moz-border-radius-topright: 2px;
+          -webkit-border-top-right-radius: 2px;
+          border-top-right-radius: 2px;
+        }
+        .#{ opts.overlayClass }:hover p {
+          background-color: rgb(255, 255, 255);
+          color: rgb(58, 132, 223);
+          -moz-box-shadow: rgba(0,0,0,0.3) 0px 1px 4px -1px;
+          -webkit-box-shadow: rgba(0, 0, 0, 0.3) 0px 1px 4px -1px;
+          box-shadow: rgba(0, 0, 0, 0.3) 0px 1px 4px -1px;
+        }
+        .#{ opts.wrapClass } {
+          display: inline-block;
+        }
+        .#{ opts.wrapClass } iframe {
+          position: relative;
+          top: 0;
+          left: 0;
+        }"
 
-    ### iframe Map Object ###
-    iframeObject = $(this)
+      ### iframe Map Object ###
+      iframeObject = $(@)
 
-    ### Creates overlay object ###
-    overlayObject =
-      $("<div class=\"#{ opts.overlayClass }\">
-      <p>#{ opts.overlayMessage }</p></div>")
-
-    wrapObject =
-      $("<div class=\"#{ opts.wrapClass }\"></div>")
-
-    ### Early exit ###
-    if !iframeObject.length
-      return
-
-    ### Enable AJAX cache as default ###
-    $.ajaxSetup { cache: true }
-
-    ### Wraps the iframe ###
-    wrapIframe = ->
-      ### Check first if the iframe is already wraped ###
-      if !iframeObject.closest(".#{ opts.wrapClass }").is "div"
-        iframeObject.wrap wrapObject
-
-      ### Update variable objects with DOM objects ###
-      wrapObject =
-        iframeObject
-          .closest ".#{ opts.wrapClass }"
-          .append overlayObject
-
+      ### Creates overlay object ###
       overlayObject =
-        wrapObject
-          .children ".#{ opts.overlayClass }"
+        $("<div class=\"#{ opts.overlayClass }\">
+        <p>#{ opts.overlayMessage }</p></div>")
 
-      coverObject()
+      wrapObject =
+        $("<div class=\"#{ opts.wrapClass }\"></div>")
 
-    ### Apply all the css ###
-    applyCss = ->
-      $("head").append "<style rel=\"stylesheet\" type=\"text/css\">
-      #{ mapCSS }</style>"
+      ### Early exit ###
+      unless iframeObject.length
+        return
 
-    coverObject = ->
-      overlayObject
-        .height iframeObject.height()
-        .width iframeObject.width()
-        .css
-          "top": iframeObject.position().top
-          "left": iframeObject.position().left
+      ### Wraps the iframe ###
+      wrapIframe = ->
+        ### Check first if the iframe is already wraped ###
+        unless iframeObject.closest(".#{ opts.wrapClass }").is "div"
+          iframeObject.wrap wrapObject
 
-    ### Overlay functions ###
-    hideOverlay = ->
-      iframeObject.css "pointer-events":"auto"
-      $(this).fadeOut()
+        ### Update variable objects with DOM objects ###
+        wrapObject =
+          iframeObject
+            .closest ".#{ opts.wrapClass }"
+            .append overlayObject
 
-    showOverlay = ->
-      coverObject()
-      iframeObject.css "pointer-events":"none"
-      overlayObject.show()
+        overlayObject =
+          wrapObject
+            .children ".#{ opts.overlayClass }"
 
-    ### Check touchscreen support ###
-    isTouchScreen = ->
-      if "ontouchstart" in window or
-      navigator.MaxTouchPoints > 0 or
-      navigator.msMaxTouchPoints > 0
-        return true
+        coverObject()
 
-    ### Init wrap and bind events ###
-    start = ->
-      applyCss()
-      wrapIframe()
+      ### Apply all the css ###
+      applyCss = ->
+        $("head").append "<style rel=\"stylesheet\" type=\"text/css\">
+        #{ mapCSS }</style>"
 
-      $(window)
-        .on "resize", coverObject
+      coverObject = ->
+        overlayObject
+          .height iframeObject.height()
+          .width iframeObject.width()
+          .css
+            "top": iframeObject.position().top
+            "left": iframeObject.position().left
 
-      if isTouchScreen()
+      ### Overlay functions ###
+      hideOverlay = ->
+        iframeObject.css "pointer-events":"auto"
+        $(@).fadeOut()
+
+      showOverlay = ->
+        coverObject()
+        iframeObject.css "pointer-events":"none"
+        overlayObject.show()
+
+      ### Check touchscreen support ###
+      isTouchScreen = ->
+        if "ontouchstart" in window or
+        navigator.MaxTouchPoints > 0 or
+        navigator.msMaxTouchPoints > 0
+          true
+
+      ### Init wrap and bind events ###
+      start = ->
+        applyCss()
+        wrapIframe()
+
         $(window)
-          .on "touchstart", showOverlay
-          .on "touchend click", hideOverlay
+          .on "resize", coverObject
 
-        overlayObject
-          .bind "click", hideOverlay
+        if isTouchScreen()
+          ### Touchscreen Events ###
+          $(window)
+            .on "touchstart", showOverlay
+            .on "touchend click", hideOverlay
+
+          overlayObject
+            .bind "click", hideOverlay
+
+        else
+          ### Mouse Events ###
+          overlayObject
+            .bind "click", hideOverlay
+          wrapObject
+            .bind "mouseenter", showOverlay
+
+      ### Removes everithing ###
+      stop = ->
+        iframeObject.removeAttr "style"
+        if iframeObject.parent().is ".#{ opts.wrapClass }"
+          iframeObject.unwrap()
+
+        $(".#{ opts.overlayClass }").remove()
+
+      unless opts.stop
+        start()
       else
-        overlayObject
-          .bind "click", hideOverlay
-        wrapObject
-          .bind "mouseenter", showOverlay
-
-    ### Removes everithing ###
-    stop = ->
-      iframeObject.removeAttr "style"
-      if iframeObject.parent().is ".#{ opts.wrapClass }"
-        iframeObject.unwrap()
-
-      $(".#{ opts.overlayClass }").remove()
-
-    ### Present always in no-touch devices ###
-    if !opts.stop
-      start()
-    else
-      stop()
+        stop()
