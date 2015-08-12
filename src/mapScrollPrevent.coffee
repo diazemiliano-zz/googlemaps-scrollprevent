@@ -140,6 +140,11 @@ do ($ = jQuery) ->
         iframeObject.css "pointer-events":"none"
         overlayObject.show()
 
+      ### Check TouchScreen ###
+      isTouchScreen = ->
+        if $(window).bind "touchstart"
+          true
+
       ### Init wrap and bind events ###
       start = ->
         applyCss()
@@ -152,14 +157,21 @@ do ($ = jQuery) ->
         iframeObject
           .on "resize", coverObject
 
-        ### Mouse Events ###
-        overlayObject
-          .bind "click", hideOverlay
+        if isTouchScreen
+          ### Touchscreen Events ###
+          iframeObject.css "pointer-events":"none"
+          wrapObject
+            .unbind
+            .hideOverlay
 
-        wrapObject
-          .bind "mouseleave", hideOverlay
-          .bind "mouseenter", showOverlay
+          ### Mouse Events ###
+          #overlayObject
+            #.hammer.bind "pinch", iframeObject.css "pointer-events":"auto"
+        else
 
+          wrapObject
+            .bind "mouseleave", hideOverlay
+            .bind "mouseenter", showOverlay
 
       ### Removes everithing ###
       stop = ->

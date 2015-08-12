@@ -1,6 +1,6 @@
 /*!
  * mapScrollPrevent (jQuery Google Maps Scroll Prevent Plugin)
- * Version 0.5.4
+ * Version 0.5.5
  * URL: https://github.com/diazemiliano/mapScrollPrevent
  * Description: mapScrollPrevent is an easy solution to the problem of page
  *              scrolling with Google Maps.
@@ -10,7 +10,7 @@
 (function($) {
     return $.fn.extend({
         mapScrollPrevent: function(options) {
-            var applyCss, coverObject, defaults, hideOverlay, iframeObject, mapCSS, opts, overlayObject, showOverlay, start, stop, wrapIframe, wrapObject;
+            var applyCss, coverObject, defaults, hideOverlay, iframeObject, isTouchScreen, mapCSS, opts, overlayObject, showOverlay, start, stop, wrapIframe, wrapObject;
             defaults = {
 
                 /* Custom class for map wrap */
@@ -84,6 +84,13 @@
                 return overlayObject.show();
             };
 
+            /* Check TouchScreen */
+            isTouchScreen = function() {
+                if ($(window).bind("touchstart")) {
+                    return true;
+                }
+            };
+
             /* Init wrap and bind events */
             start = function() {
                 applyCss();
@@ -92,10 +99,18 @@
                 /* Dynamic Adjust */
                 $(window).on("resize", coverObject);
                 iframeObject.on("resize", coverObject);
+                if (isTouchScreen) {
 
-                /* Mouse Events */
-                overlayObject.bind("click", hideOverlay);
-                return wrapObject.bind("mouseleave", hideOverlay).bind("mouseenter", showOverlay);
+                    /* Touchscreen Events */
+                    iframeObject.css({
+                        "pointer-events": "none"
+                    });
+                    return wrapObject.unbind.hideOverlay;
+
+                    /* Mouse Events */
+                } else {
+                    return wrapObject.bind("mouseleave", hideOverlay).bind("mouseenter", showOverlay);
+                }
             };
 
             /* Removes everithing */

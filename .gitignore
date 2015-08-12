@@ -4,6 +4,7 @@ Thumbs.db
 
 # Custom Directories
 node_modules/*
+jquery.min.js
 
 # scss Cache
 .sass-cache
