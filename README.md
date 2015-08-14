@@ -15,9 +15,6 @@ This jQuery plugin is written with [CoffeeScript](http://coffeescript.org/) that
 
 Check the [Live Demo!](http://diazemiliano.github.io/mapScrollPrevent). Use it, enjoy it and please [contribute](https://github.com/diazemiliano/mapScrollPrevent/issues?q=is%3Aopen+is%3Aissue) to make it better.
 
-You can [Download](https://github.com/diazemiliano/mapScrollPrevent/releases) a **Pre-Release** version.
-If you are finding the wordpress version check the ~~[Wordpress Branch](https://github.com/diazemiliano/mapScrollPrevent/tree/wordpress)~~ (**Sorry Currently Outdated!**)
-
 [![mapScrollPrevent](https://cdn.rawgit.com/diazemiliano/mapScrollPrevent/master/mapScrollPrevent.png)](http://diazemiliano.github.io/mapScrollPrevent)
 
 ## Table of contents
