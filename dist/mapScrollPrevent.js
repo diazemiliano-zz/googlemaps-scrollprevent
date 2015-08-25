@@ -10,7 +10,7 @@
 (function($) {
     return $.fn.extend({
         mapScrollPrevent: function(options) {
-            var applyCss, coverObject, defaults, hideOverlay, iframeObject, isTouchScreen, mapCSS, opts, overlayObject, showOverlay, start, stop, wrapIframe, wrapObject;
+            var applyCss, coverObject, defaults, hideOverlay, iframeObject, isTouchScreen, mapCSS, opts, overlayObject, showOverlay, wrapIframe, wrapObject;
             defaults = {
 
                 /* Custom class for map wrap */
@@ -20,13 +20,7 @@
                 overlayClass: "map-overlay",
 
                 /* Hover Message */
-                overlayMessage: "Clic para Navegar.",
-
-                /* Present on touchscreen devices */
-                inTouch: true,
-
-                /* Removes mapScroll */
-                stop: false
+                overlayMessage: "Clic para Navegar."
             };
             opts = $.extend(true, defaults, options);
             mapCSS = "/* --- mapScrollPrevent.js CSS Classes --- */ ." + opts.overlayClass + " { position: absolute; overflow:hidden; cursor: pointer; text-align: center; background-color: rgba(255, 255, 255, 0); } ." + opts.overlayClass + ", ." + opts.overlayClass + " p { -moz-transition: all .3s ease-in-out; -o-transition: all .3s ease-in-out; -webkit-transition: all .3s ease-in-out; transition: all .3s ease-in-out; } ." + opts.overlayClass + ":hover { background-color: rgba(255, 255, 255, 0.8); } ." + opts.overlayClass + " p { font-family: Lato, 'Helvetica Neue', Helvetica, Arial, sans-serif; font-size: 13px; padding-top: 2.5%; padding-bottom: 2.5%; margin-right: auto; margin-left: auto; width: 70%; position: relative; top: 50%; transform: translateY(-50%); border-color: rgba(0, 0, 0, 0.3); color: rgba(58, 132, 223, 0); background-color: rgba(0, 0, 0, 0); -moz-border-radius-topleft: 2px; -webkit-border-top-left-radius: 2px; border-top-left-radius: 2px; -moz-border-radius-topright: 2px; -webkit-border-top-right-radius: 2px; border-top-right-radius: 2px; } ." + opts.overlayClass + ":hover p { background-color: rgb(255, 255, 255); color: rgb(58, 132, 223); -moz-box-shadow: rgba(0,0,0,0.3) 0px 1px 4px -1px; -webkit-box-shadow: rgba(0, 0, 0, 0.3) 0px 1px 4px -1px; box-shadow: rgba(0, 0, 0, 0.3) 0px 1px 4px -1px; } ." + opts.wrapClass + " { display: inline-block; } ." + opts.wrapClass + " iframe { position: relative; top: 0; left: 0; }";
@@ -90,42 +84,29 @@
                     return true;
                 }
             };
+            return {
 
-            /* Init wrap and bind events */
-            start = function() {
-                applyCss();
-                wrapIframe();
+                /* Init wrap and bind events */
+                start: function() {
+                    applyCss();
+                    wrapIframe();
 
-                /* Dynamic Adjust */
-                $(window).on("resize", coverObject);
-                iframeObject.on("resize", coverObject);
-                if (isTouchScreen) {
-
-                    /* Touchscreen Events */
-                    iframeObject.css({
-                        "pointer-events": "none"
-                    });
-                    return wrapObject.unbind.hideOverlay;
-
-                    /* Mouse Events */
-                } else {
+                    /* Dynamic Adjust */
+                    $(window).on("resize", coverObject);
+                    iframeObject.on("resize", coverObject);
+                    overlayObject.bind("click", hideOverlay);
                     return wrapObject.bind("mouseleave", hideOverlay).bind("mouseenter", showOverlay);
-                }
-            };
+                },
 
-            /* Removes everithing */
-            stop = function() {
-                iframeObject.removeAttr("style");
-                if (iframeObject.parent().is("." + opts.wrapClass)) {
-                    iframeObject.unwrap();
+                /* Removes everithing */
+                stop: function() {
+                    iframeObject.removeAttr("style");
+                    if (iframeObject.parent().is("." + opts.wrapClass)) {
+                        iframeObject.unwrap();
+                    }
+                    return $("." + opts.overlayClass).remove();
                 }
-                return $("." + opts.overlayClass).remove();
             };
-            if (!opts.stop) {
-                return start();
-            } else {
-                return stop();
-            }
         }
     });
 })(jQuery);

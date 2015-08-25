@@ -20,10 +20,6 @@ do ($ = jQuery) ->
         overlayClass:"map-overlay"
         ### Hover Message ###
         overlayMessage:"Clic para Navegar."
-        ### Present on touchscreen devices ###
-        inTouch:true
-        ### Removes mapScroll ###
-        stop:false
 
       opts = $.extend true, defaults, options
 
@@ -142,11 +138,10 @@ do ($ = jQuery) ->
 
       ### Check TouchScreen ###
       isTouchScreen = ->
-        if $(window).bind "touchstart"
-          true
+        if $(window).bind "touchstart" then true
 
       ### Init wrap and bind events ###
-      start = ->
+      start : ->
         applyCss()
         wrapIframe()
 
@@ -157,31 +152,17 @@ do ($ = jQuery) ->
         iframeObject
           .on "resize", coverObject
 
-        if isTouchScreen
-          ### Touchscreen Events ###
-          iframeObject.css "pointer-events":"none"
-          wrapObject
-            .unbind
-            .hideOverlay
+        overlayObject
+          .bind "click", hideOverlay
 
-          ### Mouse Events ###
-          #overlayObject
-            #.hammer.bind "pinch", iframeObject.css "pointer-events":"auto"
-        else
-
-          wrapObject
-            .bind "mouseleave", hideOverlay
-            .bind "mouseenter", showOverlay
+        wrapObject
+          .bind "mouseleave", hideOverlay
+          .bind "mouseenter", showOverlay
 
       ### Removes everithing ###
-      stop = ->
+      stop : ->
         iframeObject.removeAttr "style"
         if iframeObject.parent().is ".#{ opts.wrapClass }"
           iframeObject.unwrap()
 
         $(".#{ opts.overlayClass }").remove()
-
-      unless opts.stop
-        start()
-      else
-        stop()
