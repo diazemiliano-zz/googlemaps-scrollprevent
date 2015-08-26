@@ -1,6 +1,6 @@
 ###!
 # mapScrollPrevent (jQuery Google Maps Scroll Prevent Plugin)
-# Version 0.5.5
+# Version 0.5.6
 # URL: https://github.com/diazemiliano/mapScrollPrevent
 # Description: mapScrollPrevent is an easy solution to the problem of page
 #              scrolling with Google Maps.
@@ -22,6 +22,9 @@ do ($ = jQuery) ->
         overlayMessage: "Clic para Navegar."
         ### Print Log Messges ###
         printLog: false
+        ### Callbaks ###
+        onOverlayShow : ->
+        onOverlayHide : ->
 
       opts = $.extend true, defaults, options
 
@@ -30,13 +33,14 @@ do ($ = jQuery) ->
 
       Log = (message) ->
         if opts.printLog
-          dateTime = new Date()
-          nowTime =
-            dateTime.getHours() + ":" +
-            dateTime.getMinutes() + ":" +
-            dateTime.getSeconds()
+          if window.console and window.console.log
+            dateTime = new Date()
+            nowTime =
+              dateTime.getHours() + ":" +
+              dateTime.getMinutes() + ":" +
+              dateTime.getSeconds()
 
-          console.log "mapScrollPrevent [#{nowTime}] : #{message}"
+            console.log "mapScrollPrevent [#{nowTime}] : #{message}"
 
       ### Early exit ###
       unless iframeObject.length
@@ -146,11 +150,13 @@ do ($ = jQuery) ->
         hideOverlay = ->
           iframeObject.css "pointer-events":"auto"
           overlayObject.hide()
+          opts.onOverlayHide()
           Log "Overlay is hidden."
 
         showOverlay = ->
           iframeObject.css "pointer-events":"none"
           overlayObject.show()
+          opts.onOverlayShow()
           Log "Overlay is showed."
 
         ### Check TouchScreen ###
