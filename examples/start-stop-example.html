@@ -20,12 +20,10 @@
           $("#btn-start").click(function(){
             $("iframe[src*='google.com/maps']").mapScrollPrevent({
                 overlayMessage:"Clic to Navigate"
-            });
+            }).start();
           });
           $("#btn-stop").click(function(){
-            $("iframe[src*='google.com/maps']").mapScrollPrevent({
-                stop:true
-            });
+            $("iframe[src*='google.com/maps']").mapScrollPrevent().stop();
           });
         });
         </script>

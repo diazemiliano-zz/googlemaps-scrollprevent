@@ -159,7 +159,7 @@ do ($ = jQuery) ->
           .bind "mouseleave", hideOverlay
           .bind "mouseenter", showOverlay
 
-      ### Removes everithing ###
+      ### Removes everything ###
       stop : ->
         iframeObject.removeAttr "style"
         if iframeObject.parent().is ".#{ opts.wrapClass }"
