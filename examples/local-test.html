@@ -15,7 +15,8 @@
         $(function(){
           $("#btn-start").click(function(){
             $("iframe[src*='google.com/maps']").mapScrollPrevent({
-                overlayMessage:"Clic to Navigate"
+                overlayMessage:"Clic to Navigate",
+                printLog:true
             }).start();
           });
           $("#btn-stop").click(function(){
