@@ -169,17 +169,31 @@ do ($ = jQuery) ->
         bindEvents = ->
           ### Dynamic Adjust ###
           $(window)
-            .on "resize", coverObject
+            .bind "resize", coverObject
 
           iframeObject
-            .on "resize", coverObject
+            .bind "resize", coverObject
 
           overlayObject
-            .bind "click", hideOverlay
+            .bind "click",
+              ->
+                hideOverlay
+                opts.onOverlayHide()
+                return
 
           wrapObject
-            .bind "mouseleave", hideOverlay
-            .bind "mouseenter", showOverlay
+            .bind "mouseleave",
+              ->
+                hideOverlay
+                opts.onOverlayHide()
+                return
+
+            .bind "mouseenter",
+              ->
+                showOverlay
+                opts.onOverlayShow()
+                return
+
           Log "Events bounded."
 
         ### Init wrap and bind events ###

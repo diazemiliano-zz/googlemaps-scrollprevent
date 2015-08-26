@@ -114,10 +114,19 @@
                 bindEvents = function() {
 
                     /* Dynamic Adjust */
-                    $(window).on("resize", coverObject);
-                    iframeObject.on("resize", coverObject);
-                    overlayObject.bind("click", hideOverlay);
-                    wrapObject.bind("mouseleave", hideOverlay).bind("mouseenter", showOverlay);
+                    $(window).bind("resize", coverObject);
+                    iframeObject.bind("resize", coverObject);
+                    overlayObject.bind("click", function() {
+                        hideOverlay;
+                        opts.onOverlayHide();
+                    });
+                    wrapObject.bind("mouseleave", function() {
+                        hideOverlay;
+                        opts.onOverlayHide();
+                    }).bind("mouseenter", function() {
+                        showOverlay;
+                        opts.onOverlayShow();
+                    });
                     return Log("Events bounded.");
                 };
                 return {
