@@ -30,41 +30,68 @@ For usage examples check the [live demo](http://diazemiliano.github.io/mapScroll
 ## Usage as jQuery plugin
 1. Include jQuery and mapScrollPrevent Libs in your html.
 
-      ``` html
-      <head>
+    ``` html
+    <head>
       // jQuery Google CDN
       <script type="text/javascript" src="https://ajax.googleapis.com/ajax/libs/jquery/2.1.4/jquery.min.js?ver=2.1.4"></script>
       // mapScrollPrevent rawgit CDN
       <script type="text/javascript" src="https://cdn.rawgit.com/diazemiliano/mapScrollPrevent/master/dist/mapScrollPrevent.js"></script>
-      </head>
-      ```
+    </head>
+    ```
 
-3. Call mapScrollOff including the following code.
+1. Start mapScrollOff including the following code.
 
-      ``` html
-      <script type="text/javascript">
-      $(function() {
-        // Only Google Maps Selector
-        var googleMapSelector = "iframe[src*=\"google.com/maps\"]";
-        $(googleMapSelector).mapScrollPrevent();
-      });
-      </script>
-      ```
+    ``` html
+    <script type="text/javascript">
+    $(function() {
+      // Only Google Maps Selector
+      var googleMapSelector = "iframe[src*=\"google.com/maps\"]";
+      $(googleMapSelector).mapScrollPrevent().start();
+    });
+    </script>
+    ```
+    Or Stop with:
+    ``` javascript
+    // JavaScript
 
-4. Edit defaults.
+    // Stop
+    $(googleMapSelector).mapScrollPrevent().stop();
+    ```
 
-      ``` html
-      <script type="text/javascript">
-      $(function() {
-        // Only Google Maps Selector
-        var googleMapSelector = "iframe[src*=\"google.com/maps\"]";
-        var options = {
-                    hoverMessage:"<p>My custom message.</p>"
-                  };
-        $(googleMapSelector).mapScrollPrevent(options);
-      });
-      </script>
-      ```
+1. Edit defaults.
+
+    ``` html
+    <script type="text/javascript">
+    $(function() {
+      // Only Google Maps Selector
+      var googleMapSelector = "iframe[src*=\"google.com/maps\"]";
+      var options = {
+                  hoverMessage:"My custom message."
+                };
+      $(googleMapSelector).mapScrollPrevent(options).start();
+    });
+    </script>
+    ```
+
+1. With Callbacks
+
+    ``` javascript
+    // JavaScript
+    $(function(){
+     $("#btn-start").click(function(){
+       $("iframe[src*='google.com/maps']").mapScrollPrevent({
+           onOverlayShow: function() {
+             // Your code here.
+             alert("Overlay Showed")
+           },
+           onOverlayHide: function() {
+             // Your code here.
+             alert("Overlay Hidden")
+           }
+       }).start();
+     });
+    });
+    ```
 
 ## Default Options
 ``` javascript
@@ -76,10 +103,11 @@ var options = {
       overlayClass:"map-overlay",
       // Hover Message
       overlayMessage:"Has <b>Clic</b> para Navegar el Mapa",
-      // Removes mapScroll
-      stop:false
+      // Print Log Messges
+      printLog: false
     };
 ```
+
 ## Build From Source
 To build from source you can use the ```packaje.json``` file to install all "dev dependencies". We use [Gulp](gulpjs.com/) and some ```node-modules```.
 
