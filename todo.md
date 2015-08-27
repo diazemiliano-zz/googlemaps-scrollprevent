@@ -19,6 +19,6 @@
 - [x] ~~Polish Coffee~~
 - [x] ~~Fork as wordpress plugin~~
 - [x] ~~Check touch devices behavior~~ Impossible to do that.
+- [x] ~~Add more maps examples~~
+- [x] ~~Gif demo.~~
 - [ ] Check Wordpress Plugin
-- [ ] Add more maps examples
-- [ ] Gif demo.
