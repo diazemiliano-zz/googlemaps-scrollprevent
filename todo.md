@@ -30,7 +30,9 @@
   - [x] ~~Check touch devices behavior~~ Impossible to do that.
   - [x] ~~Add more maps examples~~
   - [x] ~~Gif demo.~~
-  - [ ] Check long press aproach in https://github.com/vaidik/jquery-longpress/
+  - [x] ~~Check long press aproach in https://github.com/vaidik/jquery-longpress/~~
 
 - **v0.6.x**
-  - [ ] Check Wordpress Plugin
+  - [ ] Clean Events.
+  - [ ] Update Readme.
+  - [ ] Check Wordpress Plugin.
