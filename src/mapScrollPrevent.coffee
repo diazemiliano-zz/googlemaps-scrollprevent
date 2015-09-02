@@ -19,7 +19,7 @@ do ($ = jQuery) ->
         ### Custom class for hover div###
         overlayClass: "mapscroll-overlay"
         ### Press Duration ###
-        pressDuration: 1000
+        pressDuration: 650
         ### Hover Message and Icons ###
         overlay:
           iconLocked :
@@ -88,15 +88,10 @@ do ($ = jQuery) ->
             border-top-right-radius: 2px;
             border-top-left-radius: 2px;
             box-shadow: rgba(0, 0, 0, 0.3) 0px 1px 4px -1px;
-            -moz-border-radius-topleft: 2px;
-            -webkit-border-top-left-radius: 2px;
-            -moz-border-radius-topright: 2px;
-            -webkit-border-top-right-radius: 2px;
-            -moz-box-shadow: rgba(0,0,0,0.3) 0px 1px 4px -1px;
-            -webkit-box-shadow: rgba(0, 0, 0, 0.3) 0px 1px 4px -1px;
           }
           .mapscroll-icon {
-            /*fill: rgba(223, 58, 32, 1);*/
+            position: relative;
+            z-index: 1;
             fill: rgba(58, 132, 223, 1);
           }
           .mapscroll-progress {
@@ -121,17 +116,25 @@ do ($ = jQuery) ->
           .#{opts.overlayClass},
           .mapscroll-button,
           .mapscroll-icon {
-            -moz-transition: all .3s ease-in-out;
-            -o-transition: all .3s ease-in-out;
-            -webkit-transition: all .3s ease-in-out;
             transition: all .3s ease-in-out;
           }
           .mapscroll-progress {
-            -moz-transition: width #{opts.pressDuration/1000}s linear;
-            -o-transition: width #{opts.pressDuration/1000}s linear;
-            -webkit-transition: width #{opts.pressDuration/1000}s linear;
             transition: width #{opts.pressDuration/1000}s linear;
-          }"
+          }
+          /*.flash {
+            animation-duration: .6s;
+            animation-fill-mode: both;
+            animation-name: flash;
+          }
+          @keyframes flash {
+            from, 50%, to {
+              opacity: 1;
+            }
+            25%, 75% {
+              opacity: 0;
+            }
+          }*/
+          "
 
         ### Creates overlay object ###
         overlayObject =
@@ -140,8 +143,8 @@ do ($ = jQuery) ->
         buttonObject =
           $("
           <div class=\"mapscroll-button\">
+            <div class=\"mapscroll-progress\"></div>
             #{opts.overlay.iconLocked}
-            <span class=\"mapscroll-progress\"></span>
           </div>
           ")
 
@@ -195,6 +198,9 @@ do ($ = jQuery) ->
 
           switch status
             when "enable"
+          #     buttonObject.addClass "flash"
+          #       .one "animationend", ->
+          #         $(@).removeClass "flash"
               iconObject.replaceWith("#{opts.overlay.iconUnloking}")
               progressObject.css({"width":"100%"})
               Log "Enabling Map."
@@ -204,7 +210,6 @@ do ($ = jQuery) ->
               iconObject.replaceWith($("#{opts.overlay.iconLocked}"))
               progressObject.css({"width":"0%"})
               overlayObject.show()
-              @status="disbled"
               opts.onMapLock()
               Log "Disabling Map."
 
@@ -213,7 +218,6 @@ do ($ = jQuery) ->
               iconObject.replaceWith("#{opts.overlay.iconUnlocked}")
               progressObject.css({"width":"100%"})
               overlayObject.hide()
-              @status="enabled"
               opts.onMapUnlock()
               Log "Map Enabled."
 

@@ -20,7 +20,7 @@
                 overlayClass: "mapscroll-overlay",
 
                 /* Press Duration */
-                pressDuration: 1000,
+                pressDuration: 650,
 
                 /* Hover Message and Icons */
                 overlay: {
@@ -58,11 +58,11 @@
                 return Log("No Iframes detected. Try changing your \"selector.\"");
             } else {
                 Log(context.length + " iFrames detected.");
-                mapCSS = "/* --- mapScrollPrevent.js CSS Classes --- */ ." + opts.overlayClass + " { position: absolute; overflow:hidden; cursor: pointer; text-align: center; background-color: rgba(0, 0, 0, 0); } .mapscroll-button { text-rendering: optimizeLegibility; font-family: Lato, 'Helvetica Neue', Helvetica, Arial, sans-serif; font-size: 13px; padding-top: 6px; padding-bottom: 6px; width: 36px; position: absolute; right: 32px; bottom: 29px; border-color: rgba(0, 0, 0, 0.3); color: rgba(58, 132, 223, 0); background-color: rgba(255, 255, 255, 1); color: rgb(58, 132, 223); border-top-right-radius: 2px; border-top-left-radius: 2px; box-shadow: rgba(0, 0, 0, 0.3) 0px 1px 4px -1px; -moz-border-radius-topleft: 2px; -webkit-border-top-left-radius: 2px; -moz-border-radius-topright: 2px; -webkit-border-top-right-radius: 2px; -moz-box-shadow: rgba(0,0,0,0.3) 0px 1px 4px -1px; -webkit-box-shadow: rgba(0, 0, 0, 0.3) 0px 1px 4px -1px; } .mapscroll-icon { /*fill: rgba(223, 58, 32, 1);*/ fill: rgba(58, 132, 223, 1); } .mapscroll-progress { position: absolute; top: 0; bottom: 0; left: 0; width: 0%; display: block; background-color: rgba(58, 132, 223, 0.4); } ." + opts.wrapClass + " { position: relative; text-align: center; display: inline-block; } ." + opts.wrapClass + " iframe { position: relative; top: 0; left: 0; } ." + opts.overlayClass + ", .mapscroll-button, .mapscroll-icon { -moz-transition: all .3s ease-in-out; -o-transition: all .3s ease-in-out; -webkit-transition: all .3s ease-in-out; transition: all .3s ease-in-out; } .mapscroll-progress { -moz-transition: width " + (opts.pressDuration / 1000) + "s linear; -o-transition: width " + (opts.pressDuration / 1000) + "s linear; -webkit-transition: width " + (opts.pressDuration / 1000) + "s linear; transition: width " + (opts.pressDuration / 1000) + "s linear; }";
+                mapCSS = "/* --- mapScrollPrevent.js CSS Classes --- */ ." + opts.overlayClass + " { position: absolute; overflow:hidden; cursor: pointer; text-align: center; background-color: rgba(0, 0, 0, 0); } .mapscroll-button { text-rendering: optimizeLegibility; font-family: Lato, 'Helvetica Neue', Helvetica, Arial, sans-serif; font-size: 13px; padding-top: 6px; padding-bottom: 6px; width: 36px; position: absolute; right: 32px; bottom: 29px; border-color: rgba(0, 0, 0, 0.3); color: rgba(58, 132, 223, 0); background-color: rgba(255, 255, 255, 1); color: rgb(58, 132, 223); border-top-right-radius: 2px; border-top-left-radius: 2px; box-shadow: rgba(0, 0, 0, 0.3) 0px 1px 4px -1px; } .mapscroll-icon { position: relative; z-index: 1; fill: rgba(58, 132, 223, 1); } .mapscroll-progress { position: absolute; top: 0; bottom: 0; left: 0; width: 0%; display: block; background-color: rgba(58, 132, 223, 0.4); } ." + opts.wrapClass + " { position: relative; text-align: center; display: inline-block; } ." + opts.wrapClass + " iframe { position: relative; top: 0; left: 0; } ." + opts.overlayClass + ", .mapscroll-button, .mapscroll-icon { transition: all .3s ease-in-out; } .mapscroll-progress { transition: width " + (opts.pressDuration / 1000) + "s linear; } /*.flash { animation-duration: .6s; animation-fill-mode: both; animation-name: flash; } @keyframes flash { from, 50%, to { opacity: 1; } 25%, 75% { opacity: 0; } }*/";
 
                 /* Creates overlay object */
                 overlayObject = $("<div class=\"" + opts.overlayClass + "\"></div>");
-                buttonObject = $("<div class=\"mapscroll-button\"> " + opts.overlay.iconLocked + " <span class=\"mapscroll-progress\"></span> </div>");
+                buttonObject = $("<div class=\"mapscroll-button\"> <div class=\"mapscroll-progress\"></div> " + opts.overlay.iconLocked + " </div>");
                 wrapObject = $("<div class=\"" + opts.wrapClass + "\"></div>");
 
                 /* Apply all the css */
@@ -119,7 +119,6 @@
                                 "width": "0%"
                             });
                             overlayObject.show();
-                            this.status = "disbled";
                             opts.onMapLock();
                             return Log("Disabling Map.");
                         case "unlocked":
@@ -131,7 +130,6 @@
                                 "width": "100%"
                             });
                             overlayObject.hide();
-                            this.status = "enabled";
                             opts.onMapUnlock();
                             return Log("Map Enabled.");
                     }
