@@ -1,6 +1,6 @@
 ###!
 # mapScrollPrevent (jQuery Google Maps Scroll Prevent Plugin)
-# Version 0.5.7
+# Version 0.6.0
 # URL: https://github.com/diazemiliano/mapScrollPrevent
 # Description: mapScrollPrevent is an easy solution to the problem of page
 #              scrolling with Google Maps.
@@ -16,7 +16,7 @@ do ($ = jQuery) ->
       defaults =
         ### Custom class for map wrap ###
         wrapClass: "mapscroll-wrap"
-        ### Custom class for hover div###
+        ### Custom class for hover div ###
         overlayClass: "mapscroll-overlay"
         ### Press Duration ###
         pressDuration: 650
@@ -121,19 +121,6 @@ do ($ = jQuery) ->
           .mapscroll-progress {
             transition: width #{opts.pressDuration/1000}s linear;
           }
-          /*.flash {
-            animation-duration: .6s;
-            animation-fill-mode: both;
-            animation-name: flash;
-          }
-          @keyframes flash {
-            from, 50%, to {
-              opacity: 1;
-            }
-            25%, 75% {
-              opacity: 0;
-            }
-          }*/
           "
 
         ### Creates overlay object ###
@@ -198,9 +185,6 @@ do ($ = jQuery) ->
 
           switch status
             when "enable"
-          #     buttonObject.addClass "flash"
-          #       .one "animationend", ->
-          #         $(@).removeClass "flash"
               iconObject.replaceWith("#{opts.overlay.iconUnloking}")
               progressObject.css({"width":"100%"})
               Log "Enabling Map."
