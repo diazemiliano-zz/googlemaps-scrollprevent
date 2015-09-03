@@ -1,6 +1,6 @@
 /*!
  * mapScrollPrevent (jQuery Google Maps Scroll Prevent Plugin)
- * Version 0.5.7
+ * Version 0.6.0
  * URL: https://github.com/diazemiliano/mapScrollPrevent
  * Description: mapScrollPrevent is an easy solution to the problem of page
  *              scrolling with Google Maps.
@@ -58,7 +58,7 @@
                 return Log("No Iframes detected. Try changing your \"selector.\"");
             } else {
                 Log(context.length + " iFrames detected.");
-                mapCSS = "/* --- mapScrollPrevent.js CSS Classes --- */ ." + opts.overlayClass + " { position: absolute; overflow:hidden; cursor: pointer; text-align: center; background-color: rgba(0, 0, 0, 0); } .mapscroll-button { text-rendering: optimizeLegibility; font-family: Lato, 'Helvetica Neue', Helvetica, Arial, sans-serif; font-size: 13px; padding-top: 6px; padding-bottom: 6px; width: 36px; position: absolute; right: 32px; bottom: 29px; border-color: rgba(0, 0, 0, 0.3); color: rgba(58, 132, 223, 0); background-color: rgba(255, 255, 255, 1); color: rgb(58, 132, 223); border-top-right-radius: 2px; border-top-left-radius: 2px; box-shadow: rgba(0, 0, 0, 0.3) 0px 1px 4px -1px; } .mapscroll-icon { position: relative; z-index: 1; fill: rgba(58, 132, 223, 1); } .mapscroll-progress { position: absolute; top: 0; bottom: 0; left: 0; width: 0%; display: block; background-color: rgba(58, 132, 223, 0.4); } ." + opts.wrapClass + " { position: relative; text-align: center; display: inline-block; } ." + opts.wrapClass + " iframe { position: relative; top: 0; left: 0; } ." + opts.overlayClass + ", .mapscroll-button, .mapscroll-icon { transition: all .3s ease-in-out; } .mapscroll-progress { transition: width " + (opts.pressDuration / 1000) + "s linear; } /*.flash { animation-duration: .6s; animation-fill-mode: both; animation-name: flash; } @keyframes flash { from, 50%, to { opacity: 1; } 25%, 75% { opacity: 0; } }*/";
+                mapCSS = "/* --- mapScrollPrevent.js CSS Classes --- */ ." + opts.overlayClass + " { position: absolute; overflow:hidden; cursor: pointer; text-align: center; background-color: rgba(0, 0, 0, 0); } .mapscroll-button { text-rendering: optimizeLegibility; font-family: Lato, 'Helvetica Neue', Helvetica, Arial, sans-serif; font-size: 13px; padding-top: 6px; padding-bottom: 6px; width: 36px; position: absolute; right: 32px; bottom: 29px; border-color: rgba(0, 0, 0, 0.3); color: rgba(58, 132, 223, 0); background-color: rgba(255, 255, 255, 1); color: rgb(58, 132, 223); border-top-right-radius: 2px; border-top-left-radius: 2px; box-shadow: rgba(0, 0, 0, 0.3) 0px 1px 4px -1px; } .mapscroll-icon { position: relative; z-index: 1; fill: rgba(58, 132, 223, 1); } .mapscroll-progress { position: absolute; top: 0; bottom: 0; left: 0; width: 0%; display: block; background-color: rgba(58, 132, 223, 0.4); } ." + opts.wrapClass + " { position: relative; text-align: center; display: inline-block; } ." + opts.wrapClass + " iframe { position: relative; top: 0; left: 0; } ." + opts.overlayClass + ", .mapscroll-button, .mapscroll-icon { transition: all .3s ease-in-out; } .mapscroll-progress { transition: width " + (opts.pressDuration / 1000) + "s linear; }";
 
                 /* Creates overlay object */
                 overlayObject = $("<div class=\"" + opts.overlayClass + "\"></div>");
