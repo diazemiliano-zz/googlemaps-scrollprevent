@@ -16,10 +16,10 @@
     $("#btn-start").click(function() {
       $("iframe[src*='google.com/maps']").mapScrollPrevent({
         printLog: true,
-        onOverlayShow: function() {
+        onMapLock: function() {
           return alert("Overlay Showed");
         },
-        onOverlayHide: function() {
+        onMapUnlock: function() {
           return alert("Overlay Hiden");
         }
       }).start();

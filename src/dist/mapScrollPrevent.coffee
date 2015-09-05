@@ -14,26 +14,35 @@ do ($ = jQuery) ->
   $.fn.extend
     mapScrollPrevent : (options) ->
       defaults =
-        ### Custom class for map wrap ###
-        wrapClass: "mapscroll-wrap"
-        ### Custom class for hover div ###
-        overlayClass: "mapscroll-overlay"
+        class:
+          ### class for map wrap ###
+          wrap: "mapscroll-wrap"
+          ### class for hover div ###
+          overlay: "mapscroll-overlay"
+          ### class for progress bar ###
+          progress: "mapscroll-progress"
+          ### class for the button ###
+          button: "mapscroll-button"
+          ### class for svg icons ###
+          icon: "mapscroll-icon"
         ### Press Duration ###
         pressDuration: 650
-        ### Hover Message and Icons ###
+        ### Buton Icons ###
         overlay:
           iconLocked :
-            "<svg class=\"mapscroll-icon mapscroll-icon-locked\" xmlns=\"http://www.w3.org/2000/svg\" width=\"22\" height=\"22\" viewBox=\"0 0 1792 1792\" >
+            "<svg class=\"mapscroll-icon-locked\" xmlns=\"http://www.w3.org/2000/svg\" width=\"22\" height=\"22\" viewBox=\"0 0 1792 1792\" >
               <path transform=\"translate(1)\" d=\"M640 768h512v-192q0-106-75-181t-181-75-181 75-75 181v192zm832 96v576q0 40-28 68t-68 28h-960q-40 0-68-28t-28-68v-576q0-40 28-68t68-28h32v-192q0-184 132-316t316-132 316 132 132 316v192h32q40 0 68 28t28 68z\" />
             </svg>"
           iconUnloking:
-            "<svg class=\"mapscroll-icon mapscroll-icon-unlocking\" xmlns=\"http://www.w3.org/2000/svg\" width=\"22\" height=\"22\" viewBox=\"0 0 1792 1792\">
+            "<svg class=\"mapscroll-icon-unlocking\" xmlns=\"http://www.w3.org/2000/svg\" width=\"22\" height=\"22\" viewBox=\"0 0 1792 1792\">
               <path transform=\"translate(1)\" d=\"M1376 768q40 0 68 28t28 68v576q0 40-28 68t-68 28h-960q-40 0-68-28t-28-68v-576q0-40 28-68t68-28h32v-320q0-185 131.5-316.5t316.5-131.5 316.5 131.5 131.5 316.5q0 26-19 45t-45 19h-64q-26 0-45-19t-19-45q0-106-75-181t-181-75-181 75-75 181v320h736z\" />
             </svg>"
           iconUnlocked:
-            "<svg class=\"mapscroll-icon mapscroll-icon-unlocked\" xmlns=\"http://www.w3.org/2000/svg\" width=\"22\" height=\"22\" viewBox=\"0 0 1792 1792\">
+            "<svg class=\"mapscroll-icon-unlocked\" xmlns=\"http://www.w3.org/2000/svg\" width=\"22\" height=\"22\" viewBox=\"0 0 1792 1792\">
               <path transform=\"translate(1)\" d=\"M1728 576v256q0 26-19 45t-45 19h-64q-26 0-45-19t-19-45v-256q0-106-75-181t-181-75-181 75-75 181v192h96q40 0 68 28t28 68v576q0 40-28 68t-68 28h-960q-40 0-68-28t-28-68v-576q0-40 28-68t68-28h672v-192q0-185 131.5-316.5t316.5-131.5 316.5 131.5 131.5 316.5z\" />
             </svg>"
+
+
         ### Callbaks ###
         onMapLock : ->
         onMapUnlock : ->
@@ -64,14 +73,14 @@ do ($ = jQuery) ->
         Log "#{context.length} iFrames detected."
         mapCSS = "
           /* --- mapScrollPrevent.js CSS Classes --- */
-          .#{opts.overlayClass} {
+          .#{opts.class.overlay} {
             position: absolute;
             overflow:hidden;
             cursor: pointer;
             text-align: center;
             background-color: rgba(0, 0, 0, 0);
           }
-          .mapscroll-button {
+          .#{opts.class.button} {
             text-rendering: optimizeLegibility;
             font-family: Lato, 'Helvetica Neue', Helvetica, Arial, sans-serif;
             font-size: 13px;
@@ -89,12 +98,12 @@ do ($ = jQuery) ->
             border-top-left-radius: 2px;
             box-shadow: rgba(0, 0, 0, 0.3) 0px 1px 4px -1px;
           }
-          .mapscroll-icon {
+          .#{opts.class.icon} {
             position: relative;
             z-index: 1;
             fill: rgba(58, 132, 223, 1);
           }
-          .mapscroll-progress {
+          .#{opts.class.progress} {
             position: absolute;
             top: 0;
             bottom: 0;
@@ -103,40 +112,57 @@ do ($ = jQuery) ->
             display: block;
             background-color: rgba(58, 132, 223, 0.4);
           }
-          .#{opts.wrapClass} {
+          .#{opts.class.wrap} {
             position: relative;
             text-align: center;
             display: inline-block;
           }
-          .#{opts.wrapClass} iframe {
+          .#{opts.class.wrap} iframe {
             position: relative;
             top: 0;
             left: 0;
           }
-          .#{opts.overlayClass},
-          .mapscroll-button,
-          .mapscroll-icon {
+          .#{opts.class.overlay},
+          .#{opts.class.button},
+          .#{opts.class.icon} {
             transition: all .3s ease-in-out;
           }
-          .mapscroll-progress {
+          .#{opts.class.progress} {
             transition: width #{opts.pressDuration/1000}s linear;
           }
           "
 
+        ### Change the SVG Icon classes if founded.
+        Otherwise replace with default icons ###
+        for own item, value of opts.overlay
+          if $("#{value}").find("svg")
+            Log "SVG Icons founded... Replacing classes."
+            opts.overlay["#{item}"] =
+              $("#{value}")
+                .attr(
+                  "class",
+                  "#{opts.class.icon} #{$("#{value}").attr("class")}"
+                ).prop('outerHTML')
+          else
+            opts.overlay["#{item}"] = defaults.overlay["#{item}"]
+            Log "Invalid Icons founded... Replacing with defaults."
+
         ### Creates overlay object ###
         overlayObject =
-          $("<div class=\"#{ opts.overlayClass }\"></div>")
+          $("<div class=\"#{ opts.class.overlay }\"></div>")
 
         buttonObject =
           $("
-          <div class=\"mapscroll-button\">
-            <div class=\"mapscroll-progress\"></div>
+          <div class=\"#{opts.class.button}\">
+            <div class=\"#{opts.class.progress}\">
+            </div>
             #{opts.overlay.iconLocked}
           </div>
           ")
 
+
         wrapObject =
-          $("<div class=\"#{ opts.wrapClass }\"></div>")
+          $("<div class=\"#{ opts.class.wrap }\"></div>")
 
         ### Apply all the css ###
         applyCss = ->
@@ -147,24 +173,24 @@ do ($ = jQuery) ->
         ### Wraps the iframe ###
         wrapIframe = ->
           ### Check first if the iframe is already wraped ###
-          unless context.closest(".#{ opts.wrapClass }").is "div"
+          unless context.closest(".#{ opts.class.wrap }").is "div"
             context.wrap wrapObject
             Log "Iframe isn't wraped."
 
           ### Update with DOM objects ###
           wrapObject =
             context
-              .closest ".#{ opts.wrapClass }"
+              .closest ".#{ opts.class.wrap }"
               .append buttonObject
               .append overlayObject
 
           overlayObject =
             wrapObject
-              .children ".#{ opts.overlayClass }"
+              .children ".#{ opts.class.overlay }"
 
           buttonObject =
             wrapObject
-              .children ".mapscroll-button"
+              .children ".#{ opts.class.button }"
 
           coverObject()
           Log "Iframe now wraped."
@@ -180,8 +206,8 @@ do ($ = jQuery) ->
           Log "Overlay positioned."
 
         progress = (status="enable") ->
-          progressObject = buttonObject.find(".mapscroll-progress")
-          iconObject = buttonObject.find(".mapscroll-icon")
+          progressObject = buttonObject.find(".#{opts.class.progress}")
+          iconObject = buttonObject.find(".#{opts.class.icon}")
 
           switch status
             when "enable"
@@ -254,8 +280,8 @@ do ($ = jQuery) ->
         stop : ->
           Log "Stopping plugin..."
           context.removeAttr "style"
-          if context.parent().is ".#{ opts.wrapClass }"
+          if context.parent().is ".#{ opts.class.wrap }"
             context.unwrap()
 
-          $(".#{ opts.overlayClass }").remove()
+          $(".#{ opts.class.overlay }").remove()
           Log "Plugin Stopped."

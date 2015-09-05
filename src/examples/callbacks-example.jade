@@ -10,9 +10,9 @@ block content
           $("iframe[src*='google.com/maps']")
             .mapScrollPrevent {
               printLog:true
-              onOverlayShow: ->
+              onMapLock: ->
                 alert "Overlay Showed"
-              onOverlayHide: ->
+              onMapUnlock: ->
                 alert "Overlay Hiden"
             }
             .start()
