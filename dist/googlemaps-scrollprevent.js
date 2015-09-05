@@ -1,8 +1,8 @@
 /*!
- * mapScrollPrevent (jQuery Google Maps Scroll Prevent Plugin)
+ * googlemaps-scrollprevent (jQuery Google Maps Scroll Prevent Plugin)
  * Version 0.6.1
- * URL: https://github.com/diazemiliano/mapScrollPrevent
- * Description: mapScrollPrevent is an easy solution to the problem of page
+ * URL: https://github.com/diazemiliano/googlemaps-scrollprevent
+ * Description: googlemaps-scrollprevent is an easy solution to the problem of page
  *              scrolling with Google Maps.
  * Author: Emiliano Díaz https://github.com/diazemiliano/
  * Copyright: The MIT License (MIT) Copyright (c) 2015 Emiliano Díaz.
@@ -11,7 +11,7 @@ var hasProp = {}.hasOwnProperty;
 
 (function($) {
     return $.fn.extend({
-        mapScrollPrevent: function(options) {
+        scrollprevent: function(options) {
             var Log, applyCss, bindEvents, buttonObject, context, coverObject, defaults, item, longPressDown, longPressUp, mapCSS, opts, overlayObject, progress, ref, runTimeout, value, wrapIframe, wrapObject;
             defaults = {
                 "class": {

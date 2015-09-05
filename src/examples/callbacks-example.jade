@@ -1,6 +1,6 @@
 extends _layout.jade
 block title
-  title mapScrollPrevent.js - Callbacks Example
+  title googlemaps-scrollprevent.js - Callbacks Example
 block content
   h1 Callbacks Example
   script
@@ -8,7 +8,7 @@ block content
       $ ->
         $("#btn-start").click ->
           $("iframe[src*='google.com/maps']")
-            .mapScrollPrevent {
+            .scrollprevent {
               printLog:true
               onMapLock: ->
                 alert "Overlay Showed"
@@ -18,6 +18,6 @@ block content
             .start()
 
           $("#btn-stop").click ->
-            $("iframe[src*='google.com/maps']").mapScrollPrevent().stop()
+            $("iframe[src*='google.com/maps']").scrollprevent().stop()
 
         $("#btn-start").trigger "click"

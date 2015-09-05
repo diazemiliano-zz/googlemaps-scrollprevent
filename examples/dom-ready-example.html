@@ -1,24 +1,24 @@
 <!DOCTYPE html>
 <html lang="es">
   <head>
-    <title>mapScrollPrevent.js - DOM Ready Example</title>
+    <title>googlemaps-scrollprevent.js - DOM Ready Example</title>
     <meta charset="utf-8">
     <meta http-eqiv="X-UA-Compatible" content="IE=edge,chrome=1">
     <meta name="viewport" content="width=device-width" initial-scale="1">
     <link rel="stylesheet" type="text/css" href="https://fonts.googleapis.com/css?family=Lato&amp;subset=latin,latin-ext">
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/2.1.4/jquery.min.js?ver=2.1.4"></script>
-    <script src="https://rawgit.com/diazemiliano/mapScrollPrevent/master/dist/mapScrollPrevent.min.js"></script>
+    <script src="https://rawgit.com/diazemiliano/googlemaps-scrollprevent/master/dist/googlemaps-scrollprevent.min.js"></script>
   </head>
   <body>
     <h1>DOM Ready Example</h1>
     <script>(function() {
   $(function() {
     $("#btn-start").click(function() {
-      $("iframe[src*='google.com/maps']").mapScrollPrevent({
+      $("iframe[src*='google.com/maps']").scrollprevent({
         printLog: true
       }).start();
       return $("#btn-stop").click(function() {
-        return $("iframe[src*='google.com/maps']").mapScrollPrevent().stop();
+        return $("iframe[src*='google.com/maps']").scrollprevent().stop();
       });
     });
     return $("#btn-start").trigger("click");

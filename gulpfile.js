@@ -14,7 +14,7 @@ var
   // Custom paths
   myPaths = {
     coffee:{
-      name:"mapScrollPrevent",
+      name:"googlemaps-scrollprevent",
       src:"./src/dist/**/*.coffee",
       dest:"./dist/"
     },

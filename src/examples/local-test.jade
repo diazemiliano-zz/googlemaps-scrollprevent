@@ -1,8 +1,8 @@
 extends _layout.jade
 block title
-  title mapScrollPrevent.js - Local Text
+  title googlemaps-scrollprevent.js - Local Text
 block localscript
-  script(src="../dist/mapScrollPrevent.js")
+  script(src="../dist/googlemaps-scrollprevent.js")
 block content
   h1 Local Test
   script
@@ -10,13 +10,13 @@ block content
       $ ->    
         $("#btn-start").click ->
           $("iframe[src*='google.com/maps']")
-            .mapScrollPrevent {
+            .scrollprevent {
               printLog:true
             }
             .start()
                     
         $("#btn-stop").click ->
-          $("iframe[src*='google.com/maps']").mapScrollPrevent().stop()
+          $("iframe[src*='google.com/maps']").scrollprevent().stop()
         
         $("#btn-start").trigger "click"
 

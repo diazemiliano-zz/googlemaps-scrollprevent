@@ -4,6 +4,7 @@
 - **v0.6.x**
   - [x] ~~Update Readme.~~
   - [x] ~~Improving Examples with Jade.~~
+  - [x] ~~Name changed to googlemaps-scrollprevent~~
   - [ ] Check responsive styles.
   - [ ] Clean Events.
   - [ ] Check Wordpress Plugin.

@@ -1,8 +1,8 @@
 {
-  "name": "mapScrollPrevent",
+  "name": "googlemaps-scrollprevent",
   "version": "0.6.1",
-  "description": "mapScrollPrevent is an easy solution to the problem of page scrolling with Google Maps.",
-  "main": "./src/mapScrollPrevent.coffee",
+  "description": "googlemaps-scrollprevent is an easy solution to the problem of page scrolling with Google Maps.",
+  "main": "./src/googlemaps-scrollprevent.coffee",
   "dependencies": {
     "coffee-script": "^1.10.0",
     "gulp": "^3.8.11",
@@ -28,12 +28,12 @@
   },
   "repository": {
     "type": "git",
-    "url": "https://github.com/diazemiliano/mapScrollPrevent.git"
+    "url": "https://github.com/diazemiliano/googlemaps-scrollprevent.git"
   },
   "author": "Emiliano Díaz",
   "license": "MIT",
   "bugs": {
-    "url": "https://github.com/diazemiliano/mapScrollPrevent/issues"
+    "url": "https://github.com/diazemiliano/googlemaps-scrollprevent/issues"
   },
-  "homepage": "https://github.com/diazemiliano/mapScrollPrevent"
+  "homepage": "https://github.com/diazemiliano/googlemaps-scrollprevent"
 }
