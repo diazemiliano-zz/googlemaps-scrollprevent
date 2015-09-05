@@ -3,6 +3,7 @@
 
 - **v0.6.x**
   - [x] ~~Update Readme.~~
+  - [x] ~~Improving Examples with Jade.~~
   - [ ] Check responsive styles.
   - [ ] Clean Events.
   - [ ] Check Wordpress Plugin.

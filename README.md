@@ -10,7 +10,7 @@ This jQuery plugin is written with [CoffeeScript](http://coffeescript.org/) that
 * [![Website Link](https://img.shields.io/badge/website-http%3A%2F%2Fdiazemiliano.github.io%2FmapScrollPrevent%2F-lightgrey.svg)](http://diazemiliano.github.io/mapScrollPrevent/)
 
 #### Available For
-* [![jQuery v0.6.0](https://img.shields.io/badge/jQuery-0.6.0-brightgreen.svg)](https://github.com/diazemiliano/mapScrollPrevent/releases)
+* [![jQuery v0.6.1](https://img.shields.io/badge/jQuery-0.6.1-brightgreen.svg)](https://github.com/diazemiliano/mapScrollPrevent/releases)
 * [![Wordpress v0.1.0](https://img.shields.io/badge/Wordpress-0.1.0-brightgreen.svg)](https://github.com/diazemiliano/mapScrollPrevent/tree/wordpress) *Sorry Currently Outdated!*
 
 ## Table of contents

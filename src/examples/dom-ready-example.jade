@@ -1,0 +1,19 @@
+extends _layout.jade
+block title
+  title mapScrollPrevent.js - DOM Ready Example
+block content
+  h1 DOM Ready Example
+  script
+    :coffee-script
+      $ ->
+        $("#btn-start").click ->
+          $("iframe[src*='google.com/maps']")
+            .mapScrollPrevent {
+              printLog:true
+            }
+            .start()
+                    
+          $("#btn-stop").click ->
+            $("iframe[src*='google.com/maps']").mapScrollPrevent().stop()
+        
+        $("#btn-start").trigger "click"

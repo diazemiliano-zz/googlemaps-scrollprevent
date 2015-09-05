@@ -8,20 +8,28 @@ var
   changed = require("gulp-changed"),
   sourcemaps = require("gulp-sourcemaps"),
   prettify = require('gulp-jsbeautifier'),
-  coffee = require("gulp-coffee");
+  coffee = require("gulp-coffee"),
+  jade = require("gulp-jade");
 
   // Custom paths
   myPaths = {
     coffee:{
       name:"mapScrollPrevent",
-      src:"./src/**/*.coffee",
+      src:"./src/dist/**/*.coffee",
       dest:"./dist/"
+    },
+    jade:{
+      src:[
+        "./src/examples/**/*.jade",
+        "!./src/examples/**/**_**.jade"
+      ],
+      dest:"./examples/"
     }
   }
 ;
 
 // Compile and Compress CoffeeScript
-gulp.task("compress", function() {
+gulp.task("coffee", function() {
   gulp.src(myPaths.coffee.src)
   .pipe(sourcemaps.init())
   .pipe(coffee({bare:true}))
@@ -33,10 +41,20 @@ gulp.task("compress", function() {
   .pipe(gulp.dest(myPaths.coffee.dest));
 });
 
+// Compile Jade Templates
+gulp.task('jade', function() {
+  gulp.src(myPaths.jade.src)
+    .pipe(jade({
+      pretty: true
+    }))
+    .pipe(gulp.dest(myPaths.jade.dest))
+});
+
 // Watch for Changes
 gulp.task("watch", function() {
-  gulp.watch([myPaths.coffee.src], ["compress"]);
+  gulp.watch([myPaths.coffee.src], ["coffee"]);
+  gulp.watch([myPaths.jade.src], ["jade"]);
 });
 
 // Do Tasks as Default
-gulp.task("default", ["compress", "watch"]);
+gulp.task("default", ["coffee", "jade", "watch"]);

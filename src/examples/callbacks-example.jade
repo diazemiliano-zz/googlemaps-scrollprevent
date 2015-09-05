@@ -1,0 +1,23 @@
+extends _layout.jade
+block title
+  title mapScrollPrevent.js - Callbacks Example
+block content
+  h1 Callbacks Example
+  script
+    :coffee-script
+      $ ->
+        $("#btn-start").click ->
+          $("iframe[src*='google.com/maps']")
+            .mapScrollPrevent {
+              printLog:true
+              onOverlayShow: ->
+                alert "Overlay Showed"
+              onOverlayHide: ->
+                alert "Overlay Hiden"
+            }
+            .start()
+
+          $("#btn-stop").click ->
+            $("iframe[src*='google.com/maps']").mapScrollPrevent().stop()
+
+        $("#btn-start").trigger "click"
