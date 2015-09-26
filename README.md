@@ -7,7 +7,7 @@ This jQuery plugin is written with [CoffeeScript](http://coffeescript.org/) that
 
 #### Details
 * [![License MIT](https://img.shields.io/badge/license-MIT-blue.svg)](https://github.com/diazemiliano/googlemaps-scrollprevent/blob/master/LICENSE)
-* [![Website Link](https://img.shields.io/badge/website-http%3A%2F%2Fdiazemiliano.github.io%2Fgooglemaps-scrollprevent%2F-lightgrey.svg)](http://diazemiliano.github.io/googlemaps-scrollprevent/)
+* [![Website Link](https://img.shields.io/badge/website-http%3A%2F%2Fdiazemiliano.github.io%2Fgooglemaps--scrollprevent-blue.svg)](http://diazemiliano.github.io/googlemaps-scrollprevent/)
 
 #### Available For
 * [![jQuery v0.6.1](https://img.shields.io/badge/jQuery-0.6.1-brightgreen.svg)](https://github.com/diazemiliano/googlemaps-scrollprevent/releases)
