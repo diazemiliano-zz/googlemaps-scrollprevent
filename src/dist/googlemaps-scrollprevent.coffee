@@ -2,8 +2,8 @@
 # googlemaps-scrollprevent (jQuery Google Maps Scroll Prevent Plugin)
 # Version 0.6.1
 # URL: https://github.com/diazemiliano/googlemaps-scrollprevent
-# Description: googlemaps-scrollprevent is an easy solution to the problem of page
-#              scrolling with Google Maps.
+# Description: googlemaps-scrollprevent is an easy solution to the problem of
+#              page scrolling with Google Maps.
 # Author: Emiliano Díaz https://github.com/diazemiliano/
 # Copyright: The MIT License (MIT) Copyright (c) 2015 Emiliano Díaz.
 ###
@@ -84,11 +84,11 @@ do ($ = jQuery) ->
             text-rendering: optimizeLegibility;
             font-family: Lato, 'Helvetica Neue', Helvetica, Arial, sans-serif;
             font-size: 13px;
-            padding-top: 6px;
-            padding-bottom: 6px;
-            width: 36px;
+            padding-top: 15px;
+            padding-bottom: 15px;
+            width: 55px;
             position: absolute;
-            right: 32px;
+            right: 43px;
             bottom: 29px;
             border-color: rgba(0, 0, 0, 0.3);
             color: rgba(58, 132, 223, 0);
@@ -271,10 +271,14 @@ do ($ = jQuery) ->
         ### Init wrap and bind events ###
         start : ->
           Log "Starting plugin..."
-          applyCss()
-          wrapIframe()
-          bindEvents()
-          Log "Plugin Started."
+          unless context.find "#{opts.class.wrap}"
+            console.log context.find "#{opts.class.wrap}"
+            return Log "Already Started."
+          else
+            applyCss()
+            wrapIframe()
+            bindEvents()
+            Log "Plugin Started."
 
         ### Removes everything ###
         stop : ->

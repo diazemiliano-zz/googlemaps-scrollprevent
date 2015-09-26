@@ -6,6 +6,7 @@
   - [x] ~~Improving Examples with Jade.~~
   - [x] ~~Name changed to googlemaps-scrollprevent~~
   - [x] ~~Check responsive styles.~~
+  - [x] ~~Fix Unlock button position.~~  
   - [ ] Clean Events.
   - [ ] Check Wordpress Plugin.
 
