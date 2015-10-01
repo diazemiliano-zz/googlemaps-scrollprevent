@@ -1,4 +1,5 @@
 # googlemaps-scrollprevent.js
+**Avoid unwanted map interactions with the Google Maps Iframe.**
 ## Resume
 
 googlemaps-scrollprevent is an easy solution to the problem of page scrolling with new "[Google Maps Iframe Embed](https://developers.google.com/maps/documentation/embed/guide)".
