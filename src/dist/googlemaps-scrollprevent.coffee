@@ -1,6 +1,6 @@
 ###!
 # googlemaps-scrollprevent (jQuery Google Maps Scroll Prevent Plugin)
-# Version 0.6.1
+# Version 0.6.2
 # URL: https://github.com/diazemiliano/googlemaps-scrollprevent
 # Description: googlemaps-scrollprevent is an easy solution to the problem of
 #              page scrolling with Google Maps.
@@ -141,7 +141,7 @@ do ($ = jQuery) ->
               $("#{value}")
                 .attr(
                   "class",
-                  "#{opts.class.icon} #{$("#{value}").attr("class")}"
+                  "#{opts.class.icon} {$(\"#{value}\").attr(\"class\")"
                 ).prop('outerHTML')
           else
             opts.overlay["#{item}"] = defaults.overlay["#{item}"]
@@ -149,12 +149,12 @@ do ($ = jQuery) ->
 
         ### Creates overlay object ###
         overlayObject =
-          $("<div class=\"#{ opts.class.overlay }\"></div>")
+          $("<div class=#{ opts.class.overlay }></div>")
 
         buttonObject =
           $("
-          <div class=\"#{opts.class.button}\">
-            <div class=\"#{opts.class.progress}\">
+          <div class=#{opts.class.button}>
+            <div class=#{opts.class.progress}>
             </div>
             #{opts.overlay.iconLocked}
           </div>
@@ -162,7 +162,7 @@ do ($ = jQuery) ->
 
 
         wrapObject =
-          $("<div class=\"#{ opts.class.wrap }\"></div>")
+          $("<div class=#{ opts.class.wrap }></div>")
 
         ### Apply all the css ###
         applyCss = ->

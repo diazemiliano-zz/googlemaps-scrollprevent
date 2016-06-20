@@ -1,0 +1,37 @@
+<!DOCTYPE html>
+<html lang="es">
+  <head>
+    <title>googlemaps-scrollprevent.js - Multiple Maps</title>
+    <meta charset="utf-8">
+    <meta http-eqiv="X-UA-Compatible" content="IE=edge,chrome=1">
+    <meta name="viewport" content="width=device-width" initial-scale="1">
+    <link rel="stylesheet" type="text/css" href="https://fonts.googleapis.com/css?family=Lato&amp;subset=latin,latin-ext">
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/2.1.4/jquery.min.js?ver=2.1.4"></script>
+    <script src="../dist/googlemaps-scrollprevent.js"></script>
+  </head>
+  <body>
+    <h1>Local Test</h1>
+    <script>(function() {
+  $(function() {
+    var googleMapSelector;
+    googleMapSelector = $("iframe[id*='gmap-prevent-']");
+    $("#btn-start").click(function() {
+      googleMapSelector.scrollprevent({
+        printLog: true
+      }).start();
+      return $("#btn-stop").click(function() {
+        return googleMapSelector.scrollprevent().stop();
+      });
+    });
+    return $("#btn-start").trigger("click");
+  });
+
+}).call(this);
+
+    </script>
+    <iframe id="gmap-prevent-1" src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d12087.746318586604!2d-71.64614110000001!3d-40.76341959999999!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x9610bf42e48faa93%3A0x205ebc786470b636!2sVilla+la+Angostura%2C+Neuqu%C3%A9n!5e0!3m2!1ses-419!2sar!4v1425058155802" width="400" height="300" frameborder="0" style="border:0"></iframe>
+    <iframe id="gmap-no-prevent-1" src="https://www.google.com/maps/embed/v1/place?q=place_id:ChIJP3Sa8ziYEmsRUKgyFmh9AQM&amp;key=AIzaSyDsAwAZHbdANhtDD6gvCIkOkONgN0B7k1I" width="400" height="300" frameborder="0" style="border:0"></iframe>
+    <iframe id="gmap-prevent-2" src="https://www.google.com/maps/embed/v1/place?q=place_id:ChIJOwg_06VPwokRYv534QaPC8g&amp;key=AIzaSyDsAwAZHbdANhtDD6gvCIkOkONgN0B7k1I" width="400" height="300" frameborder="0" style="border:0"></iframe>
+    <p><a id="btn-start" href="#">"Start Scroll Prevent"</a> <a id="btn-stop" href="#">"Stop Scroll Prevent"</a></p>
+  </body>
+</html>
