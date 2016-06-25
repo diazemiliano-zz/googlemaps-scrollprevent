@@ -1,6 +1,6 @@
 ###!
 # googlemaps-scrollprevent (jQuery Google Maps Scroll Prevent Plugin)
-# Version 0.6.2
+# Version 0.6.3
 # URL: https://github.com/diazemiliano/googlemaps-scrollprevent
 # Description: googlemaps-scrollprevent is an easy solution to the problem of
 #              page scrolling with Google Maps.
@@ -205,41 +205,45 @@ do ($ = jQuery) ->
               "left": context.position().left
           Log "Overlay positioned."
 
-        progress = (status="enable") ->
-          progressObject = buttonObject.find(".#{opts.class.progress}")
-          iconObject = buttonObject.find(".#{opts.class.icon}")
+        progress = (status, elm) ->
+          elm = elm
+          progressObject = elm.find ".#{opts.class.progress}"
+          iconObject = elm.find ".#{opts.class.icon}"
+          overlayObject = elm.find ".#{ opts.class.overlay}"
+          iFrameObject = elm.find "iframe"
 
           switch status
             when "enable"
-              iconObject.replaceWith("#{opts.overlay.iconUnloking}")
-              progressObject.css({"width":"100%"})
+              iconObject.replaceWith "#{opts.overlay.iconUnloking}"
+              progressObject.css {"width":"100%"}
               Log "Enabling Map."
 
             when "disable"
-              context.css "pointer-events":"none"
-              iconObject.replaceWith($("#{opts.overlay.iconLocked}"))
-              progressObject.css({"width":"0%"})
+              iFrameObject.css {"pointer-events":"none"}
+              iconObject.replaceWith $("#{opts.overlay.iconLocked}")
+              progressObject.css {"width":"0%"}
               overlayObject.show()
               opts.onMapLock()
               Log "Disabling Map."
 
             when "unlocked"
-              context.css "pointer-events":"auto"
-              iconObject.replaceWith("#{opts.overlay.iconUnlocked}")
-              progressObject.css({"width":"100%"})
+              iFrameObject.css {"pointer-events":"auto"}
+              iconObject.replaceWith "#{opts.overlay.iconUnlocked}"
+              progressObject.css {"width":"100%"}
               overlayObject.hide()
               opts.onMapUnlock()
               Log "Map Enabled."
 
-        runTimeout = ->
-          progress(status="unlocked")
+        runTimeout = (elm)->
+          progress("unlocked", elm)
           clearTimeout(@timeOut)
 
         ### Long Press Down Event ###
         longPressDown = ->
           @mouseDownTime = $.now()
-          @timeOut = setTimeout runTimeout, opts.pressDuration
-          progress()
+          @timeOut = setTimeout runTimeout, opts.pressDuration, $(@)
+
+          progress("enable", $(@))
           Log "LongPress Started."
 
         ### Long Press Up Event ###
@@ -248,9 +252,9 @@ do ($ = jQuery) ->
           clearTimeout(@timeOut)
 
           if @mouseUpTime < opts.pressDuration
-            progress(status="disable")
+            progress("disable", $(@))
           else
-            progress(status="unlocked")
+            progress("unlocked", $(@))
 
           Log "#{@mouseUpTime / 1000}s Pressed. "
           Log "LongPress Stopped."

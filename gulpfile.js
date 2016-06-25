@@ -9,7 +9,8 @@ var
   sourcemaps = require("gulp-sourcemaps"),
   prettify = require('gulp-jsbeautifier'),
   coffee = require("gulp-coffee"),
-  jade = require("gulp-jade");
+  pug = require("gulp-pug"),
+  json = require("./package.json");
 
   // Custom paths
   myPaths = {
@@ -18,7 +19,7 @@ var
       src:"./src/dist/**/*.coffee",
       dest:"./dist/"
     },
-    jade:{
+    pug:{
       src:[
         "./src/examples/**/*.jade",
         "!./src/examples/**/**_**.jade"
@@ -32,7 +33,7 @@ var
 gulp.task("coffee", function() {
   gulp.src(myPaths.coffee.src)
   .pipe(sourcemaps.init())
-  .pipe(coffee({bare:true}))
+  .pipe(coffee("var version=0.0.0",{bare:true}))
   .pipe(prettify({mode: 'VERIFY_AND_WRITE'}))
   .pipe(gulp.dest(myPaths.coffee.dest))
   .pipe(uglify({ preserveComments:"some" }))
@@ -41,20 +42,23 @@ gulp.task("coffee", function() {
   .pipe(gulp.dest(myPaths.coffee.dest));
 });
 
-// Compile Jade Templates
-gulp.task('jade', function() {
-  gulp.src(myPaths.jade.src)
-    .pipe(jade({
-      pretty: true
+// Compile pug Templates
+gulp.task('pug', function buildHTML() {
+  gulp.src(myPaths.pug.src)
+    .pipe(pug({
+      pretty: true,
+      data: {
+        version : json.version
+      }
     }))
-    .pipe(gulp.dest(myPaths.jade.dest))
+    .pipe(gulp.dest(myPaths.pug.dest))
 });
 
 // Watch for Changes
 gulp.task("watch", function() {
   gulp.watch([myPaths.coffee.src], ["coffee"]);
-  gulp.watch([myPaths.jade.src], ["jade"]);
+  gulp.watch([myPaths.pug.src], ["pug"]);
 });
 
 // Do Tasks as Default
-gulp.task("default", ["coffee", "jade", "watch"]);
+gulp.task("default", ["coffee", "pug", "watch"]);
