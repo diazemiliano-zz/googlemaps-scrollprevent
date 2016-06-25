@@ -16,11 +16,9 @@
     var googleMapSelector;
     googleMapSelector = $("iframe[id*='gmap-prevent-']");
     $("#btn-start").click(function() {
-      googleMapSelector.each(function() {
-        return $(this).scrollprevent({
-          printLog: true
-        }).start();
-      });
+      googleMapSelector.scrollprevent({
+        printLog: true
+      }).start();
       return $("#btn-stop").click(function() {
         return googleMapSelector.scrollprevent().stop();
       });

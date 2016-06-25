@@ -10,8 +10,8 @@ block content
       $ ->
         googleMapSelector = $("iframe[id*='gmap-prevent-']")
         $("#btn-start").click ->
-          googleMapSelector.each () ->
-            $(@).scrollprevent {
+          googleMapSelector
+            .scrollprevent {
               printLog:true
             }
             .start()
