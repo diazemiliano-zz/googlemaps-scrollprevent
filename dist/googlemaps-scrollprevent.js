@@ -1,11 +1,11 @@
 /*!
  * googlemaps-scrollprevent (jQuery Google Maps Scroll Prevent Plugin)
- * Version 0.6.3
+ * Version 0.6.4
  * URL: https://github.com/diazemiliano/googlemaps-scrollprevent
  * Description: googlemaps-scrollprevent is an easy solution to the problem of
  *              page scrolling with Google Maps.
  * Author: Emiliano Díaz https://github.com/diazemiliano/
- * Copyright: The MIT License (MIT) Copyright (c) 2015 Emiliano Díaz.
+ * Copyright: The MIT License (MIT) Copyright (c) 2016 Emiliano Díaz.
  */
 
 (function() {
@@ -14,7 +14,7 @@
     (function($) {
         return $.fn.extend({
             scrollprevent: function(options) {
-                var Log, applyCss, bindEvents, buttonObject, context, coverObject, defaults, item, longPressDown, longPressUp, mapCSS, opts, overlayObject, progress, ref, runTimeout, value, wrapIframe, wrapObject;
+                var Log, applyCss, bindEvents, buttonObject, context, coverObject, defaults, item, itemClass, longPressDown, longPressUp, mapCSS, opts, overlayObject, progress, ref, runTimeout, value, wrapIframe, wrapObject;
                 defaults = {
                     "class": {
 
@@ -39,9 +39,9 @@
 
                     /* Buton Icons */
                     overlay: {
-                        iconLocked: "<svg class=\"mapscroll-icon-locked\" xmlns=\"http://www.w3.org/2000/svg\" width=\"22\" height=\"22\" viewBox=\"0 0 1792 1792\" > <path transform=\"translate(1)\" d=\"M640 768h512v-192q0-106-75-181t-181-75-181 75-75 181v192zm832 96v576q0 40-28 68t-68 28h-960q-40 0-68-28t-28-68v-576q0-40 28-68t68-28h32v-192q0-184 132-316t316-132 316 132 132 316v192h32q40 0 68 28t28 68z\" /> </svg>",
-                        iconUnloking: "<svg class=\"mapscroll-icon-unlocking\" xmlns=\"http://www.w3.org/2000/svg\" width=\"22\" height=\"22\" viewBox=\"0 0 1792 1792\"> <path transform=\"translate(1)\" d=\"M1376 768q40 0 68 28t28 68v576q0 40-28 68t-68 28h-960q-40 0-68-28t-28-68v-576q0-40 28-68t68-28h32v-320q0-185 131.5-316.5t316.5-131.5 316.5 131.5 131.5 316.5q0 26-19 45t-45 19h-64q-26 0-45-19t-19-45q0-106-75-181t-181-75-181 75-75 181v320h736z\" /> </svg>",
-                        iconUnlocked: "<svg class=\"mapscroll-icon-unlocked\" xmlns=\"http://www.w3.org/2000/svg\" width=\"22\" height=\"22\" viewBox=\"0 0 1792 1792\"> <path transform=\"translate(1)\" d=\"M1728 576v256q0 26-19 45t-45 19h-64q-26 0-45-19t-19-45v-256q0-106-75-181t-181-75-181 75-75 181v192h96q40 0 68 28t28 68v576q0 40-28 68t-68 28h-960q-40 0-68-28t-28-68v-576q0-40 28-68t68-28h672v-192q0-185 131.5-316.5t316.5-131.5 316.5 131.5 131.5 316.5z\" /> </svg>"
+                        iconLocked: "<svg class=\"mapscroll-icon-locked mapscroll-icon\" xmlns=\"http://www.w3.org/2000/svg\" width=\"22\" height=\"22\" viewBox=\"0 0 1792 1792\" > <path transform=\"translate(1)\" d=\"M640 768h512v-192q0-106-75-181t-181-75-181 75-75 181v192zm832 96v576q0 40-28 68t-68 28h-960q-40 0-68-28t-28-68v-576q0-40 28-68t68-28h32v-192q0-184 132-316t316-132 316 132 132 316v192h32q40 0 68 28t28 68z\" /> </svg>",
+                        iconUnloking: "<svg class=\"mapscroll-icon-unlocking mapscroll-icon\" xmlns=\"http://www.w3.org/2000/svg\" width=\"22\" height=\"22\" viewBox=\"0 0 1792 1792\"> <path transform=\"translate(1)\" d=\"M1376 768q40 0 68 28t28 68v576q0 40-28 68t-68 28h-960q-40 0-68-28t-28-68v-576q0-40 28-68t68-28h32v-320q0-185 131.5-316.5t316.5-131.5 316.5 131.5 131.5 316.5q0 26-19 45t-45 19h-64q-26 0-45-19t-19-45q0-106-75-181t-181-75-181 75-75 181v320h736z\" /> </svg>",
+                        iconUnlocked: "<svg class=\"mapscroll-icon-unlocked mapscroll-icon\" xmlns=\"http://www.w3.org/2000/svg\" width=\"22\" height=\"22\" viewBox=\"0 0 1792 1792\"> <path transform=\"translate(1)\" d=\"M1728 576v256q0 26-19 45t-45 19h-64q-26 0-45-19t-19-45v-256q0-106-75-181t-181-75-181 75-75 181v192h96q40 0 68 28t28 68v576q0 40-28 68t-68 28h-960q-40 0-68-28t-28-68v-576q0-40 28-68t68-28h672v-192q0-185 131.5-316.5t316.5-131.5 316.5 131.5 131.5 316.5z\" /> </svg>"
                     },
 
                     /* Callbaks */
@@ -75,19 +75,15 @@
                     Log(context.length + " iFrames detected.");
                     mapCSS = "/* --- mapScrollPrevent.js CSS Classes --- */ ." + opts["class"].overlay + " { position: absolute; overflow:hidden; cursor: pointer; text-align: center; background-color: rgba(0, 0, 0, 0); } ." + opts["class"].button + " { text-rendering: optimizeLegibility; font-family: Lato, 'Helvetica Neue', Helvetica, Arial, sans-serif; font-size: 13px; padding-top: 15px; padding-bottom: 15px; width: 55px; position: absolute; right: 43px; bottom: 29px; border-color: rgba(0, 0, 0, 0.3); color: rgba(58, 132, 223, 0); background-color: rgba(255, 255, 255, 1); color: rgb(58, 132, 223); border-top-right-radius: 2px; border-top-left-radius: 2px; box-shadow: rgba(0, 0, 0, 0.3) 0px 1px 4px -1px; } ." + opts["class"].icon + " { position: relative; z-index: 1; fill: rgba(58, 132, 223, 1); } ." + opts["class"].progress + " { position: absolute; top: 0; bottom: 0; left: 0; width: 0%; display: block; background-color: rgba(58, 132, 223, 0.4); } ." + opts["class"].wrap + " { position: relative; text-align: center; display: inline-block; } ." + opts["class"].wrap + " iframe { position: relative; top: 0; left: 0; } ." + opts["class"].overlay + ", ." + opts["class"].button + ", ." + opts["class"].icon + " { transition: all .3s ease-in-out; } ." + opts["class"].progress + " { transition: width " + (opts.pressDuration / 1000) + "s linear; }";
 
-                    /* Change the SVG Icon classes if founded.
-                    Otherwise replace with default icons
-                     */
+                    /* Change the SVG Icon classes if founded. */
                     ref = opts.overlay;
                     for (item in ref) {
                         if (!hasProp.call(ref, item)) continue;
                         value = ref[item];
-                        if ($("" + value).find("svg")) {
-                            Log("SVG Icons founded... Replacing classes.");
-                            opts.overlay["" + item] = $("" + value).attr("class", opts["class"].icon + " {$(\"" + value + "\").attr(\"class\")").prop('outerHTML');
-                        } else {
-                            opts.overlay["" + item] = defaults.overlay["" + item];
-                            Log("Invalid Icons founded... Replacing with defaults.");
+                        if ($(value).find("svg")) {
+                            Log("SVG Icons founded... Replacing classes in " + value + ".");
+                            itemClass = item.split("icon");
+                            item = $(value).attr("class", opts["class"].icon + "-" + itemClass[1] + " " + opts["class"].icon).html();
                         }
                     }
 
@@ -145,7 +141,7 @@
                                 iFrameObject.css({
                                     "pointer-events": "none"
                                 });
-                                iconObject.replaceWith($("" + opts.overlay.iconLocked));
+                                iconObject.replaceWith("" + opts.overlay.iconLocked);
                                 progressObject.css({
                                     "width": "0%"
                                 });

@@ -1,11 +1,11 @@
 ###!
 # googlemaps-scrollprevent (jQuery Google Maps Scroll Prevent Plugin)
-# Version 0.6.3
+# Version 0.6.4
 # URL: https://github.com/diazemiliano/googlemaps-scrollprevent
 # Description: googlemaps-scrollprevent is an easy solution to the problem of
 #              page scrolling with Google Maps.
 # Author: Emiliano Díaz https://github.com/diazemiliano/
-# Copyright: The MIT License (MIT) Copyright (c) 2015 Emiliano Díaz.
+# Copyright: The MIT License (MIT) Copyright (c) 2016 Emiliano Díaz.
 ###
 
 # Reference jQuery
@@ -30,18 +30,17 @@ do ($ = jQuery) ->
         ### Buton Icons ###
         overlay:
           iconLocked :
-            "<svg class=\"mapscroll-icon-locked\" xmlns=\"http://www.w3.org/2000/svg\" width=\"22\" height=\"22\" viewBox=\"0 0 1792 1792\" >
+            "<svg class=\"mapscroll-icon-locked mapscroll-icon\" xmlns=\"http://www.w3.org/2000/svg\" width=\"22\" height=\"22\" viewBox=\"0 0 1792 1792\" >
               <path transform=\"translate(1)\" d=\"M640 768h512v-192q0-106-75-181t-181-75-181 75-75 181v192zm832 96v576q0 40-28 68t-68 28h-960q-40 0-68-28t-28-68v-576q0-40 28-68t68-28h32v-192q0-184 132-316t316-132 316 132 132 316v192h32q40 0 68 28t28 68z\" />
             </svg>"
-          iconUnloking:
-            "<svg class=\"mapscroll-icon-unlocking\" xmlns=\"http://www.w3.org/2000/svg\" width=\"22\" height=\"22\" viewBox=\"0 0 1792 1792\">
+          iconUnloking :
+            "<svg class=\"mapscroll-icon-unlocking mapscroll-icon\" xmlns=\"http://www.w3.org/2000/svg\" width=\"22\" height=\"22\" viewBox=\"0 0 1792 1792\">
               <path transform=\"translate(1)\" d=\"M1376 768q40 0 68 28t28 68v576q0 40-28 68t-68 28h-960q-40 0-68-28t-28-68v-576q0-40 28-68t68-28h32v-320q0-185 131.5-316.5t316.5-131.5 316.5 131.5 131.5 316.5q0 26-19 45t-45 19h-64q-26 0-45-19t-19-45q0-106-75-181t-181-75-181 75-75 181v320h736z\" />
             </svg>"
-          iconUnlocked:
-            "<svg class=\"mapscroll-icon-unlocked\" xmlns=\"http://www.w3.org/2000/svg\" width=\"22\" height=\"22\" viewBox=\"0 0 1792 1792\">
+          iconUnlocked :
+            "<svg class=\"mapscroll-icon-unlocked mapscroll-icon\" xmlns=\"http://www.w3.org/2000/svg\" width=\"22\" height=\"22\" viewBox=\"0 0 1792 1792\">
               <path transform=\"translate(1)\" d=\"M1728 576v256q0 26-19 45t-45 19h-64q-26 0-45-19t-19-45v-256q0-106-75-181t-181-75-181 75-75 181v192h96q40 0 68 28t28 68v576q0 40-28 68t-68 28h-960q-40 0-68-28t-28-68v-576q0-40 28-68t68-28h672v-192q0-185 131.5-316.5t316.5-131.5 316.5 131.5 131.5 316.5z\" />
             </svg>"
-
 
         ### Callbaks ###
         onMapLock : ->
@@ -132,20 +131,18 @@ do ($ = jQuery) ->
           }
           "
 
-        ### Change the SVG Icon classes if founded.
-        Otherwise replace with default icons ###
+        ### Change the SVG Icon classes if founded. ###
         for own item, value of opts.overlay
-          if $("#{value}").find("svg")
-            Log "SVG Icons founded... Replacing classes."
-            opts.overlay["#{item}"] =
-              $("#{value}")
+          if $(value).find("svg")
+            Log "SVG Icons founded... Replacing classes in #{value}."
+            itemClass = item.split "icon"
+
+            item =
+              $(value)
                 .attr(
                   "class",
-                  "#{opts.class.icon} {$(\"#{value}\").attr(\"class\")"
-                ).prop('outerHTML')
-          else
-            opts.overlay["#{item}"] = defaults.overlay["#{item}"]
-            Log "Invalid Icons founded... Replacing with defaults."
+                  "#{opts.class.icon}-#{itemClass[1]} #{opts.class.icon}"
+                ).html()
 
         ### Creates overlay object ###
         overlayObject =
@@ -159,7 +156,6 @@ do ($ = jQuery) ->
             #{opts.overlay.iconLocked}
           </div>
           ")
-
 
         wrapObject =
           $("<div class=#{ opts.class.wrap }></div>")
@@ -220,7 +216,7 @@ do ($ = jQuery) ->
 
             when "disable"
               iFrameObject.css {"pointer-events":"none"}
-              iconObject.replaceWith $("#{opts.overlay.iconLocked}")
+              iconObject.replaceWith "#{opts.overlay.iconLocked}"
               progressObject.css {"width":"0%"}
               overlayObject.show()
               opts.onMapLock()
