@@ -8,12 +8,12 @@ This jQuery plugin is written with [CoffeeScript](http://coffeescript.org/) that
 **Please** if you are using this plugin open an [Issue](https://github.com/diazemiliano/googlemaps-scrollprevent/labels/showcase) with the tag ```showcase```. If this plugin was helpful for you saving some time and effort. Can consider *donate* as a thank you. Thanks!
 
 #### Details
-* [![License MIT](https://img.shields.io/badge/license-MIT-blue.svg)](https://github.com/diazemiliano/googlemaps-scrollprevent/blob/master/LICENSE)
-* [![Website Link](https://img.shields.io/badge/website-http%3A%2F%2Fdiazemiliano.github.io%2Fgooglemaps--scrollprevent-blue.svg)](http://diazemiliano.github.io/googlemaps-scrollprevent/)
-* [![Donate](https://img.shields.io/badge/Donate-PayPal-brightgreen.svg)](https://www.paypal.com/cgi-bin/webscr?cmd=_s-xclick&hosted_button_id=ZKPEV6DZ2RQ78)
+[![License MIT](https://img.shields.io/badge/license-MIT-blue.svg)](https://github.com/diazemiliano/googlemaps-scrollprevent/blob/master/LICENSE)
+<br/>[![Website Link](https://img.shields.io/badge/website-http%3A%2F%2Fdiazemiliano.github.io%2Fgooglemaps--scrollprevent-blue.svg)](http://diazemiliano.github.io/googlemaps-scrollprevent/)
+<br/>[![Donate](https://img.shields.io/badge/Donate-PayPal-brightgreen.svg)](https://www.paypal.com/cgi-bin/webscr?cmd=_s-xclick&hosted_button_id=ZKPEV6DZ2RQ78)
 
 #### Available For
-* [![jQuery v0.6.4](https://img.shields.io/badge/jQuery-0.6.4-green.svg)](https://github.com/diazemiliano/googlemaps-scrollprevent/releases)
+[![jQuery v0.6.4](https://img.shields.io/badge/jQuery-0.6.4-green.svg)](https://github.com/diazemiliano/googlemaps-scrollprevent/releases)
 
 ## Table of contents
 - [Examples](#examples)
