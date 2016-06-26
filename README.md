@@ -10,7 +10,6 @@ This jQuery plugin is written with [CoffeeScript](http://coffeescript.org/) that
 
 #### Available For
 * [![jQuery v0.6.4](https://img.shields.io/badge/jQuery-0.6.4-brightgreen.svg)](https://github.com/diazemiliano/googlemaps-scrollprevent/releases)
-* [![Wordpress v0.1.0](https://img.shields.io/badge/Wordpress-0.1.0-brightgreen.svg)](https://github.com/diazemiliano/googlemaps-scrollprevent/tree/wordpress) *Sorry Currently Outdated!*
 
 ## Table of contents
 - [Examples](#examples)
