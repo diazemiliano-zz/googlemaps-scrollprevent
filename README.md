@@ -1,5 +1,6 @@
 # googlemaps-scrollprevent.js
 **Avoid unwanted map interactions with the Google Maps Iframe.**
+**Disable mouse scroll wheel zoom on embedded Google Maps**
 googlemaps-scrollprevent is an easy solution to the problem of page scrolling with new "[Google Maps Iframe Embed](https://developers.google.com/maps/documentation/embed/guide)".
 This [jQuery](http://www.jquery.com) and **Wordpress** plugin prevents Google Maps iframe from capturing the mouse's scrolling **wheel / touch** scrolling behavior wrapping the ``` <iframe>  ``` with a transparent ``` <div> ``` on **mouse / touch hover**, so you must **click / tap** the unlock button to toggle the normal navigation. See the [Live Demo.](http://diazemiliano.github.io/googlemaps-scrollprevent)
 This jQuery plugin is written with [CoffeeScript](http://coffeescript.org/) that compiles in JavaScript, so the source files are a little different from standard JavaScript.
