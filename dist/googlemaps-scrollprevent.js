@@ -216,11 +216,11 @@
                         /* Removes everything */
                         stop: function() {
                             Log("Stopping plugin...");
+                            $("." + opts["class"].overlay + ", ." + opts["class"].button).remove();
                             context.removeAttr("style");
                             if (context.parent().is("." + opts["class"].wrap)) {
                                 context.unwrap();
                             }
-                            $("." + opts["class"].overlay).remove();
                             return Log("Plugin Stopped.");
                         }
                     };
