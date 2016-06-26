@@ -8,7 +8,7 @@ This jQuery plugin is written with [CoffeeScript](http://coffeescript.org/) that
 **Please** if you are using this plugin open an [Issue](https://github.com/diazemiliano/googlemaps-scrollprevent/labels/showcase) with the tag ```showcase```. Thanks!
 
 
-If this plugin was helpful for you saving some time and effort.Can consider [![Donate](https://www.paypalobjects.com/en_US/i/btn/btn_donate_SM.gif)](https://www.paypal.com/cgi-bin/webscr?cmd=_s-xclick&hosted_button_id=ZKPEV6DZ2RQ78) as a thank you.
+If this plugin was helpful for you saving some time and effort.<br/> Can consider [![Donate](https://www.paypalobjects.com/en_US/i/btn/btn_donate_SM.gif)](https://www.paypal.com/cgi-bin/webscr?cmd=_s-xclick&hosted_button_id=ZKPEV6DZ2RQ78) as a thank you.
 
 #### Details
 * [![License MIT](https://img.shields.io/badge/license-MIT-blue.svg)](https://github.com/diazemiliano/googlemaps-scrollprevent/blob/master/LICENSE)
