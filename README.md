@@ -14,7 +14,8 @@ This jQuery plugin is written with [CoffeeScript](http://coffeescript.org/) that
 
 ## Table of contents
 - [Examples](#examples)
-- [Usage](#usage-as-jquery-plugin)
+- [Usage as JQuery Plugin](#usage-as-jquery-plugin)
+- [Usage in Wordpress](#usage-in-wordpress)
 - [Default Options](#default-options)
 - [Build From Source](#build-from-source)
 - [License](#license)
@@ -34,7 +35,7 @@ For usage examples check the [live demo](http://diazemiliano.github.io/googlemap
     </head>
     ```
 
-1. Start mapScrollOff including the following code.
+1. Start mapScrollPrevent including the following code.
 
     ``` html
     <script type="text/javascript">
@@ -85,6 +86,36 @@ For usage examples check the [live demo](http://diazemiliano.github.io/googlemap
      });
     });
     ```
+## Usage in Wordpress
+  1. Enqueue a script with jQuery as a dependency in yout ```functions.php```
+
+  ``` php
+    <?php
+    //  PHP
+
+    // First Enqueue the plugin
+    function mapScrollPrevent_plugin() {
+        wp_enqueue_script( 'mapScrollPrevent', 'https://cdn.rawgit.com/diazemiliano/mapScrollPrevent/master/dist/mapScrollPrevent.min.js', array( 'jquery' ) , '0.6.4', true );
+    }
+
+    // Second Enqueue the script
+    function mapScrollPrevent_script()
+        {
+          echo '
+            <script type="text/javascript">
+              $(function() {
+                var googleMapSelector = "iframe[src*=\"google.com/maps\"]";
+                var options = { pressDuration: 1000 };
+                $(googleMapSelector).scrollprevent(options).start();
+              });
+            </script>
+          ';
+        }
+
+    // Do the hook
+    add_action( 'wp_enqueue_scripts', 'mapScrollPrevent-plugin' );
+    add_action( 'wp_head', 'mapScrollPrevent-script' );
+  ```
 
 ## Default Options
 ``` javascript
