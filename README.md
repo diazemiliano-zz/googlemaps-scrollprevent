@@ -86,10 +86,11 @@ For usage examples check the [live demo](http://diazemiliano.github.io/googlemap
      });
     });
     ```
+
 ## Usage in Wordpress
   1. Enqueue a script with jQuery as a dependency in yout ```functions.php```
 
-  ``` php
+    ``` php
     <?php
     //  PHP
 
@@ -115,7 +116,7 @@ For usage examples check the [live demo](http://diazemiliano.github.io/googlemap
     // Do the hook
     add_action( 'wp_enqueue_scripts', 'mapScrollPrevent-plugin' );
     add_action( 'wp_head', 'mapScrollPrevent-script' );
-  ```
+    ```
 
 ## Default Options
 ``` javascript
