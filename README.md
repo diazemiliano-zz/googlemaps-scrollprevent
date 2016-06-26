@@ -1,5 +1,6 @@
 # googlemaps-scrollprevent.js
 **Avoid unwanted map interactions with the Google Maps Iframe.**
+**Disable mouse scroll wheel zoom on embedded Google Maps**
 googlemaps-scrollprevent is an easy solution to the problem of page scrolling with new "[Google Maps Iframe Embed](https://developers.google.com/maps/documentation/embed/guide)".
 This [jQuery](http://www.jquery.com) and **Wordpress** plugin prevents Google Maps iframe from capturing the mouse's scrolling **wheel / touch** scrolling behavior wrapping the ``` <iframe>  ``` with a transparent ``` <div> ``` on **mouse / touch hover**, so you must **click / tap** the unlock button to toggle the normal navigation. See the [Live Demo.](http://diazemiliano.github.io/googlemaps-scrollprevent)
 This jQuery plugin is written with [CoffeeScript](http://coffeescript.org/) that compiles in JavaScript, so the source files are a little different from standard JavaScript.
@@ -30,7 +31,7 @@ For usage examples check the [live demo](http://diazemiliano.github.io/googlemap
       // jQuery Google CDN
       <script type="text/javascript" src="https://ajax.googleapis.com/ajax/libs/jquery/2.1.4/jquery.min.js?ver=2.1.4"></script>
       // googlemaps-scrollprevent rawgit CDN
-      <script type="text/javascript" src="https://cdn.rawgit.com/diazemiliano/googlemaps-scrollprevent/master/dist/googlemaps-scrollprevent.js"></script>
+      <script type="text/javascript" src="https://cdn.rawgit.com/diazemiliano/googlemaps-scrollprevent/master/dist/googlemaps-scrollprevent.min.js"></script>
     </head>
     ```
 
@@ -152,11 +153,12 @@ To build from source you can use the ```packaje.json``` file to install all "dev
 
 1. Download or Clone this repo with a ```git``` client.
 2. Install ```node.js```.
-3. Do a ```npm install``` in your terminal.
-4. Edit your ```googlemaps-scrollprevent.coffee``` soruce file.
-5. Do a ````gulp compress```` task in your terminal.
-6. Use the newly compiled ```googlemaps-scrollprevent.min.js``` file in the ```./dist/``` folder.
-7. If you make *cool* improvements please contribute.
+3. Install gulp globally ```npm install gulp -g```.
+4. Do a ```npm update --save-dev``` in your terminal.
+5. Edit your ```googlemaps-scrollprevent.coffee``` source file.
+6. Do a ```gulp coffee``` or ```gulp watch``` task in your terminal.
+7. Use the newly compiled ```googlemaps-scrollprevent.min.js``` file in the ```./dist/``` folder.
+8. If you make *cool* improvements please fork and contribute.
 
 ## License
 **The MIT License (MIT)**
