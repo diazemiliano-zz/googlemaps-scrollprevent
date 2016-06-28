@@ -7,8 +7,8 @@
   - [x] ~~Name changed to googlemaps-scrollprevent~~
   - [x] ~~Check responsive styles.~~
   - [x] ~~Fix Unlock button position.~~  
-  - [ ] Clean Events.
-  - [ ] Check Wordpress Plugin.
+  - [x] ~~Clean Events.~~ 
+  - [x] ~~Check Wordpress Plugin.~~  Deprecated!
 
 *From Here: New Long Press Approach*
 
