@@ -1,0 +1,243 @@
+<!DOCTYPE html>
+<html lang="en-us">
+  <head>
+    <meta charset="UTF-8">
+    <title>Googlemaps-scrollprevent by diazemiliano</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <link rel="stylesheet" type="text/css" href="stylesheets/normalize.css" media="screen">
+    <link href='https://fonts.googleapis.com/css?family=Open+Sans:400,700' rel='stylesheet' type='text/css'>
+    <link rel="stylesheet" type="text/css" href="stylesheets/stylesheet.css" media="screen">
+    <link rel="stylesheet" type="text/css" href="stylesheets/github-light.css" media="screen">
+  </head>
+  <body>
+    <section class="page-header">
+      <h1 class="project-name">Googlemaps-scrollprevent</h1>
+      <h2 class="project-tagline">:lock: googlemaps-scrollprevent avoid unwanted map interactions with the Google Maps Iframe.</h2>
+      <a href="https://github.com/diazemiliano/googlemaps-scrollprevent" class="btn">View on GitHub</a>
+      <a href="https://github.com/diazemiliano/googlemaps-scrollprevent/zipball/master" class="btn">Download .zip</a>
+      <a href="https://github.com/diazemiliano/googlemaps-scrollprevent/tarball/master" class="btn">Download .tar.gz</a>
+    </section>
+
+    <section class="main-content">
+      <h1>
+<a id="googlemaps-scrollpreventjs" class="anchor" href="#googlemaps-scrollpreventjs" aria-hidden="true"><span aria-hidden="true" class="octicon octicon-link"></span></a>googlemaps-scrollprevent.js</h1>
+
+<p><strong>Avoid unwanted map interactions with the Google Maps Iframe.</strong>
+<strong>Disable mouse scroll wheel zoom on embedded Google Maps</strong>
+googlemaps-scrollprevent is an easy solution to the problem of page scrolling with new "<a href="https://developers.google.com/maps/documentation/embed/guide">Google Maps Iframe Embed</a>".
+This <a href="http://www.jquery.com">jQuery</a> and <strong>Wordpress</strong> plugin prevents Google Maps iframe from capturing the mouse's scrolling <strong>wheel / touch</strong> scrolling behavior wrapping the <code>&lt;iframe&gt;</code> with a transparent <code>&lt;div&gt;</code> on <strong>mouse / touch hover</strong>, so you must <strong>click / tap</strong> the unlock button to toggle the normal navigation. See the <a href="http://diazemiliano.github.io/googlemaps-scrollprevent">Live Demo.</a>
+This jQuery plugin is written with <a href="http://coffeescript.org/">CoffeeScript</a> that compiles in JavaScript, so the source files are a little different from standard JavaScript.</p>
+
+<p><strong>Please</strong> if you are using this plugin open an <a href="https://github.com/diazemiliano/googlemaps-scrollprevent/labels/showcase">Issue</a> with the tag <code>showcase</code>. If this plugin was helpful for you saving some time and effort. Can consider <em>donate</em> as a thank you. Thanks!</p>
+
+<h4>
+<a id="details" class="anchor" href="#details" aria-hidden="true"><span aria-hidden="true" class="octicon octicon-link"></span></a>Details</h4>
+
+<p><a href="https://github.com/diazemiliano/googlemaps-scrollprevent/blob/master/LICENSE"><img src="https://img.shields.io/badge/license-MIT-blue.svg" alt="License MIT"></a>
+<br><a href="http://diazemiliano.github.io/googlemaps-scrollprevent/"><img src="https://img.shields.io/badge/website-http%3A%2F%2Fdiazemiliano.github.io%2Fgooglemaps--scrollprevent-blue.svg" alt="Website Link"></a>
+<br><a href="https://www.paypal.com/cgi-bin/webscr?cmd=_s-xclick&amp;hosted_button_id=ZKPEV6DZ2RQ78"><img src="https://img.shields.io/badge/Donate-PayPal-brightgreen.svg" alt="Donate"></a></p>
+
+<h4>
+<a id="available-for" class="anchor" href="#available-for" aria-hidden="true"><span aria-hidden="true" class="octicon octicon-link"></span></a>Available For</h4>
+
+<p><a href="https://github.com/diazemiliano/googlemaps-scrollprevent/releases"><img src="https://img.shields.io/badge/jQuery-0.6.4-green.svg" alt="jQuery v0.6.4"></a></p>
+
+<h2>
+<a id="table-of-contents" class="anchor" href="#table-of-contents" aria-hidden="true"><span aria-hidden="true" class="octicon octicon-link"></span></a>Table of contents</h2>
+
+<ul>
+<li><a href="#examples">Examples</a></li>
+<li><a href="#usage-as-jquery-plugin">Usage as JQuery Plugin</a></li>
+<li><a href="#usage-in-wordpress">Usage in Wordpress</a></li>
+<li><a href="#default-options">Default Options</a></li>
+<li><a href="#build-from-source">Build From Source</a></li>
+<li><a href="#license">License</a></li>
+</ul>
+
+<h2>
+<a id="examples" class="anchor" href="#examples" aria-hidden="true"><span aria-hidden="true" class="octicon octicon-link"></span></a>Examples</h2>
+
+<p>For usage examples check the <a href="http://diazemiliano.github.io/googlemaps-scrollprevent">live demo</a>.</p>
+
+<h2>
+<a id="usage-as-jquery-plugin" class="anchor" href="#usage-as-jquery-plugin" aria-hidden="true"><span aria-hidden="true" class="octicon octicon-link"></span></a>Usage as jQuery plugin</h2>
+
+<ol>
+<li>
+<p>Include jQuery and googlemaps-scrollprevent Libs in your html.</p>
+
+<div class="highlight highlight-text-html-basic"><pre>&lt;<span class="pl-ent">head</span>&gt;
+  // jQuery Google CDN
+<span class="pl-s1">  &lt;<span class="pl-ent">script</span> <span class="pl-e">type</span>=<span class="pl-s"><span class="pl-pds">"</span>text/javascript<span class="pl-pds">"</span></span> <span class="pl-e">src</span>=<span class="pl-s"><span class="pl-pds">"</span>https://ajax.googleapis.com/ajax/libs/jquery/2.1.4/jquery.min.js?ver=2.1.4<span class="pl-pds">"</span></span>&gt;&lt;/<span class="pl-ent">script</span>&gt;</span>
+  // googlemaps-scrollprevent rawgit CDN
+<span class="pl-s1">  &lt;<span class="pl-ent">script</span> <span class="pl-e">type</span>=<span class="pl-s"><span class="pl-pds">"</span>text/javascript<span class="pl-pds">"</span></span> <span class="pl-e">src</span>=<span class="pl-s"><span class="pl-pds">"</span>https://cdn.rawgit.com/diazemiliano/googlemaps-scrollprevent/master/dist/googlemaps-scrollprevent.min.js<span class="pl-pds">"</span></span>&gt;&lt;/<span class="pl-ent">script</span>&gt;</span>
+&lt;/<span class="pl-ent">head</span>&gt;</pre></div>
+</li>
+<li>
+<p>Start mapScrollPrevent including the following code.</p>
+
+<div class="highlight highlight-text-html-basic"><pre><span class="pl-s1">&lt;<span class="pl-ent">script</span> <span class="pl-e">type</span>=<span class="pl-s"><span class="pl-pds">"</span>text/javascript<span class="pl-pds">"</span></span>&gt;</span>
+<span class="pl-s1"><span class="pl-en">$</span>(<span class="pl-k">function</span>() {</span>
+<span class="pl-s1">  <span class="pl-c">// Only Google Maps Selector</span></span>
+<span class="pl-s1">  <span class="pl-k">var</span> googleMapSelector <span class="pl-k">=</span> <span class="pl-s"><span class="pl-pds">"</span>iframe[src*=<span class="pl-cce">\"</span>google.com/maps<span class="pl-cce">\"</span>]<span class="pl-pds">"</span></span>;</span>
+<span class="pl-s1">  <span class="pl-en">$</span>(googleMapSelector).<span class="pl-en">scrollprevent</span>().<span class="pl-c1">start</span>();</span>
+<span class="pl-s1">});</span>
+<span class="pl-s1">&lt;/<span class="pl-ent">script</span>&gt;</span></pre></div>
+
+<p>Or Stop with:</p>
+
+<div class="highlight highlight-source-js"><pre><span class="pl-c">// JavaScript</span>
+
+<span class="pl-c">// Stop</span>
+<span class="pl-en">$</span>(googleMapSelector).<span class="pl-en">scrollprevent</span>().<span class="pl-c1">stop</span>();</pre></div>
+</li>
+<li>
+<p>Edit defaults.</p>
+
+<div class="highlight highlight-text-html-basic"><pre><span class="pl-s1">&lt;<span class="pl-ent">script</span> <span class="pl-e">type</span>=<span class="pl-s"><span class="pl-pds">"</span>text/javascript<span class="pl-pds">"</span></span>&gt;</span>
+<span class="pl-s1"><span class="pl-en">$</span>(<span class="pl-k">function</span>() {</span>
+<span class="pl-s1">  <span class="pl-c">// Only Google Maps Selector</span></span>
+<span class="pl-s1">  <span class="pl-k">var</span> googleMapSelector <span class="pl-k">=</span> <span class="pl-s"><span class="pl-pds">"</span>iframe[src*=<span class="pl-cce">\"</span>google.com/maps<span class="pl-cce">\"</span>]<span class="pl-pds">"</span></span>;</span>
+<span class="pl-s1">  <span class="pl-k">var</span> options <span class="pl-k">=</span> { pressDuration<span class="pl-k">:</span> <span class="pl-c1">1000</span> };</span>
+<span class="pl-s1">  <span class="pl-en">$</span>(googleMapSelector).<span class="pl-en">scrollprevent</span>(options).<span class="pl-c1">start</span>();</span>
+<span class="pl-s1">});</span>
+<span class="pl-s1">&lt;/<span class="pl-ent">script</span>&gt;</span></pre></div>
+</li>
+<li>
+<p>With Callbacks</p>
+
+<div class="highlight highlight-source-js"><pre><span class="pl-c">// JavaScript</span>
+<span class="pl-en">$</span>(<span class="pl-k">function</span>(){
+ <span class="pl-en">$</span>(<span class="pl-s"><span class="pl-pds">"</span>#btn-start<span class="pl-pds">"</span></span>).<span class="pl-c1">click</span>(<span class="pl-k">function</span>(){
+   <span class="pl-en">$</span>(<span class="pl-s"><span class="pl-pds">"</span>iframe[src*='google.com/maps']<span class="pl-pds">"</span></span>).<span class="pl-en">scrollprevent</span>({
+       <span class="pl-en">onMapLock</span><span class="pl-k">:</span> <span class="pl-k">function</span>() {
+         <span class="pl-c">// Your code here.</span>
+         <span class="pl-en">alert</span>(<span class="pl-s"><span class="pl-pds">"</span>Map Locked<span class="pl-pds">"</span></span>)
+       },
+       <span class="pl-en">onMapUnlock</span><span class="pl-k">:</span> <span class="pl-k">function</span>() {
+         <span class="pl-c">// Your code here.</span>
+         <span class="pl-en">alert</span>(<span class="pl-s"><span class="pl-pds">"</span>Map Unlocked<span class="pl-pds">"</span></span>)
+       }
+   }).<span class="pl-c1">start</span>();
+ });
+});</pre></div>
+</li>
+</ol>
+
+<h2>
+<a id="usage-in-wordpress" class="anchor" href="#usage-in-wordpress" aria-hidden="true"><span aria-hidden="true" class="octicon octicon-link"></span></a>Usage in Wordpress</h2>
+
+<ol>
+<li>
+<p>Enqueue a script with jQuery as a dependency in yout <code>functions.php</code></p>
+
+<div class="highlight highlight-text-html-php"><pre><span class="pl-pse">&lt;?php</span><span class="pl-s1"></span>
+<span class="pl-s1"><span class="pl-c">//  PHP</span></span>
+<span class="pl-s1"></span>
+<span class="pl-s1"><span class="pl-c">// First Enqueue the plugin</span></span>
+<span class="pl-s1"><span class="pl-k">function</span> <span class="pl-en">mapScrollPrevent_plugin</span>() {</span>
+<span class="pl-s1">    wp_enqueue_script( <span class="pl-s"><span class="pl-pds">'</span>mapScrollPrevent<span class="pl-pds">'</span></span>, <span class="pl-s"><span class="pl-pds">'</span>https://cdn.rawgit.com/diazemiliano/mapScrollPrevent/master/dist/mapScrollPrevent.min.js<span class="pl-pds">'</span></span>, <span class="pl-c1">array</span>( <span class="pl-s"><span class="pl-pds">'</span>jquery<span class="pl-pds">'</span></span> ) , <span class="pl-s"><span class="pl-pds">'</span>0.6.4<span class="pl-pds">'</span></span>, <span class="pl-c1">true</span> );</span>
+<span class="pl-s1">}</span>
+<span class="pl-s1"></span>
+<span class="pl-s1"><span class="pl-c">// Second Enqueue the script</span></span>
+<span class="pl-s1"><span class="pl-k">function</span> <span class="pl-en">mapScrollPrevent_script</span>()</span>
+<span class="pl-s1">    {</span>
+<span class="pl-s1">      <span class="pl-c1">echo</span> <span class="pl-s"><span class="pl-pds">'</span></span></span>
+<span class="pl-s1"><span class="pl-s">        &lt;script type="text/javascript"&gt;</span></span>
+<span class="pl-s1"><span class="pl-s">          $(function() {</span></span>
+<span class="pl-s1"><span class="pl-s">            var googleMapSelector = "iframe[src*=\"google.com/maps\"]";</span></span>
+<span class="pl-s1"><span class="pl-s">            var options = { pressDuration: 1000 };</span></span>
+<span class="pl-s1"><span class="pl-s">            $(googleMapSelector).scrollprevent(options).start();</span></span>
+<span class="pl-s1"><span class="pl-s">          });</span></span>
+<span class="pl-s1"><span class="pl-s">        &lt;/script&gt;</span></span>
+<span class="pl-s1"><span class="pl-s">      <span class="pl-pds">'</span></span>;</span>
+<span class="pl-s1">    }</span>
+<span class="pl-s1"></span>
+<span class="pl-s1"><span class="pl-c">// Do the hook</span></span>
+<span class="pl-s1">add_action( <span class="pl-s"><span class="pl-pds">'</span>wp_enqueue_scripts<span class="pl-pds">'</span></span>, <span class="pl-s"><span class="pl-pds">'</span>mapScrollPrevent-plugin<span class="pl-pds">'</span></span> );</span>
+<span class="pl-s1">add_action( <span class="pl-s"><span class="pl-pds">'</span>wp_head<span class="pl-pds">'</span></span>, <span class="pl-s"><span class="pl-pds">'</span>mapScrollPrevent-script<span class="pl-pds">'</span></span> );</span></pre></div>
+</li>
+</ol>
+
+<h2>
+<a id="default-options" class="anchor" href="#default-options" aria-hidden="true"><span aria-hidden="true" class="octicon octicon-link"></span></a>Default Options</h2>
+
+<div class="highlight highlight-source-js"><pre><span class="pl-c">// JavaScript</span>
+<span class="pl-k">var</span> options <span class="pl-k">=</span> {
+
+      <span class="pl-c">// Custom class for map wrap</span>
+      wrapClass<span class="pl-k">:</span><span class="pl-s"><span class="pl-pds">"</span>map-wrap<span class="pl-pds">"</span></span>,
+
+      <span class="pl-c">// Custom class for hover div</span>
+      overlayClass<span class="pl-k">:</span><span class="pl-s"><span class="pl-pds">"</span>map-overlay<span class="pl-pds">"</span></span>,
+
+      <span class="pl-c">// Press Duration</span>
+      pressDuration<span class="pl-k">:</span> <span class="pl-c1">650</span>,
+
+      <span class="pl-c">// Hover Message and Icons</span>
+      overlay<span class="pl-k">:</span> {
+          iconLocked<span class="pl-k">:</span> <span class="pl-s"><span class="pl-pds">"</span>&lt;svg xmlns=<span class="pl-cce">\"</span>http://www.w3.org/2000/svg<span class="pl-cce">\"</span> width=<span class="pl-cce">\"</span>22<span class="pl-cce">\"</span> height=<span class="pl-cce">\"</span>22<span class="pl-cce">\"</span> viewBox=<span class="pl-cce">\"</span>0 0 1792 1792<span class="pl-cce">\"</span> &gt; &lt;path transform=<span class="pl-cce">\"</span>translate(1)<span class="pl-cce">\"</span> d=<span class="pl-cce">\"</span>M640 768h512v-192q0-106-75-181t-181-75-181 75-75 181v192zm832 96v576q0 40-28 68t-68 28h-960q-40 0-68-28t-28-68v-576q0-40 28-68t68-28h32v-192q0-184 132-316t316-132 316 132 132 316v192h32q40 0 68 28t28 68z<span class="pl-cce">\"</span> /&gt; &lt;/svg&gt;<span class="pl-pds">"</span></span>,
+          iconUnloking<span class="pl-k">:</span> <span class="pl-s"><span class="pl-pds">"</span>&lt;svg xmlns=<span class="pl-cce">\"</span>http://www.w3.org/2000/svg<span class="pl-cce">\"</span> width=<span class="pl-cce">\"</span>22<span class="pl-cce">\"</span> height=<span class="pl-cce">\"</span>22<span class="pl-cce">\"</span> viewBox=<span class="pl-cce">\"</span>0 0 1792 1792<span class="pl-cce">\"</span>&gt; &lt;path transform=<span class="pl-cce">\"</span>translate(1)<span class="pl-cce">\"</span> d=<span class="pl-cce">\"</span>M1376 768q40 0 68 28t28 68v576q0 40-28 68t-68 28h-960q-40 0-68-28t-28-68v-576q0-40 28-68t68-28h32v-320q0-185 131.5-316.5t316.5-131.5 316.5 131.5 131.5 316.5q0 26-19 45t-45 19h-64q-26 0-45-19t-19-45q0-106-75-181t-181-75-181 75-75 181v320h736z<span class="pl-cce">\"</span> /&gt; &lt;/svg&gt;<span class="pl-pds">"</span></span>,
+          iconUnlocked<span class="pl-k">:</span> <span class="pl-s"><span class="pl-pds">"</span>&lt;svg xmlns=<span class="pl-cce">\"</span>http://www.w3.org/2000/svg<span class="pl-cce">\"</span> width=<span class="pl-cce">\"</span>22<span class="pl-cce">\"</span> height=<span class="pl-cce">\"</span>22<span class="pl-cce">\"</span> viewBox=<span class="pl-cce">\"</span>0 0 1792 1792<span class="pl-cce">\"</span>&gt; &lt;path transform=<span class="pl-cce">\"</span>translate(1)<span class="pl-cce">\"</span> d=<span class="pl-cce">\"</span>M1728 576v256q0 26-19 45t-45 19h-64q-26 0-45-19t-19-45v-256q0-106-75-181t-181-75-181 75-75 181v192h96q40 0 68 28t28 68v576q0 40-28 68t-68 28h-960q-40 0-68-28t-28-68v-576q0-40 28-68t68-28h672v-192q0-185 131.5-316.5t316.5-131.5 316.5 131.5 131.5 316.5z<span class="pl-cce">\"</span> /&gt; &lt;/svg&gt;<span class="pl-pds">"</span></span>
+      },
+
+      <span class="pl-c">// Callbaks</span>
+      <span class="pl-en">onMapLock</span><span class="pl-k">:</span> <span class="pl-k">function</span>() {},
+      <span class="pl-en">onMapUnlock</span><span class="pl-k">:</span> <span class="pl-k">function</span>() {},
+
+      <span class="pl-c">// Print Log Messges</span>
+      printLog<span class="pl-k">:</span> <span class="pl-c1">false</span>
+    };</pre></div>
+
+<h2>
+<a id="build-from-source" class="anchor" href="#build-from-source" aria-hidden="true"><span aria-hidden="true" class="octicon octicon-link"></span></a>Build From Source</h2>
+
+<p>To build from source you can use the <code>packaje.json</code> file to install all "dev dependencies". We use <a href="gulpjs.com/">Gulp</a> and some <code>node-modules</code>.</p>
+
+<ol>
+<li>Download or Clone this repo with a <code>git</code> client.</li>
+<li>Install <code>node.js</code>.</li>
+<li>Install gulp globally <code>npm install gulp -g</code>.</li>
+<li>Do a <code>npm update --save-dev</code> in your terminal.</li>
+<li>Edit your <code>googlemaps-scrollprevent.coffee</code> source file.</li>
+<li>Do a <code>gulp coffee</code> or <code>gulp watch</code> task in your terminal.</li>
+<li>Use the newly compiled <code>googlemaps-scrollprevent.min.js</code> file in the <code>./dist/</code> folder.</li>
+<li>If you make <em>cool</em> improvements please fork and contribute.</li>
+</ol>
+
+<h2>
+<a id="license" class="anchor" href="#license" aria-hidden="true"><span aria-hidden="true" class="octicon octicon-link"></span></a>License</h2>
+
+<p><strong>The MIT License (MIT)</strong></p>
+
+<p><strong>Copyright (c) 2016 Emiliano Díaz</strong></p>
+
+<p>Permission is hereby granted, free of charge, to any person obtaining a copy
+of this software and associated documentation files (the "Software"), to deal
+in the Software without restriction, including without limitation the rights
+to use, copy, modify, merge, publish, distribute, sublicense, and/or sell
+copies of the Software, and to permit persons to whom the Software is
+furnished to do so, subject to the following conditions:</p>
+
+<p>The above copyright notice and this permission notice shall be included in all
+copies or substantial portions of the Software.</p>
+
+<p>THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND, EXPRESS OR
+IMPLIED, INCLUDING BUT NOT LIMITED TO THE WARRANTIES OF MERCHANTABILITY,
+FITNESS FOR A PARTICULAR PURPOSE AND NONINFRINGEMENT. IN NO EVENT SHALL THE
+AUTHORS OR COPYRIGHT HOLDERS BE LIABLE FOR ANY CLAIM, DAMAGES OR OTHER
+LIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING FROM,
+OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE
+SOFTWARE.</p>
+
+      <footer class="site-footer">
+        <span class="site-footer-owner"><a href="https://github.com/diazemiliano/googlemaps-scrollprevent">Googlemaps-scrollprevent</a> is maintained by <a href="https://github.com/diazemiliano">diazemiliano</a>.</span>
+
+        <span class="site-footer-credits">This page was generated by <a href="https://pages.github.com">GitHub Pages</a> using the <a href="https://github.com/jasonlong/cayman-theme">Cayman theme</a> by <a href="https://twitter.com/jasonlong">Jason Long</a>.</span>
+      </footer>
+
+    </section>
+
+  
+  </body>
+</html>
