@@ -107,7 +107,11 @@
                         /* Check first if the iframe is already wraped */
                         if (!context.closest("." + opts["class"].wrap).is("div")) {
                             context.wrap(wrapObject);
-                            Log("Iframe isn't wraped.");
+                            opts.alreadywrapped = false;
+                            Log("Iframe isn't wrapped.");
+                        } else {
+                            opts.alreadywrapped = true;
+                            Log("Iframe already wrapped");
                         }
 
                         /* Update with DOM objects */
@@ -218,8 +222,10 @@
                             Log("Stopping plugin...");
                             $("." + opts["class"].overlay + ", ." + opts["class"].button).remove();
                             context.removeAttr("style");
-                            if (context.parent().is("." + opts["class"].wrap)) {
-                                context.unwrap();
+                            if (!opts.alreadywrapped) {
+                                if (context.parent().is("." + opts["class"].wrap)) {
+                                    context.unwrap();
+                                }
                             }
                             return Log("Plugin Stopped.");
                         }

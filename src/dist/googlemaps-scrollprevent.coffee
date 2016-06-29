@@ -172,7 +172,11 @@ do ($ = jQuery) ->
           ### Check first if the iframe is already wraped ###
           unless context.closest(".#{ opts.class.wrap }").is "div"
             context.wrap wrapObject
-            Log "Iframe isn't wraped."
+            opts.alreadywrapped = false
+            Log "Iframe isn't wrapped."
+          else
+            opts.alreadywrapped = true
+            Log "Iframe already wrapped"
 
           ### Update with DOM objects ###
           wrapObject =
@@ -286,7 +290,8 @@ do ($ = jQuery) ->
           Log "Stopping plugin..."
           $(".#{opts.class.overlay}, .#{opts.class.button}").remove()
           context.removeAttr "style"
-          if context.parent().is ".#{ opts.class.wrap }"
-            context.unwrap()
+          unless opts.alreadywrapped
+            if context.parent().is ".#{ opts.class.wrap }"
+              context.unwrap()
 
           Log "Plugin Stopped."
