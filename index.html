@@ -8,8 +8,42 @@
     <link href='https://fonts.googleapis.com/css?family=Open+Sans:400,700' rel='stylesheet' type='text/css'>
     <link rel="stylesheet" type="text/css" href="stylesheets/stylesheet.css" media="screen">
     <link rel="stylesheet" type="text/css" href="stylesheets/github-light.css" media="screen">
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/2.1.4/jquery.min.js?ver=2.1.4"></script>
+    <script src="https://rawgit.com/diazemiliano/googlemaps-scrollprevent/master/dist/googlemaps-scrollprevent.min.js"></script>
   </head>
   <body>
+  <script>(function() {
+$(function() {
+  $("#btn-start").click(function() {
+    $("iframe[src*='google.com/maps']").scrollprevent({
+      printLog: true
+    }).start();
+    return $("#btn-stop").click(function() {
+      return $("iframe[src*='google.com/maps']").scrollprevent().stop();
+    });
+  });
+  return $("#btn-start").trigger("click");
+});
+
+}).call(this);
+
+  </script>
+  <style>
+    .mapscroll-wrap {
+      display: block;
+      position: relative;
+      padding-bottom: 56.25%;
+      height: 0;
+    }
+    .mapscroll-wrap iframe {
+      position: absolute;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 100%;
+    }
+          
+  </style>
     <section class="page-header">
       <h1 class="project-name">Googlemaps-scrollprevent</h1>
       <h2 class="project-tagline">:lock: googlemaps-scrollprevent avoid unwanted map interactions with the Google Maps Iframe.</h2>
@@ -56,9 +90,11 @@ This jQuery plugin is written with <a href="http://coffeescript.org/">CoffeeScri
 
 <h2>
 <a id="examples" class="anchor" href="#examples" aria-hidden="true"><span aria-hidden="true" class="octicon octicon-link"></span></a>Examples</h2>
-
-      <iframe width="100%" height="600" src="https://rawgit.com/diazemiliano/mapScrollPrevent/master/examples/dom-ready-example.html" allowfullscreen="allowfullscreen" frameborder="0"></iframe>
 <h2>
+
+<iframe src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d12087.746318586604!2d-71.64614110000001!3d-40.76341959999999!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x9610bf42e48faa93%3A0x205ebc786470b636!2sVilla+la+Angostura%2C+Neuqu%C3%A9n!5e0!3m2!1ses-419!2sar!4v1425058155802" width="400" height="300" frameborder="0" style="border:0"></iframe>
+<p><a id="btn-start" href="#">"Start Scroll Prevent"</a> <a id="btn-stop" href="#">"Stop Scroll Prevent"</a></p>
+
 <a id="usage-as-jquery-plugin" class="anchor" href="#usage-as-jquery-plugin" aria-hidden="true"><span aria-hidden="true" class="octicon octicon-link"></span></a>Usage as jQuery plugin</h2>
 
 <ol>
