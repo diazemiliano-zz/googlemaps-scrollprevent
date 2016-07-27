@@ -161,6 +161,8 @@ do ($ = jQuery) ->
         wrapObject =
           $("<div class=#{ opts.class.wrap }></div>")
 
+        isWrapped = null
+
         ### Apply all the css ###
         applyCss = ->
           $("head").append "<style rel=\"stylesheet\" type=\"text/css\">
@@ -170,13 +172,14 @@ do ($ = jQuery) ->
         ### Wraps the iframe ###
         wrapIframe = ->
           ### Check first if the iframe is already wraped ###
-          unless context.closest(".#{ opts.class.wrap }").is "div"
-            context.wrap wrapObject
-            opts.alreadywrapped = false
-            Log "Iframe isn't wrapped."
-          else
-            opts.alreadywrapped = true
+
+          if context.closest(".#{ opts.class.wrap }").length
+            isWrapped = true
             Log "Iframe already wrapped"
+          else
+            context.wrap wrapObject
+            isWrapped = false
+            Log "Iframe isn't wrapped."
 
           ### Update with DOM objects ###
           wrapObject =
@@ -290,8 +293,9 @@ do ($ = jQuery) ->
           Log "Stopping plugin..."
           $(".#{opts.class.overlay}, .#{opts.class.button}").remove()
           context.removeAttr "style"
-          unless opts.alreadywrapped
+          console.log context.parent().is(".#{ opts.class.wrap }")
+          console.log isWrapped
+          unless isWrapped
             if context.parent().is ".#{ opts.class.wrap }"
               context.unwrap()
-
           Log "Plugin Stopped."

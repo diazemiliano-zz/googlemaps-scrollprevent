@@ -14,7 +14,7 @@
     (function($) {
         return $.fn.extend({
             scrollprevent: function(options) {
-                var Log, applyCss, bindEvents, buttonObject, context, coverObject, defaults, item, itemClass, itemHTML, longPressDown, longPressUp, mapCSS, opts, overlayObject, progress, ref, runTimeout, value, wrapIframe, wrapObject;
+                var Log, applyCss, bindEvents, buttonObject, context, coverObject, defaults, isWrapped, item, itemClass, itemHTML, longPressDown, longPressUp, mapCSS, opts, overlayObject, progress, ref, runTimeout, value, wrapIframe, wrapObject;
                 defaults = {
                     "class": {
 
@@ -94,6 +94,7 @@
                     overlayObject = $("<div class=" + opts["class"].overlay + "></div>");
                     buttonObject = $("<div class=" + opts["class"].button + "> <div class=" + opts["class"].progress + "> </div> " + opts.overlay.iconLocked + " </div>");
                     wrapObject = $("<div class=" + opts["class"].wrap + "></div>");
+                    isWrapped = null;
 
                     /* Apply all the css */
                     applyCss = function() {
@@ -105,13 +106,13 @@
                     wrapIframe = function() {
 
                         /* Check first if the iframe is already wraped */
-                        if (!context.closest("." + opts["class"].wrap).is("div")) {
-                            context.wrap(wrapObject);
-                            opts.alreadywrapped = false;
-                            Log("Iframe isn't wrapped.");
-                        } else {
-                            opts.alreadywrapped = true;
+                        if (context.closest("." + opts["class"].wrap).length) {
+                            isWrapped = true;
                             Log("Iframe already wrapped");
+                        } else {
+                            context.wrap(wrapObject);
+                            isWrapped = false;
+                            Log("Iframe isn't wrapped.");
                         }
 
                         /* Update with DOM objects */
@@ -222,7 +223,9 @@
                             Log("Stopping plugin...");
                             $("." + opts["class"].overlay + ", ." + opts["class"].button).remove();
                             context.removeAttr("style");
-                            if (!opts.alreadywrapped) {
+                            console.log(context.parent().is("." + opts["class"].wrap));
+                            console.log(isWrapped);
+                            if (!isWrapped) {
                                 if (context.parent().is("." + opts["class"].wrap)) {
                                     context.unwrap();
                                 }
