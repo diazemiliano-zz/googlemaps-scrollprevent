@@ -29,7 +29,9 @@ For usage examples check the [live demo](http://diazemiliano.github.io/googlemap
 ## Usage as jQuery plugin
 1. Include jQuery and googlemaps-scrollprevent Libs in your html.
 
-    ``` html
+    ```html
+    <!-- html -->
+    
     <head>
       // jQuery Google CDN
       <script type="text/javascript" src="https://ajax.googleapis.com/ajax/libs/jquery/2.1.4/jquery.min.js?ver=2.1.4"></script>
@@ -40,7 +42,9 @@ For usage examples check the [live demo](http://diazemiliano.github.io/googlemap
 
 1. Start mapScrollPrevent including the following code.
 
-    ``` html
+    ```html
+    <!-- html -->
+    
     <script type="text/javascript">
     $(function() {
       // Only Google Maps Selector
@@ -50,7 +54,7 @@ For usage examples check the [live demo](http://diazemiliano.github.io/googlemap
     </script>
     ```
     Or Stop with:
-    ``` javascript
+    ```js
     // JavaScript
 
     // Stop
@@ -59,7 +63,9 @@ For usage examples check the [live demo](http://diazemiliano.github.io/googlemap
 
 1. Edit defaults.
 
-    ``` html
+    ```html
+    <!-- html -->
+    
     <script type="text/javascript">
     $(function() {
       // Only Google Maps Selector
@@ -72,8 +78,9 @@ For usage examples check the [live demo](http://diazemiliano.github.io/googlemap
 
 1. With Callbacks
 
-    ``` javascript
+    ```js
     // JavaScript
+    
     $(function(){
      $("#btn-start").click(function(){
        $("iframe[src*='google.com/maps']").scrollprevent({
@@ -93,10 +100,9 @@ For usage examples check the [live demo](http://diazemiliano.github.io/googlemap
 ## Usage in Wordpress
   1. Enqueue a script with jQuery as a dependency in yout ```functions.php```
 
-    ``` php
-    <?php
+    ```php
     //  PHP
-
+    
     // First Enqueue the plugin
     function mapScrollPrevent_plugin() {
         wp_enqueue_script( 'mapScrollPrevent', 'https://cdn.rawgit.com/diazemiliano/mapScrollPrevent/master/dist/mapScrollPrevent.min.js', array( 'jquery' ) , '0.6.4', true );
@@ -115,15 +121,16 @@ For usage examples check the [live demo](http://diazemiliano.github.io/googlemap
             </script>
           ';
         }
-
+        
     // Do the hook
     add_action( 'wp_enqueue_scripts', 'mapScrollPrevent-plugin' );
     add_action( 'wp_head', 'mapScrollPrevent-script' );
     ```
 
 ## Default Options
-``` javascript
+```js
 // JavaScript
+
 var options = {
 
       // Custom class for map wrap
