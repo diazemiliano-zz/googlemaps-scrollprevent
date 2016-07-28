@@ -13,7 +13,7 @@ This jQuery plugin is written with [CoffeeScript](http://coffeescript.org/) that
 <br/>[![Donate](https://img.shields.io/badge/Donate-PayPal-brightgreen.svg)](https://www.paypal.com/cgi-bin/webscr?cmd=_s-xclick&hosted_button_id=ZKPEV6DZ2RQ78)
 
 #### Available For
-[![jQuery v0.6.4](https://img.shields.io/badge/jQuery-0.6.4-green.svg)](https://github.com/diazemiliano/googlemaps-scrollprevent/releases)
+[![jQuery v0.6.4](https://img.shields.io/badge/jQuery-v0.6.4-green.svg)](https://github.com/diazemiliano/googlemaps-scrollprevent/releases)
 
 ## Table of contents
 - [Examples](#examples)
@@ -31,7 +31,7 @@ For usage examples check the [live demo](http://diazemiliano.github.io/googlemap
 
     ```html
     <!-- html -->
-    
+
     <head>
       // jQuery Google CDN
       <script type="text/javascript" src="https://ajax.googleapis.com/ajax/libs/jquery/2.1.4/jquery.min.js?ver=2.1.4"></script>
@@ -44,7 +44,7 @@ For usage examples check the [live demo](http://diazemiliano.github.io/googlemap
 
     ```html
     <!-- html -->
-    
+
     <script type="text/javascript">
     $(function() {
       // Only Google Maps Selector
@@ -65,7 +65,7 @@ For usage examples check the [live demo](http://diazemiliano.github.io/googlemap
 
     ```html
     <!-- html -->
-    
+
     <script type="text/javascript">
     $(function() {
       // Only Google Maps Selector
@@ -80,7 +80,7 @@ For usage examples check the [live demo](http://diazemiliano.github.io/googlemap
 
     ```js
     // JavaScript
-    
+
     $(function(){
      $("#btn-start").click(function(){
        $("iframe[src*='google.com/maps']").scrollprevent({
@@ -102,7 +102,7 @@ For usage examples check the [live demo](http://diazemiliano.github.io/googlemap
 
     ```php
     //  PHP
-    
+
     // First Enqueue the plugin
     function mapScrollPrevent_plugin() {
         wp_enqueue_script( 'mapScrollPrevent', 'https://cdn.rawgit.com/diazemiliano/mapScrollPrevent/master/dist/mapScrollPrevent.min.js', array( 'jquery' ) , '0.6.4', true );
@@ -121,7 +121,7 @@ For usage examples check the [live demo](http://diazemiliano.github.io/googlemap
             </script>
           ';
         }
-        
+
     // Do the hook
     add_action( 'wp_enqueue_scripts', 'mapScrollPrevent-plugin' );
     add_action( 'wp_head', 'mapScrollPrevent-script' );

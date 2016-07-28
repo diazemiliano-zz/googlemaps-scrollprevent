@@ -136,7 +136,7 @@
                     };
                     progress = function(status, elm) {
                         var iFrameObject, iconObject, progressObject;
-                        elm = elm;
+                        elm = elm.closest("." + opts["class"].wrap);
                         progressObject = elm.find("." + opts["class"].progress);
                         iconObject = elm.find("." + opts["class"].icon);
                         overlayObject = elm.find("." + opts["class"].overlay);
@@ -180,8 +180,8 @@
                     /* Long Press Down Event */
                     longPressDown = function() {
                         this.mouseDownTime = $.now();
-                        this.timeOut = setTimeout(runTimeout, opts.pressDuration, wrapObject);
-                        progress("enable", wrapObject);
+                        this.timeOut = setTimeout(runTimeout, opts.pressDuration, $(this));
+                        progress("enable", $(this));
                         return Log("LongPress Started.");
                     };
 
@@ -190,9 +190,9 @@
                         this.mouseUpTime = $.now() - this.mouseDownTime;
                         clearTimeout(this.timeOut);
                         if (this.mouseUpTime < opts.pressDuration) {
-                            progress("disable", wrapObject);
+                            progress("disable", $(this));
                         } else {
-                            progress("unlocked", wrapObject);
+                            progress("unlocked", $(this));
                         }
                         Log((this.mouseUpTime / 1000) + "s Pressed. ");
                         return Log("LongPress Stopped.");

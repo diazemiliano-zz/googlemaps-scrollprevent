@@ -214,7 +214,7 @@ do ($ = jQuery) ->
           Log "Overlay positioned."
 
         progress = (status, elm) ->
-          elm = elm
+          elm = elm.closest(".#{ opts.class.wrap }")
           progressObject = elm.find ".#{opts.class.progress}"
           iconObject = elm.find ".#{opts.class.icon}"
           overlayObject = elm.find ".#{ opts.class.overlay}"
@@ -249,8 +249,8 @@ do ($ = jQuery) ->
         ### Long Press Down Event ###
         longPressDown = ->
           @mouseDownTime = $.now()
-          @timeOut = setTimeout runTimeout, opts.pressDuration, wrapObject
-          progress("enable", wrapObject)
+          @timeOut = setTimeout runTimeout, opts.pressDuration, $(@)
+          progress("enable", $(@))
           Log "LongPress Started."
 
         ### Long Press Up Event ###
@@ -259,9 +259,9 @@ do ($ = jQuery) ->
           clearTimeout(@timeOut)
 
           if @mouseUpTime < opts.pressDuration
-            progress("disable", wrapObject)
+            progress("disable", $(@))
           else
-            progress("unlocked", wrapObject)
+            progress("unlocked", $(@))
 
           Log "#{@mouseUpTime / 1000}s Pressed. "
           Log "LongPress Stopped."
