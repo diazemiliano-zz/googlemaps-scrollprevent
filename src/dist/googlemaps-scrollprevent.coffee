@@ -21,12 +21,14 @@ do ($ = jQuery) ->
           overlay: "mapscroll-overlay"
           ### class for progress bar ###
           progress: "mapscroll-progress"
-          ### class for the button ###
+          ### class for the unlock button ###
           button: "mapscroll-button"
           ### class for svg icons ###
           icon: "mapscroll-icon"
         ### Press Duration ###
         pressDuration: 650
+        ### Unlock Trigger (overlay|button)###
+        triggerElm: "button"
         ### Buton Icons ###
         overlay:
           iconLocked :
@@ -48,7 +50,7 @@ do ($ = jQuery) ->
         ### Print Log Messges ###
         printLog: false
 
-      opts = $.extend true, defaults, options
+      opts = $.extend false, defaults, options
 
       ### iframe Map Object ###
       context = $(@)
@@ -96,6 +98,8 @@ do ($ = jQuery) ->
             border-top-right-radius: 2px;
             border-top-left-radius: 2px;
             box-shadow: rgba(0, 0, 0, 0.3) 0px 1px 4px -1px;
+            cursor: pointer;
+            z-index: 1;
           }
           .#{opts.class.icon} {
             position: relative;
@@ -245,9 +249,8 @@ do ($ = jQuery) ->
         ### Long Press Down Event ###
         longPressDown = ->
           @mouseDownTime = $.now()
-          @timeOut = setTimeout runTimeout, opts.pressDuration, $(@)
-
-          progress("enable", $(@))
+          @timeOut = setTimeout runTimeout, opts.pressDuration, wrapObject
+          progress("enable", wrapObject)
           Log "LongPress Started."
 
         ### Long Press Up Event ###
@@ -256,9 +259,9 @@ do ($ = jQuery) ->
           clearTimeout(@timeOut)
 
           if @mouseUpTime < opts.pressDuration
-            progress("disable", $(@))
+            progress("disable", wrapObject)
           else
-            progress("unlocked", $(@))
+            progress("unlocked", wrapObject)
 
           Log "#{@mouseUpTime / 1000}s Pressed. "
           Log "LongPress Stopped."
@@ -270,9 +273,19 @@ do ($ = jQuery) ->
           context
             .bind "resize", coverObject
 
-          wrapObject
-            .bind "mousedown touchstart", longPressDown
-            .bind "mouseup touchend", longPressUp
+          ### Check valid argument for triggerElm ###
+          if !(opts.triggerElm in ["area","button"])
+            opts.triggerElm = defaults.triggerElm
+
+          switch opts.triggerElm
+            when "button"
+              buttonObject
+                .bind "mousedown touchstart", longPressDown
+                .bind "mouseup touchend", longPressUp
+            when "area"
+              wrapObject
+                .bind "mousedown touchstart", longPressDown
+                .bind "mouseup touchend", longPressUp
 
           Log "Events bounded."
 

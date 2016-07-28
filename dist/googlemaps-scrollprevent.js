@@ -27,7 +27,7 @@
                         /* class for progress bar */
                         progress: "mapscroll-progress",
 
-                        /* class for the button */
+                        /* class for the unlock button */
                         button: "mapscroll-button",
 
                         /* class for svg icons */
@@ -36,6 +36,9 @@
 
                     /* Press Duration */
                     pressDuration: 650,
+
+                    /* Unlock Trigger (overlay|button) */
+                    triggerElm: "button",
 
                     /* Buton Icons */
                     overlay: {
@@ -51,7 +54,7 @@
                     /* Print Log Messges */
                     printLog: false
                 };
-                opts = $.extend(true, defaults, options);
+                opts = $.extend(false, defaults, options);
 
                 /* iframe Map Object */
                 context = $(this);
@@ -73,7 +76,7 @@
                     return Log("No Iframes detected. Try changing your \"selector.\"");
                 } else {
                     Log(context.length + " iFrames detected.");
-                    mapCSS = "/* --- mapScrollPrevent.js CSS Classes --- */ ." + opts["class"].overlay + " { position: absolute; overflow:hidden; cursor: pointer; text-align: center; background-color: rgba(0, 0, 0, 0); } ." + opts["class"].button + " { text-rendering: optimizeLegibility; font-family: Lato, 'Helvetica Neue', Helvetica, Arial, sans-serif; font-size: 13px; padding-top: 15px; padding-bottom: 15px; width: 55px; position: absolute; right: 43px; bottom: 29px; border-color: rgba(0, 0, 0, 0.3); color: rgba(58, 132, 223, 0); background-color: rgba(255, 255, 255, 1); color: rgb(58, 132, 223); border-top-right-radius: 2px; border-top-left-radius: 2px; box-shadow: rgba(0, 0, 0, 0.3) 0px 1px 4px -1px; } ." + opts["class"].icon + " { position: relative; z-index: 1; fill: rgba(58, 132, 223, 1); } ." + opts["class"].progress + " { position: absolute; top: 0; bottom: 0; left: 0; width: 0%; display: block; background-color: rgba(58, 132, 223, 0.4); } ." + opts["class"].wrap + " { position: relative; text-align: center; display: inline-block; } ." + opts["class"].wrap + " iframe { position: relative; top: 0; left: 0; } ." + opts["class"].overlay + ", ." + opts["class"].button + ", ." + opts["class"].icon + " { transition: all .3s ease-in-out; } ." + opts["class"].progress + " { transition: width " + (opts.pressDuration / 1000) + "s linear; }";
+                    mapCSS = "/* --- mapScrollPrevent.js CSS Classes --- */ ." + opts["class"].overlay + " { position: absolute; overflow:hidden; cursor: pointer; text-align: center; background-color: rgba(0, 0, 0, 0); } ." + opts["class"].button + " { text-rendering: optimizeLegibility; font-family: Lato, 'Helvetica Neue', Helvetica, Arial, sans-serif; font-size: 13px; padding-top: 15px; padding-bottom: 15px; width: 55px; position: absolute; right: 43px; bottom: 29px; border-color: rgba(0, 0, 0, 0.3); color: rgba(58, 132, 223, 0); background-color: rgba(255, 255, 255, 1); color: rgb(58, 132, 223); border-top-right-radius: 2px; border-top-left-radius: 2px; box-shadow: rgba(0, 0, 0, 0.3) 0px 1px 4px -1px; cursor: pointer; z-index: 1; } ." + opts["class"].icon + " { position: relative; z-index: 1; fill: rgba(58, 132, 223, 1); } ." + opts["class"].progress + " { position: absolute; top: 0; bottom: 0; left: 0; width: 0%; display: block; background-color: rgba(58, 132, 223, 0.4); } ." + opts["class"].wrap + " { position: relative; text-align: center; display: inline-block; } ." + opts["class"].wrap + " iframe { position: relative; top: 0; left: 0; } ." + opts["class"].overlay + ", ." + opts["class"].button + ", ." + opts["class"].icon + " { transition: all .3s ease-in-out; } ." + opts["class"].progress + " { transition: width " + (opts.pressDuration / 1000) + "s linear; }";
 
                     /*
                       Remove and Set the Icon classes
@@ -177,8 +180,8 @@
                     /* Long Press Down Event */
                     longPressDown = function() {
                         this.mouseDownTime = $.now();
-                        this.timeOut = setTimeout(runTimeout, opts.pressDuration, $(this));
-                        progress("enable", $(this));
+                        this.timeOut = setTimeout(runTimeout, opts.pressDuration, wrapObject);
+                        progress("enable", wrapObject);
                         return Log("LongPress Started.");
                     };
 
@@ -187,9 +190,9 @@
                         this.mouseUpTime = $.now() - this.mouseDownTime;
                         clearTimeout(this.timeOut);
                         if (this.mouseUpTime < opts.pressDuration) {
-                            progress("disable", $(this));
+                            progress("disable", wrapObject);
                         } else {
-                            progress("unlocked", $(this));
+                            progress("unlocked", wrapObject);
                         }
                         Log((this.mouseUpTime / 1000) + "s Pressed. ");
                         return Log("LongPress Stopped.");
@@ -197,9 +200,21 @@
 
                     /* Bind Events */
                     bindEvents = function() {
+                        var ref1;
                         $(window).bind("resize", coverObject);
                         context.bind("resize", coverObject);
-                        wrapObject.bind("mousedown touchstart", longPressDown).bind("mouseup touchend", longPressUp);
+
+                        /* Check valid argument for triggerElm */
+                        if (!((ref1 = opts.triggerElm) === "area" || ref1 === "button")) {
+                            opts.triggerElm = defaults.triggerElm;
+                        }
+                        switch (opts.triggerElm) {
+                            case "button":
+                                buttonObject.bind("mousedown touchstart", longPressDown).bind("mouseup touchend", longPressUp);
+                                break;
+                            case "area":
+                                wrapObject.bind("mousedown touchstart", longPressDown).bind("mouseup touchend", longPressUp);
+                        }
                         return Log("Events bounded.");
                     };
                     return {
