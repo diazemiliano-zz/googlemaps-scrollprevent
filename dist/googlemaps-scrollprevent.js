@@ -204,7 +204,7 @@
                         $(window).bind("resize", coverObject);
                         context.bind("resize", coverObject);
 
-                        /* Check valid argument for triggerElm */
+                        /* Check valid options for triggerElm */
                         if (!((ref1 = opts.triggerElm) === "area" || ref1 === "button")) {
                             opts.triggerElm = defaults.triggerElm;
                         }

@@ -273,7 +273,7 @@ do ($ = jQuery) ->
           context
             .bind "resize", coverObject
 
-          ### Check valid argument for triggerElm ###
+          ### Check valid options for triggerElm ###
           if !(opts.triggerElm in ["area","button"])
             opts.triggerElm = defaults.triggerElm
 
