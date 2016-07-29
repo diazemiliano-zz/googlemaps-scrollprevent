@@ -13,7 +13,7 @@ This jQuery plugin is written with [CoffeeScript](http://coffeescript.org/) that
 <br/>[![Donate](https://img.shields.io/badge/Donate-PayPal-brightgreen.svg)](https://www.paypal.com/cgi-bin/webscr?cmd=_s-xclick&hosted_button_id=ZKPEV6DZ2RQ78)
 
 #### Available For
-[![jQuery v0.6.4](https://img.shields.io/badge/jQuery-v0.6.4-green.svg)](https://github.com/diazemiliano/googlemaps-scrollprevent/releases)
+[![jQuery v0.6.5](https://img.shields.io/badge/jQuery-v0.6.5-green.svg)](https://github.com/diazemiliano/googlemaps-scrollprevent/releases)
 
 ## Table of contents
 - [Examples](#examples)

@@ -1,6 +1,6 @@
 ###!
 # googlemaps-scrollprevent (jQuery Google Maps Scroll Prevent Plugin)
-# Version 0.6.4
+# Version 0.6.5
 # URL: https://github.com/diazemiliano/googlemaps-scrollprevent
 # Description: googlemaps-scrollprevent is an easy solution to the problem of
 #              page scrolling with Google Maps.
