@@ -1,0 +1,33 @@
+extends _layout.jade
+block title
+  title #{baseTitle} Local Text
+block localscript
+  script(src="https://maps.googleapis.com/maps/api/js")
+  script(src="../dist/googlemaps-scrollprevent.js")
+block content
+  script
+    :coffee-script
+      $ ->
+        myOptions = 
+          center: new google.maps.LatLng(-40.763219,-71.641404)
+          zoom: 10
+          mapTypeId: google.maps.MapTypeId.ROADMAP
+
+        gMap = new google.maps.Map(document.getElementById('map_canvas'), myOptions)
+    
+  script
+    :coffee-script
+      $ ->    
+        $("#btn-start").click ->
+          $("#map_canvas")
+            .scrollprevent {
+              printLog:true
+            }
+            .start()
+                    
+          $("#btn-stop").click ->
+            $("iframe[src*='google.com/maps']").scrollprevent().stop()
+        
+        $("#btn-start").trigger "click"
+block map
+    <div id="map_canvas" style="width: 400px; height: 300px;"></div>

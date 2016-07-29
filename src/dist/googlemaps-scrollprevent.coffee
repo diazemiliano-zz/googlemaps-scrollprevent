@@ -90,7 +90,7 @@ do ($ = jQuery) ->
             width: 55px;
             position: absolute;
             right: 43px;
-            bottom: 29px;
+            bottom: 24px;
             border-color: rgba(0, 0, 0, 0.3);
             color: rgba(58, 132, 223, 0);
             background-color: rgba(255, 255, 255, 1);
@@ -151,7 +151,7 @@ do ($ = jQuery) ->
 
         ### Creates overlay object ###
         overlayObject =
-          $("<div class=#{ opts.class.overlay }></div>")
+          $("<div class=#{opts.class.overlay}></div>")
 
         buttonObject =
           $("
@@ -163,21 +163,21 @@ do ($ = jQuery) ->
           ")
 
         wrapObject =
-          $("<div class=#{ opts.class.wrap }></div>")
+          $("<div class=#{opts.class.wrap}></div>")
 
         isWrapped = null
 
         ### Apply all the css ###
         applyCss = ->
           $("head").append "<style rel=\"stylesheet\" type=\"text/css\">
-          #{ mapCSS }</style>"
+          #{mapCSS}</style>"
           Log "Plugin css applied."
 
         ### Wraps the iframe ###
         wrapIframe = ->
           ### Check first if the iframe is already wraped ###
 
-          if context.closest(".#{ opts.class.wrap }").length
+          if context.closest(".#{opts.class.wrap}").length
             isWrapped = true
             Log "Iframe already wrapped"
           else
@@ -188,36 +188,36 @@ do ($ = jQuery) ->
           ### Update with DOM objects ###
           wrapObject =
             context
-              .closest ".#{ opts.class.wrap }"
+              .closest ".#{opts.class.wrap}"
               .append buttonObject
               .append overlayObject
 
           overlayObject =
             wrapObject
-              .children ".#{ opts.class.overlay }"
+              .children ".#{opts.class.overlay}"
 
           buttonObject =
             wrapObject
-              .children ".#{ opts.class.button }"
+              .children ".#{opts.class.button}"
 
           coverObject()
           Log "Iframe now wraped."
 
         ### Dynamic Adjust ###
         coverObject = ->
-          overlayObject
-            .height context.height()
-            .width context.width()
+          $.each [overlayObject, wrapObject], ->
+            @height context.height()
+            @width context.width()
             .css
               "top": context.position().top
               "left": context.position().left
           Log "Overlay positioned."
 
         progress = (status, elm) ->
-          elm = elm.closest(".#{ opts.class.wrap }")
+          elm = elm.closest(".#{opts.class.wrap}")
           progressObject = elm.find ".#{opts.class.progress}"
           iconObject = elm.find ".#{opts.class.icon}"
-          overlayObject = elm.find ".#{ opts.class.overlay}"
+          overlayObject = elm.find ".#{opts.class.overlay}"
           iFrameObject = elm.find "iframe"
 
           switch status
