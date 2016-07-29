@@ -12,41 +12,6 @@
     <script src="https://rawgit.com/diazemiliano/googlemaps-scrollprevent/master/dist/googlemaps-scrollprevent.min.js"></script>
   </head>
   <body>
-  <script>(function() {
-$(function() {
-  $("#btn-start").click(function() {
-    $("iframe[src*='google.com/maps']").scrollprevent({
-      printLog: true
-    }).start();
-    return $("#btn-stop").click(function() {
-      return $("iframe[src*='google.com/maps']").scrollprevent().stop();
-    });
-  });
-  return $("#btn-start").trigger("click");
-});
-
-}).call(this);
-
-  </script>
-  <style>
-      .embed-container {
-        position: relative;
-        padding-bottom: 56.25%;
-        height: 0;
-        overflow: hidden;
-        max-width: 100%;
-      }
-      .embed-container iframe {
-        position: absolute;
-        top: 0;
-        left: 0;
-        width: 100%;
-        height: 100%;
-      }
-      .mapscroll-wrap {
-        position: static;
-      }
-    </style>
     <section class="page-header">
       <h1 class="project-name">Googlemaps-scrollprevent</h1>
       <h2 class="project-tagline">:lock: googlemaps-scrollprevent avoid unwanted map interactions with the Google Maps Iframe.</h2>
@@ -93,7 +58,7 @@ This jQuery plugin is written with <a href="http://coffeescript.org/">CoffeeScri
 
 <h2>
 <a id="examples" class="anchor" href="#examples" aria-hidden="true"><span aria-hidden="true" class="octicon octicon-link"></span></a>Examples</h2>
-<script async src="//jsfiddle.net/iridis/j0k5hj25/embed/js,html,css,result/dark/"></script>
+<script async src="//jsfiddle.net/iridis/j0k5hj25/31/embed/js,html,css,result/dark/"></script>
     
 <a id="usage-as-jquery-plugin" class="anchor" href="#usage-as-jquery-plugin" aria-hidden="true"><span aria-hidden="true" class="octicon octicon-link"></span></a>Usage as jQuery plugin</h2>
 
