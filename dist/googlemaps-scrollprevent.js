@@ -76,7 +76,7 @@
                     return Log("No Iframes detected. Try changing your \"selector.\"");
                 } else {
                     Log(context.length + " iFrames detected.");
-                    mapCSS = "/* --- mapScrollPrevent.js CSS Classes --- */ ." + opts["class"].overlay + " { position: absolute; overflow:hidden; cursor: pointer; text-align: center; background-color: rgba(0, 0, 0, 0); } ." + opts["class"].button + " { text-rendering: optimizeLegibility; font-family: Lato, 'Helvetica Neue', Helvetica, Arial, sans-serif; font-size: 13px; padding-top: 15px; padding-bottom: 15px; width: 55px; position: absolute; right: 43px; bottom: 24px; border-color: rgba(0, 0, 0, 0.3); color: rgba(58, 132, 223, 0); background-color: rgba(255, 255, 255, 1); color: rgb(58, 132, 223); border-top-right-radius: 2px; border-top-left-radius: 2px; box-shadow: rgba(0, 0, 0, 0.3) 0px 1px 4px -1px; cursor: pointer; z-index: 1; } ." + opts["class"].icon + " { position: relative; z-index: 1; fill: rgba(58, 132, 223, 1); } ." + opts["class"].progress + " { position: absolute; top: 0; bottom: 0; left: 0; width: 0%; display: block; background-color: rgba(58, 132, 223, 0.4); } ." + opts["class"].wrap + " { position: relative; text-align: center; display: inline-block; } ." + opts["class"].wrap + " iframe { position: relative; top: 0; left: 0; } ." + opts["class"].overlay + ", ." + opts["class"].button + ", ." + opts["class"].icon + " { transition: all .3s ease-in-out; } ." + opts["class"].progress + " { transition: width " + (opts.pressDuration / 1000) + "s linear; }";
+                    mapCSS = "/* --- mapScrollPrevent.js CSS Classes --- */ ." + opts["class"].overlay + " { position: absolute; overflow:hidden; cursor: pointer; text-align: center; background-color: rgba(0, 0, 0, 0); } ." + opts["class"].button + " { text-rendering: optimizeLegibility; font-family: Lato, 'Helvetica Neue', Helvetica, Arial, sans-serif; font-size: 13px; padding-top: 15px; padding-bottom: 15px; width: 55px; position: absolute; right: 43px; bottom: 24px; border-color: rgba(0, 0, 0, 0.3); color: rgba(58, 132, 223, 0); background-color: rgba(255, 255, 255, 1); color: rgb(58, 132, 223); border-top-right-radius: 2px; border-top-left-radius: 2px; box-shadow: rgba(0, 0, 0, 0.3) 0px 1px 4px -1px; cursor: pointer; z-index: 1; } ." + opts["class"].icon + " { display: none; position: relative; z-index: 1; fill: rgba(58, 132, 223, 1); } ." + opts["class"].icon + "-locked { display: inline; } ." + opts["class"].progress + " { position: absolute; top: 0; bottom: 0; left: 0; width: 0%; display: block; background-color: rgba(58, 132, 223, 0.4); } ." + opts["class"].wrap + " { position: relative; text-align: center; display: inline-block; } ." + opts["class"].wrap + " iframe { position: relative; top: 0; left: 0; } ." + opts["class"].overlay + ", ." + opts["class"].button + ", ." + opts["class"].icon + " { transition: all .3s ease-in-out; } ." + opts["class"].progress + " { width: 0%; }";
 
                     /*
                       Remove and Set the Icon classes
@@ -95,7 +95,7 @@
 
                     /* Creates overlay object */
                     overlayObject = $("<div class=" + opts["class"].overlay + "></div>");
-                    buttonObject = $("<div class=" + opts["class"].button + "> <div class=" + opts["class"].progress + "> </div> " + opts.overlay.iconLocked + " </div>");
+                    buttonObject = $("<div class=" + opts["class"].button + "> <div class=" + opts["class"].progress + "> </div> " + opts.overlay.iconLocked + " " + opts.overlay.iconUnlocked + " " + opts.overlay.iconUnloking + " </div>");
                     wrapObject = $("<div class=" + opts["class"].wrap + "></div>");
                     isWrapped = null;
 
@@ -144,20 +144,27 @@
                         iconObject = elm.find("." + opts["class"].icon);
                         overlayObject = elm.find("." + opts["class"].overlay);
                         iFrameObject = elm.find("iframe");
+                        iconObject.hide();
                         switch (status) {
                             case "enable":
-                                iconObject.replaceWith("" + opts.overlay.iconUnloking);
-                                progressObject.css({
-                                    "width": "100%"
+                                elm.find("." + opts["class"].icon + "-unloking").show();
+                                progressObject.animate({
+                                    width: "100%"
+                                }, {
+                                    duration: opts.pressDuration,
+                                    queue: false
                                 });
                                 return Log("Enabling Map.");
                             case "disable":
                                 iFrameObject.css({
                                     "pointer-events": "none"
                                 });
-                                iconObject.replaceWith("" + opts.overlay.iconLocked);
-                                progressObject.css({
-                                    "width": "0%"
+                                elm.find("." + opts["class"].icon + "-locked").show();
+                                progressObject.animate({
+                                    width: "0%"
+                                }, {
+                                    duration: opts.pressDuration,
+                                    queue: false
                                 });
                                 overlayObject.show();
                                 opts.onMapLock();
@@ -166,7 +173,7 @@
                                 iFrameObject.css({
                                     "pointer-events": "auto"
                                 });
-                                iconObject.replaceWith("" + opts.overlay.iconUnlocked);
+                                elm.find("." + opts["class"].icon + "-unlocked").show();
                                 progressObject.css({
                                     "width": "100%"
                                 });
@@ -179,9 +186,14 @@
                         progress("unlocked", elm);
                         return clearTimeout(this.timeOut);
                     };
+                    this.mouseDownTime = 0;
+                    this.mouseUpTime = 0;
 
                     /* Long Press Down Event */
-                    longPressDown = function() {
+                    longPressDown = function(e) {
+                        e.preventDefault();
+                        e.stopPropagation();
+                        console.log(e);
                         this.mouseDownTime = $.now();
                         this.timeOut = setTimeout(runTimeout, opts.pressDuration, $(this));
                         progress("enable", $(this));
@@ -189,7 +201,10 @@
                     };
 
                     /* Long Press Up Event */
-                    longPressUp = function() {
+                    longPressUp = function(e) {
+                        e.preventDefault();
+                        e.stopPropagation();
+                        console.log(e);
                         this.mouseUpTime = $.now() - this.mouseDownTime;
                         clearTimeout(this.timeOut);
                         if (this.mouseUpTime < opts.pressDuration) {
@@ -197,8 +212,7 @@
                         } else {
                             progress("unlocked", $(this));
                         }
-                        Log((this.mouseUpTime / 1000) + "s Pressed. ");
-                        return Log("LongPress Stopped.");
+                        return Log((this.mouseUpTime / 1000) + "s Pressed. ");
                     };
 
                     /* Bind Events */
@@ -213,10 +227,10 @@
                         }
                         switch (opts.triggerElm) {
                             case "button":
-                                buttonObject.bind("mousedown touchstart", longPressDown).bind("mouseup touchend", longPressUp);
+                                buttonObject.bind("mousedown touchstart", longPressDown).bind("mouseup touchend touchleave touchcancel", longPressUp).unbind("click");
                                 break;
                             case "area":
-                                wrapObject.bind("mousedown touchstart", longPressDown).bind("mouseup touchend", longPressUp);
+                                wrapObject.bind("mousedown touchstart", longPressDown).bind("mouseup touchend touchleave touchcancel", longPressUp).unbind("click");
                         }
                         return Log("Events bounded.");
                     };

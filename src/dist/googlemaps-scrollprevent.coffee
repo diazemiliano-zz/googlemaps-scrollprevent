@@ -102,9 +102,13 @@ do ($ = jQuery) ->
             z-index: 1;
           }
           .#{opts.class.icon} {
+            display: none;
             position: relative;
             z-index: 1;
             fill: rgba(58, 132, 223, 1);
+          }
+          .#{opts.class.icon}-locked {
+            display: inline;
           }
           .#{opts.class.progress} {
             position: absolute;
@@ -131,7 +135,7 @@ do ($ = jQuery) ->
             transition: all .3s ease-in-out;
           }
           .#{opts.class.progress} {
-            transition: width #{opts.pressDuration/1000}s linear;
+            width: 0%;
           }
           "
 
@@ -159,6 +163,8 @@ do ($ = jQuery) ->
             <div class=#{opts.class.progress}>
             </div>
             #{opts.overlay.iconLocked}
+            #{opts.overlay.iconUnlocked}
+            #{opts.overlay.iconUnloking}
           </div>
           ")
 
@@ -220,23 +226,35 @@ do ($ = jQuery) ->
           overlayObject = elm.find ".#{opts.class.overlay}"
           iFrameObject = elm.find "iframe"
 
+          iconObject.hide()
+
           switch status
             when "enable"
-              iconObject.replaceWith "#{opts.overlay.iconUnloking}"
-              progressObject.css {"width":"100%"}
+              elm.find(".#{opts.class.icon}-unloking").show()
+              progressObject
+                .animate {width:"100%"},
+                  {
+                    duration : opts.pressDuration
+                    queue : false
+                  }
               Log "Enabling Map."
 
             when "disable"
               iFrameObject.css {"pointer-events":"none"}
-              iconObject.replaceWith "#{opts.overlay.iconLocked}"
-              progressObject.css {"width":"0%"}
+              elm.find(".#{opts.class.icon}-locked").show()
+              progressObject
+                .animate {width:"0%"},
+                  {
+                    duration : opts.pressDuration
+                    queue : false
+                  }
               overlayObject.show()
               opts.onMapLock()
               Log "Disabling Map."
 
             when "unlocked"
               iFrameObject.css {"pointer-events":"auto"}
-              iconObject.replaceWith "#{opts.overlay.iconUnlocked}"
+              elm.find(".#{opts.class.icon}-unlocked").show()
               progressObject.css {"width":"100%"}
               overlayObject.hide()
               opts.onMapUnlock()
@@ -245,16 +263,24 @@ do ($ = jQuery) ->
         runTimeout = (elm)->
           progress("unlocked", elm)
           clearTimeout(@timeOut)
-
+        @mouseDownTime=0
+        @mouseUpTime=0
         ### Long Press Down Event ###
-        longPressDown = ->
+        longPressDown = (e) ->
+          e.preventDefault()
+          e.stopPropagation()
+          # e.preventDefault()
+          console.log e
           @mouseDownTime = $.now()
           @timeOut = setTimeout runTimeout, opts.pressDuration, $(@)
           progress("enable", $(@))
           Log "LongPress Started."
 
         ### Long Press Up Event ###
-        longPressUp = ->
+        longPressUp = (e) ->
+          e.preventDefault()
+          e.stopPropagation()
+          console.log e
           @mouseUpTime = $.now() - @mouseDownTime
           clearTimeout(@timeOut)
 
@@ -264,7 +290,6 @@ do ($ = jQuery) ->
             progress("unlocked", $(@))
 
           Log "#{@mouseUpTime / 1000}s Pressed. "
-          Log "LongPress Stopped."
 
         ### Bind Events ###
         bindEvents = ->
@@ -281,11 +306,13 @@ do ($ = jQuery) ->
             when "button"
               buttonObject
                 .bind "mousedown touchstart", longPressDown
-                .bind "mouseup touchend", longPressUp
+                .bind "mouseup touchend touchleave touchcancel", longPressUp
+                .unbind "click"
             when "area"
               wrapObject
                 .bind "mousedown touchstart", longPressDown
-                .bind "mouseup touchend", longPressUp
+                .bind "mouseup touchend touchleave touchcancel", longPressUp
+                .unbind "click"
 
           Log "Events bounded."
 
