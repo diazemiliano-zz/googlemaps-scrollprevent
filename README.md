@@ -20,8 +20,9 @@ You can find simpler approaches in [stackoverflow](http://stackoverflow.com/) li
 <br/>[![Website Link](https://img.shields.io/badge/website-http%3A%2F%2Fdiazemiliano.github.io%2Fgooglemaps--scrollprevent-blue.svg)](http://diazemiliano.github.io/googlemaps-scrollprevent/)
 <br/>[![Donate](https://img.shields.io/badge/Donate-PayPal-brightgreen.svg)](https://www.paypal.com/cgi-bin/webscr?cmd=_s-xclick&hosted_button_id=ZKPEV6DZ2RQ78)
 
-#### Available For
-[![jQuery v0.6.5](https://img.shields.io/badge/jQuery-v0.6.5-green.svg)](https://github.com/diazemiliano/googlemaps-scrollprevent/releases)
+#### Minimun Requeriments
+[![jQuery Core 1.12.4](https://img.shields.io/badge/jQuery-v1.12.4-green.svg)](https://github.com/diazemiliano/googlemaps-scrollprevent/releases)
+
 
 ## Table of contents
 - [Examples](#examples)
