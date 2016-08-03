@@ -9,6 +9,7 @@ This jQuery plugin is written with [CoffeeScript](http://coffeescript.org/) that
 
 #### P.S.
 You can find simpler approaches in [stackoverflow](http://stackoverflow.com/) like:
+
 1. [How to disable mouse scroll-wheel scaling with Google Maps API](http://stackoverflow.com/questions/2330197/how-to-disable-mouse-scroll-wheel-scaling-with-google-maps-api)
 1. [Disable mouse scroll wheel zoom on embedded Google Maps](http://stackoverflow.com/questions/21992498/disable-mouse-scroll-wheel-zoom-on-embedded-google-maps)
 1. [Prevent a Google Maps iframe from capturing the mouse's scrolling wheel behavior](http://stackoverflow.com/questions/24768772/prevent-a-google-maps-iframe-from-capturing-the-mouses-scrolling-wheel-behavior )
