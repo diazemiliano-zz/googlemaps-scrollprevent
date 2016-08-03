@@ -2,10 +2,16 @@
 **Avoid unwanted map interactions with the Google Maps Iframe.**
 **Disable mouse scroll wheel zoom on embedded Google Maps**
 googlemaps-scrollprevent is an easy solution to the problem of page scrolling with new "[Google Maps Iframe Embed](https://developers.google.com/maps/documentation/embed/guide)".
-This [jQuery](http://www.jquery.com) and **Wordpress** plugin prevents Google Maps iframe from capturing the mouse's scrolling **wheel / touch** scrolling behavior wrapping the ``` <iframe>  ``` with a transparent ``` <div> ``` on **mouse / touch hover**, so you must **click / tap** the unlock button to toggle the normal navigation. See the [Live Demo.](http://diazemiliano.github.io/googlemaps-scrollprevent)
+This [jQuery](http://www.jquery.com) **Mobile First** plugin prevents Google Maps iframe from capturing the mouse's scrolling **wheel / touch** scrolling behavior wrapping the ``` <iframe>  ``` with a transparent ``` <div> ``` on **mouse / touch hover**, so you must **click / tap** the unlock button to toggle the normal navigation. See the [Live Demo.](http://diazemiliano.github.io/googlemaps-scrollprevent)
 This jQuery plugin is written with [CoffeeScript](http://coffeescript.org/) that compiles in JavaScript, so the source files are a little different from standard JavaScript.
 
 **Please** if you are using this plugin open an [Issue](https://github.com/diazemiliano/googlemaps-scrollprevent/labels/showcase) with the tag ```showcase```. If this plugin was helpful for you saving some time and effort. Can consider *donate* as a thank you. Thanks!
+
+#### P.S.
+You can find simpler approaches in [stackoverflow](http://stackoverflow.com/) like:
+1. [How to disable mouse scroll-wheel scaling with Google Maps API](http://stackoverflow.com/questions/2330197/how-to-disable-mouse-scroll-wheel-scaling-with-google-maps-api)
+1. [Disable mouse scroll wheel zoom on embedded Google Maps](http://stackoverflow.com/questions/21992498/disable-mouse-scroll-wheel-zoom-on-embedded-google-maps)
+1. [Prevent a Google Maps iframe from capturing the mouse's scrolling wheel behavior](http://stackoverflow.com/questions/24768772/prevent-a-google-maps-iframe-from-capturing-the-mouses-scrolling-wheel-behavior )
 
 #### Details
 [![License MIT](https://img.shields.io/badge/license-MIT-blue.svg)](https://github.com/diazemiliano/googlemaps-scrollprevent/blob/master/LICENSE)
@@ -132,29 +138,43 @@ For usage examples check the [live demo](http://diazemiliano.github.io/googlemap
 // JavaScript
 
 var options = {
+  "class": {
 
-      // Custom class for map wrap
-      wrapClass:"map-wrap",
+    /* class for map wrap */
+    wrap: "mapscroll-wrap",
 
-      // Custom class for hover div
-      overlayClass:"map-overlay",
+    /* class for hover div */
+    overlay: "mapscroll-overlay",
 
-      // Press Duration
-      pressDuration: 650,
+    /* class for progress bar */
+    progress: "mapscroll-progress",
 
-      // Hover Message and Icons
-      overlay: {
-          iconLocked: "<svg xmlns=\"http://www.w3.org/2000/svg\" width=\"22\" height=\"22\" viewBox=\"0 0 1792 1792\" > <path transform=\"translate(1)\" d=\"M640 768h512v-192q0-106-75-181t-181-75-181 75-75 181v192zm832 96v576q0 40-28 68t-68 28h-960q-40 0-68-28t-28-68v-576q0-40 28-68t68-28h32v-192q0-184 132-316t316-132 316 132 132 316v192h32q40 0 68 28t28 68z\" /> </svg>",
-          iconUnloking: "<svg xmlns=\"http://www.w3.org/2000/svg\" width=\"22\" height=\"22\" viewBox=\"0 0 1792 1792\"> <path transform=\"translate(1)\" d=\"M1376 768q40 0 68 28t28 68v576q0 40-28 68t-68 28h-960q-40 0-68-28t-28-68v-576q0-40 28-68t68-28h32v-320q0-185 131.5-316.5t316.5-131.5 316.5 131.5 131.5 316.5q0 26-19 45t-45 19h-64q-26 0-45-19t-19-45q0-106-75-181t-181-75-181 75-75 181v320h736z\" /> </svg>",
-          iconUnlocked: "<svg xmlns=\"http://www.w3.org/2000/svg\" width=\"22\" height=\"22\" viewBox=\"0 0 1792 1792\"> <path transform=\"translate(1)\" d=\"M1728 576v256q0 26-19 45t-45 19h-64q-26 0-45-19t-19-45v-256q0-106-75-181t-181-75-181 75-75 181v192h96q40 0 68 28t28 68v576q0 40-28 68t-68 28h-960q-40 0-68-28t-28-68v-576q0-40 28-68t68-28h672v-192q0-185 131.5-316.5t316.5-131.5 316.5 131.5 131.5 316.5z\" /> </svg>"
-      },
+    /* class for the unlock button */
+    button: "mapscroll-button",
 
-      // Callbaks
-      onMapLock: function() {},
-      onMapUnlock: function() {},
+    /* class for svg icons */
+    icon: "mapscroll-icon"
+  },
 
-      // Print Log Messges
-      printLog: false
+  /* Press Duration */
+  pressDuration: 650,
+
+  /* Unlock Trigger (overlay|button) */
+  triggerElm: "button",
+
+  /* Buton Icons */
+  overlay: {
+    iconLocked: "<svg xmlns=\"http://www.w3.org/2000/svg\" width=\"22\" height=\"22\" viewBox=\"0 0 1792 1792\" > <path transform=\"translate(1)\" d=\"M640 768h512v-192q0-106-75-181t-181-75-181 75-75 181v192zm832 96v576q0 40-28 68t-68 28h-960q-40 0-68-28t-28-68v-576q0-40 28-68t68-28h32v-192q0-184 132-316t316-132 316 132 132 316v192h32q40 0 68 28t28 68z\" /> </svg>",
+    iconUnloking: "<svg xmlns=\"http://www.w3.org/2000/svg\" width=\"22\" height=\"22\" viewBox=\"0 0 1792 1792\"> <path transform=\"translate(1)\" d=\"M1376 768q40 0 68 28t28 68v576q0 40-28 68t-68 28h-960q-40 0-68-28t-28-68v-576q0-40 28-68t68-28h32v-320q0-185 131.5-316.5t316.5-131.5 316.5 131.5 131.5 316.5q0 26-19 45t-45 19h-64q-26 0-45-19t-19-45q0-106-75-181t-181-75-181 75-75 181v320h736z\" /> </svg>",
+    iconUnlocked: "<svg xmlns=\"http://www.w3.org/2000/svg\" width=\"22\" height=\"22\" viewBox=\"0 0 1792 1792\"> <path transform=\"translate(1)\" d=\"M1728 576v256q0 26-19 45t-45 19h-64q-26 0-45-19t-19-45v-256q0-106-75-181t-181-75-181 75-75 181v192h96q40 0 68 28t28 68v576q0 40-28 68t-68 28h-960q-40 0-68-28t-28-68v-576q0-40 28-68t68-28h672v-192q0-185 131.5-316.5t316.5-131.5 316.5 131.5 131.5 316.5z\" /> </svg>"
+  },
+
+  /* Callbaks */
+  onMapLock: function() {},
+  onMapUnlock: function() {},
+
+  /* Print Log Messges */
+  printLog: false
     };
 ```
 
