@@ -132,8 +132,8 @@ For usage examples check the [live demo](http://diazemiliano.github.io/googlemap
         }
 
     // Do the hook
-    add_action( 'wp_enqueue_scripts', 'mapScrollPrevent-plugin' );
-    add_action( 'wp_head', 'mapScrollPrevent-script' );
+    add_action( 'wp_enqueue_scripts', 'mapScrollPrevent_plugin' );
+    add_action( 'wp_head', 'mapScrollPrevent_script' );
     ```
 
 ## Default Options
